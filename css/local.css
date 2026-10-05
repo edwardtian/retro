@@ -1,0 +1,337 @@
+/* Local shell styles for the mirrored site (game list, settings, player nav).
+   Loaded after bootstrap.min.css and the site's own site.css.
+
+   The original pages are light-themed with a soft gradient; the player page is
+   dark. Both are reproduced here so the three pages look like one site. */
+
+:root {
+    --local-panel: rgba(255, 255, 255, 0.55);
+    --local-panel-border: rgba(0, 0, 0, 0.1);
+    --local-dark-1: #10141f;
+    --local-dark-2: #232c40;
+}
+
+body.local-site {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #e9edf4 0%, #dfe6f0 45%, #cfd8e6 100%);
+    background-attachment: fixed;
+}
+
+body.local-site.local-dark {
+    background: linear-gradient(180deg, var(--local-dark-1) 0%, #1b2333 60%, #2a3448 100%);
+    color: #eef1f6;
+}
+
+/* --- top navigation ------------------------------------------------------ */
+
+.local-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid var(--local-panel-border);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+body.local-dark .local-nav {
+    background: rgba(255, 255, 255, 0.08);
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.local-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.local-nav .local-brand {
+    font-weight: 600;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.local-nav .local-brand span {
+    font-weight: 400;
+    opacity: 0.65;
+    font-size: 0.85em;
+}
+
+.local-nav .local-links {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.local-nav .local-links a {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    color: inherit;
+}
+
+.local-nav .local-links a:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+body.local-dark .local-nav .local-links a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.local-nav .local-links a.active {
+    background: rgba(13, 110, 253, 0.12);
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+body.local-dark .local-nav .local-links a.active {
+    background: rgba(120, 170, 255, 0.2);
+    color: #bcd4ff;
+}
+
+.local-nav .local-nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    opacity: 0.85;
+}
+
+/* --- panels / cards ------------------------------------------------------ */
+
+.local-panel {
+    background: var(--local-panel);
+    border: 1px solid var(--local-panel-border);
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.local-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 16px 48px;
+}
+
+.local-page h1 {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+.local-subtle {
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
+
+/* --- game list ----------------------------------------------------------- */
+
+.game-card {
+    display: flex;
+    gap: 14px;
+    align-items: stretch;
+    background: var(--local-panel);
+    border: 1px solid var(--local-panel-border);
+    border-radius: 10px;
+    padding: 14px;
+    height: 100%;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.game-cover {
+    width: 120px;
+    min-width: 120px;
+    aspect-ratio: 3 / 4;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.68rem;
+    text-align: center;
+    padding: 6px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(160deg, #2b3a67 0%, #101828 100%);
+    overflow: hidden;
+}
+
+.game-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-card-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.game-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.game-meta {
+    font-size: 0.78rem;
+    opacity: 0.72;
+    margin-bottom: 6px;
+}
+
+.game-desc {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-bottom: 10px;
+}
+
+.game-card-actions {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge-ready {
+    background: rgba(25, 135, 84, 0.15);
+    color: #146c43;
+    border: 1px solid rgba(25, 135, 84, 0.35);
+}
+
+.badge-missing {
+    background: rgba(220, 53, 69, 0.12);
+    color: #b02a37;
+    border: 1px solid rgba(220, 53, 69, 0.35);
+}
+
+.local-toolbar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    background: var(--local-panel);
+    border: 1px solid var(--local-panel-border);
+    border-radius: 8px;
+}
+
+.local-toolbar .local-sort-link {
+    font-size: 0.85rem;
+    padding: 3px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.local-toolbar .local-sort-link.active {
+    background: rgba(13, 110, 253, 0.14);
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+.empty-state {
+    padding: 40px 20px;
+    text-align: center;
+    opacity: 0.75;
+}
+
+/* --- settings ------------------------------------------------------------ */
+
+.settings-tabs {
+    border-bottom: none;
+}
+
+.settings-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px;
+    min-width: 20rem;
+    max-width: 24rem;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.controller-pad {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px 14px;
+}
+
+.controller-dot {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+
+.controller-dot.pressed {
+    background: #dc3545;
+    color: #fff;
+}
+
+.axis-stick {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background: whitesmoke;
+}
+
+.axis-stick .axis-nub {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background: whitesmoke;
+    transform: translate(0%, 0%) scale(0.25);
+}
+
+.mapping-select {
+    font-size: 0.72rem;
+    padding: 2px 20px 2px 6px;
+    min-width: 104px;
+    margin-top: 6px;
+}
+
+.local-legend {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.progress-stacked {
+    display: flex;
+    width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+.progress-stacked .progress {
+    border-radius: 0;
+}
+
+/* Keep the player page's toolbar readable on the dark background. */
+body.local-dark .game-page h1 {
+    color: #f2f4f8;
+}

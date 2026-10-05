@@ -151,6 +151,37 @@ function useSkipWin95Patch() {
     return config.skipWin95Patch === true || new URLSearchParams(window.location.search).has("nopatch");
 }
 
+// ---------------------------------------------------------------------------
+// Player preferences, written by /settings.html and read here.
+//   Mouse  : settings_mouse_sensitivity, settings_mouse_wheel_*
+//   Video  : settings_3dfx_upscaler_gameid_<gameId>, settings_3dfx_aniso_...
+//   Saves  : settings_sfs (1 = browser save, 2 = start fresh)
+// The controller mapping keys (settings_game_controller_*) are read directly by
+// the dumped helper-x.js, so they need no plumbing here.
+// ---------------------------------------------------------------------------
+
+function readPreferenceNumber(key, fallback, minimum, maximum) {
+    const raw = localStorage.getItem(key);
+    // Number(null) is 0, so a missing key must be rejected before converting.
+    if (raw === null || raw === "") return fallback;
+    const value = Number(raw);
+    if (!Number.isFinite(value)) return fallback;
+    if (Number.isFinite(minimum) && value < minimum) return minimum;
+    if (Number.isFinite(maximum) && value > maximum) return maximum;
+    return value;
+}
+
+function playerPreferences() {
+    const direction = readPreferenceNumber("settings_mouse_wheel_direction", 1);
+    return {
+        mouseSensitivity: readPreferenceNumber("settings_mouse_sensitivity", 1, 0.1, 5),
+        mouseWheelDirection: direction === -1 ? -1 : 1,
+        mouseWheelSensitivity: readPreferenceNumber("settings_mouse_wheel_sensitivity", 1, 0, 5),
+        upscaler: localStorage.getItem("settings_3dfx_upscaler_gameid_" + config.gameId) === "true",
+        aniso: localStorage.getItem("settings_3dfx_aniso_gameid_" + config.gameId) === "true"
+    };
+}
+
 function checkGameBrowserSupport() {
     const edgeBuild = wasmPrefix !== "/js/dosx/";
     if (edgeBuild || (window.crossOriginIsolated === true && typeof SharedArrayBuffer === "function")) return true;
@@ -177,7 +208,11 @@ async function refreshSaveSelector() {
     select.add(new Option("Start fresh", "2"));
     select.add(new Option("Upload save file...", "3"));
     if (!hasBrowserSave) select.options[0].disabled = true;
-    select.value = hasBrowserSave ? "1" : "2";
+    // Default source chosen in /settings.html ("auto" leaves the heuristic).
+    const preferred = localStorage.getItem("settings_sfs");
+    if (preferred === "1" && hasBrowserSave) select.value = "1";
+    else if (preferred === "2") select.value = "2";
+    else select.value = hasBrowserSave ? "1" : "2";
     applySaveSelection(select.value);
 }
 
@@ -364,6 +399,10 @@ function updatePlayButtonVisibility() {
 function startGame() {
     if (!checkGameBrowserSupport() || g_startRequested) return;
     g_startRequested = true;
+    // Feeds the "Recently played" ordering on the game list page.
+    if (window.LocalSite && typeof window.LocalSite.markPlayed === "function") {
+        window.LocalSite.markPlayed(config.gameId);
+    }
     launchPreparedGame();
 }
 
@@ -407,13 +446,14 @@ async function launchPreparedGame() {
 
 function run(fileBundle) {
     g_resChangedCount = 0;
+    const preferences = playerPreferences();
     const settings = {
         name: config.gameId,
         save: g_selectedSFS,
         upload: g_saveFileBlob,
-        mouseSensitivity: 1.0,
-        mouseWheelDirection: 1,
-        mouseWheelSensitivity: 1.0,
+        mouseSensitivity: preferences.mouseSensitivity,
+        mouseWheelDirection: preferences.mouseWheelDirection,
+        mouseWheelSensitivity: preferences.mouseWheelSensitivity,
         version: config.version
     };
     g_helperX = new HelperX(fileBundle, document.getElementById("canvas"), settings, {
@@ -435,8 +475,8 @@ function run(fileBundle) {
                 "type": config.settingsType,
                 "baseurl": window.location.origin,
                 "option": "",
-                "voodoo_upscaler": false,
-                "voodoo_aniso": false,
+                "voodoo_upscaler": preferences.upscaler,
+                "voodoo_aniso": preferences.aniso,
                 "auto_command": undefined,
                 "hardware": {
                     "voodoo": false,

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>StarCraft: Brood War - Retro Game Playground</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/local.css">
+    <link rel="stylesheet" href="/css/ddyx.styles.css">
+    <link rel="stylesheet" href="/js/dos/emulators-ui/emulators-ui.css">
+    <link rel="stylesheet" href="/css/game-player.css">
+</head>
+<body class="local-site local-dark">
+    <header id="local-nav"></header>
+    <main role="main" class="container-fluid pb-3" style="margin:0;padding:0">
+        <div style="min-height:calc(100vh - 52px);background:linear-gradient(180deg,#10141f 0%,#1b2333 60%,#2a3448 100%);padding-top:12px">
+            <div class="game-page text-center" style="display:flex;flex-direction:column;align-items:center">
+                <h1 id="page-title" style="font-size:x-large;color:#f2f4f8;text-shadow:0 1px 3px rgba(0,0,0,.8)">Retro Game Playground</h1>
+                <div id="titleSplitter" style="height:10px"></div>
+
+                <div id="gameUserAgreement" style="margin:auto;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid rgba(0,0,0,.2);border-radius:3px;opacity:0.95;background-color:rgba(255,255,255,0.3)">
+                    <input class="form-check-input check-secondary" type="checkbox" id="gameUserAgreementAgreed" style="border-color:pink">
+                    <label class="form-check-label" for="gameUserAgreementAgreed" style="color:#eef1f6"> I confirm I have a legal copy of this game. </label>
+                </div>
+
+                <div id="browserSafariWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">You are using the Safari browser. Only the latest Safari versions with WebAssembly JSPI are supported for proper functionality.</div>
+                <div id="browserFirefoxWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">You are using the Firefox browser. Only the latest version of Firefox is supported.<br> Please enter 'about:config' in the Firefox browser, then search for 'javascript.options.wasm_js_promise_integration', set its value to true, and refresh this page to achieve optimal performance.</div>
+                <div id="browserOtherWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">Please install and use the latest version of Chrome or Edge for the best experience.</div>
+                <div id="browserDiskspaceWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">Your browser storage quota is low and you may not be able to load the game correctly.<br>Usage: <span id="diskspaceWarningUsage"></span> Available: <span id="diskspaceWarningAvailable"></span></div>
+                <div id="missingFilesWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.95;background-color:rgb(255 0 0 / 30%);margin-top:10px;color:#fff;text-align:left">
+                    <strong>Game files are missing.</strong> This dump contains the player web app only - no game data.
+                    Place your own files as shown in <code>games/README.md</code>:<br>
+                    <span id="missingFilesList"></span>
+                </div>
+
+                <div style="height:25px"></div>
+
+                <section id="gamePlayer" class="game-player" data-stage="starter" aria-label="Windows Games">
+                    <div id="gameControlMenu" style="display:none;opacity:1" class="btn-toolbar" role="toolbar">
+                        <div class="btn-group btn-group-sm text-center shadow me-1" role="group">
+                            <div class="btn-group btn-group-sm" role="group" data-bs-toggle="tooltip" data-bs-placement="top" title="Switch Disc">
+                                <button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"> <img src="/images/common/cdswitch.svg" alt="" width="16" height="16"> </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" id="CDListMenu">
+                                    <!-- items built from config by app.js: <li id="CDList"><a class="dropdown-item btn-light btn-sm" href="#" data-cdid="0">...</a></li> -->
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-light" id="Pause" data-bs-toggle="tooltip" data-bs-placement="top" title="Pause"> <img src="/images/common/pause.svg" alt="" width="16" height="16"> </button>
+                            <button type="button" class="btn btn-light" id="Mute" data-bs-toggle="tooltip" data-bs-placement="top" title="Mute"> <img src="/images/common/mute.svg" alt="" width="16" height="16"> </button>
+                            <button type="button" class="btn btn-light" id="FullScreen" data-bs-toggle="tooltip" data-bs-placement="top" title="Fullscreen"> <img src="/images/common/fullscreen.svg" alt="" width="16" height="16"> </button>
+                            <button type="button" class="btn btn-light" id="Save" data-bs-toggle="tooltip" data-bs-placement="top" title="Save (browser)"> <img src="/images/common/save.svg" alt="" width="16" height="16"> </button>
+                            <button type="button" class="btn btn-light" id="SaveDownload" data-bs-toggle="tooltip" data-bs-placement="top" title="Download Save File"> <img src="/images/common/download.svg" alt="" width="16" height="16"> </button>
+                        </div>
+                        <div class="btn-group btn-group-sm text-center shadow game-fullscreen-actions" role="group" style="margin-left:10px">
+                            <button type="button" class="btn btn-light" id="Keyboard" aria-controls="gameKeyboard" aria-expanded="false" title="Keyboard" aria-label="Keyboard"> <img src="/images/common/keyboard.svg" width="16" height="16" alt=""> </button>
+                            <button type="button" class="btn btn-light" id="TouchScreen" aria-controls="gameTouchControls" aria-pressed="false" title="Touch controls" aria-label="Touch controls"> <img src="/images/common/touchscreen.svg" width="16" height="16" alt=""> </button>
+                        </div>
+                    </div>
+
+                    <div id="dosWindowFrame" class="text-start" style="visibility:hidden;opacity:0;z-index:100;position:relative;margin:auto;width:60%;aspect-ratio:640/480;box-shadow:inset 0 2px 5px rgba(0,0,0,.6),0 5px 2px rgba(0,0,0,.1),0 4px 8px rgba(0,0,0,.8);border-color:#2F2D2D #434040 #4F4C4C #434040;background-color:black">
+                        <div id="dosWindow" style="width:100%;height:100%;aspect-ratio:640/480;max-width:100%;background-color:black">
+                            <canvas id="canvas" style="cursor:pointer;position:relative;width:100%;height:100%"></canvas>
+                        </div>
+                        <div id="dosWindowLoading" fetchpriority="high" class="text-center" style="background-color:#10141f;background-image:linear-gradient(180deg,#10141f 0%,#232c40 100%);background-repeat:no-repeat;background-size:cover;width:100%;height:100%;position:absolute;top:0px;left:0px;display:flex;align-items:center">
+                            <div id="dosWindowLoadingMessage" style="display:none;opacity:0.8;width:100%;min-width:30%;padding:5px;background-color:rgba(0,0,0,0.7);box-shadow:0 2px 5px rgba(0,0,0,.6)">
+                                <div class="spinner-border spinner-border-sm text-light" role="status"><span class="visually-hidden">Loading...</span></div>
+                                <span id="loadingText" style="color:white;text-shadow:white 0px 0px 3px"></span>
+                            </div>
+                        </div>
+                        <div id="dosWindowStarter">
+                            <div id="dosTips" style="padding:5px;background-color:rgba(0,0,0,0.7);position:absolute;bottom:0%;width:100%;color:lightgrey;text-shadow:white 0px 0px 1px;font-size:xx-small;text-align:center"><span style="font-size:12px;color:white">&#127912;Windows games require the latest desktop CPUs for an optimal experience. See the help page for more details.</span></div>
+                            <div id="dosWindowTextStripe" style="backdrop-filter:blur(4px);width:100%;height:50%;background-color:rgba(0,0,0,0.7);position:absolute;top:25%;left:0px">
+                                <div class="game-start-details" style="left:37.5%;width:65%;height:50%;position:absolute;top:10%">
+                                    <div class="game-start-summary">
+                                        <div style="width:95%;color:white;text-shadow:white 0px 0px 1px;font-size:medium">StarCraft: Brood War <span class="fst-italic" style="font-size:xx-small">(1998)</span></div>
+                                        <div style="width:95%;color:white;text-shadow:white 0px 0px 1px;font-size:xx-small;white-space:nowrap"></div>
+                                        <div style="width:95%;color:gray;text-shadow:gray 0px 0px 1px;font-size:xx-small;white-space:nowrap;font-style:italic">Blizzard</div>
+                                    </div>
+                                    <div class="game-start-options">
+                                        <div style="display:flex;width:70%;color:white;text-shadow:white 0px 0px 1px;font-size:1vmin;margin-top:10px">
+                                            <div style="width:30px;height:30px"><img src="/images/common/compactdisc.svg" alt="" style="top:15%;width:70%;height:70%;position:relative"></div>
+                                            <select class="form-select" id="dosWindowCDImageSelector" aria-label="Switch Disc"></select>
+                                        </div>
+                                        <div style="display:flex;width:70%;color:white;text-shadow:white 0px 0px 1px;font-size:1vmin;margin-top:10px">
+                                            <div style="width:30px;height:30px;background-color:black;display:flex;align-content:space-around;justify-content:space-around;align-items:center"><img src="/images/common/saveinvert.svg" data-bs-toggle="tooltip" data-bs-placement="top" title="Load save file" alt="" style="width:75%;height:75%;position:relative;background-color:rgba(0,0,0,0.75)"></div>
+                                            <select class="form-select" id="dosWindowSaveSelector" aria-label="Load save file"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="dosWindowGameCover" style="width:20%;aspect-ratio:3/4;background-color:rgba(0,0,0,0.7);position:absolute;top:30%;left:12.5%;box-shadow:0 2px 5px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center">
+                                    <span style="color:#cdd6e4;font-size:xx-small;text-align:center;padding:6px">Local mirror.<br>No cover art included.</span>
+                                </div>
+                                <div style="position:absolute;bottom:10%;left:37.5%">
+                                    <button type="button" id="dosWindowGameStartButton" class="btn btn-primary" style="display:none;align-items:center;justify-content:center;height:fit-content"> <span class="game-start-label" style="font-size:larger;margin:10px">Play</span> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-input-overlay" id="gameInputOverlay">
+                        <div class="game-touch-controls" id="gameTouchControls" hidden aria-label="One finger: tap without moving for left click, slide to move the mouse. Keep one finger down; the second finger presses the left mouse button, moves the mouse, and releases the button when lifted." data-game-id="broodwar_cd" data-user-id="" data-cloud="false"></div>
+                        <script type="application/json" id="gameTouchText">{"Edit controls":"Edit controls","Delete selected control":"Delete selected control","Add control":"Add control","Close settings":"Close settings","Close list":"Close list","Search controls":"Search controls","Keyboard":"Keyboard","Arrow keys":"Arrow keys","Mouse":"Mouse","Gamepad":"Gamepad","Button":"Button","Left click":"Left click","Right click":"Right click","Middle click":"Middle click","Scroll up":"Scroll up","Scroll down":"Scroll down","Mouse stick":"Mouse stick","Mouse stick sensitivity":"Mouse stick sensitivity","Gamepad axes 1/2":"Gamepad axes 1/2","Gamepad axes 3/4":"Gamepad axes 3/4","Layout saved in this browser.":"Layout saved in this browser.","Drag buttons with one finger; resize them with two fingers.":"Drag buttons with one finger; resize them with two fingers.","Could not save the browser copy.":"Could not save the browser copy.","Loading layout...":"Loading layout...","You can add up to 128 controls.":"You can add up to 128 controls.","The layout could not be saved.":"The layout could not be saved."}</script>
+                        <section id="gameKeyboard" class="game-keyboard" aria-label="Keyboard" hidden data-space-label="Space" data-return-label="Return" data-close-label="Close keyboard">
+                            <div id="gameKeyboardKeys" class="game-keyboard-keys"></div>
+                        </section>
+                    </div>
+                    <div id="gamePlayerStatus" class="game-player-status" role="status" hidden data-fullscreen-error="Fullscreen is unavailable in this browser." data-fullscreen-exit="Exit fullscreen"></div>
+                </section>
+
+                <div style="height:25px"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Error / info modal used by the player code -->
+    <div class="modal fade" id="warningModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="warningModalMessage"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/bowser/bundled.min.js"></script>
+    <script src="/lib/axios/axios.min.js"></script>
+    <script src="/catalog.js"></script>
+    <script src="/js/local-site.js"></script>
+    <script src="/config.js"></script>
+    <script>
+        // Site chrome: navigation plus the game title, both driven by the catalog.
+        (function () {
+            if (!window.LocalSite || !window.LOCAL_GAME_CONFIG) return;
+            var game = (window.LocalSite.catalog.games || []).filter(function (item) {
+                return item.id === window.LOCAL_GAME_CONFIG.gameId;
+            })[0];
+            window.LocalSite.mountNav("games", { rightText: game ? game.osLabel : "" });
+            if (game) {
+                document.getElementById("page-title").textContent = game.title;
+                document.title = game.title + " - " + window.LocalSite.catalog.siteName;
+            }
+        })();
+    </script>
+    <script src="/app.js"></script>
+</body>
+</html>

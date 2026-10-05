@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings - Retro Game Playground</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/local.css">
+</head>
+<body class="local-site">
+    <header id="local-nav"></header>
+
+    <main class="local-page">
+        <h1>Settings</h1>
+        <div class="local-subtle mb-3">
+            Controller mapping and browser storage, mirroring the original site's settings page.
+            Everything is stored locally in this browser.
+        </div>
+
+        <ul class="nav nav-tabs settings-tabs" id="settings-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab-controller-button" data-bs-toggle="tab"
+                        data-bs-target="#tab-controller" type="button" role="tab"
+                        aria-controls="tab-controller" aria-selected="true">Game controller</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-storage-button" data-bs-toggle="tab"
+                        data-bs-target="#tab-storage" type="button" role="tab"
+                        aria-controls="tab-storage" aria-selected="false">Storage</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-player-button" data-bs-toggle="tab"
+                        data-bs-target="#tab-player" type="button" role="tab"
+                        aria-controls="tab-player" aria-selected="false">Player defaults</button>
+            </li>
+        </ul>
+
+        <div class="tab-content local-panel" id="settings-content">
+            <!-- ------------------------------------------------ controller -->
+            <div class="tab-pane fade show active" id="tab-controller" role="tabpanel"
+                 aria-labelledby="tab-controller-button" tabindex="0">
+                <div class="d-flex flex-column align-items-center">
+                    <strong>Default game controller:</strong>
+                    <div id="controller-hint" class="text-center mt-2">
+                        <div class="local-subtle">Press a button on the game controller to activate access.</div>
+                        <img src="/images/common/gamepad.svg" alt="" style="width:64px;height:64px">
+                    </div>
+                    <div id="controller-list" class="list-group mt-2" style="width:80%"></div>
+
+                    <div id="mapping-area" class="w-100 mt-4" hidden>
+                        <div class="d-flex justify-content-center gap-2 mb-2">
+                            <span class="local-legend">Basic mapping</span>
+                            <span class="local-legend">|</span>
+                            <span class="local-legend" id="mapping-target-name">Used by every game in the player</span>
+                        </div>
+
+                        <div class="text-center">
+                            <div>Axes:</div>
+                            <div id="axes-area" class="d-flex flex-wrap justify-content-center"></div>
+                            <div class="mt-2">Buttons:</div>
+                            <div id="buttons-area" class="d-flex flex-wrap justify-content-center"></div>
+                        </div>
+
+                        <div class="local-legend text-center mt-3">
+                            * Retro game controllers only exposed four axes and four buttons, so the player maps
+                            them onto Axis 1-2 / Axis 3-4 and Button 1-4.
+                        </div>
+
+                        <hr>
+
+                        <div class="text-center">
+                            <strong>Advanced mappings</strong>
+                            <div class="local-subtle">
+                                Named mapping presets. The original site stores these in the cloud for signed-in
+                                members; this mirror keeps them in this browser instead.
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center gap-2 mt-2 flex-wrap">
+                                <select class="form-select form-select-sm" id="advanced-mapping-select"
+                                        style="width:220px" aria-label="Saved mappings"></select>
+                                <button class="btn btn-sm btn-outline-secondary" id="advanced-mapping-new"
+                                        data-bs-toggle="modal" data-bs-target="#newMappingModal">New</button>
+                                <button class="btn btn-sm btn-outline-secondary" id="advanced-mapping-apply">Apply</button>
+                                <button class="btn btn-sm btn-outline-danger" id="advanced-mapping-delete">Delete</button>
+                                <button class="btn btn-sm btn-outline-secondary" id="advanced-mapping-save" disabled>Save</button>
+                            </div>
+                            <div class="local-legend mt-1" id="advanced-mapping-status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --------------------------------------------------- storage -->
+            <div class="tab-pane fade" id="tab-storage" role="tabpanel"
+                 aria-labelledby="tab-storage-button" tabindex="0"
+                 data-calculating="Calculating..." data-unavailable="Unavailable">
+                <div class="d-flex flex-column align-items-center">
+                    <div id="storage-error" class="alert alert-warning small w-75" role="alert" hidden></div>
+
+                    <strong>Browser storage usage:</strong>
+                    <div class="progress-stacked mt-2" role="group" aria-label="Browser storage usage">
+                        <div class="progress" role="progressbar" aria-label="Used" aria-valuemin="0"
+                             aria-valuemax="100" style="width:50%" id="usage-percentage">
+                            <div class="progress-bar" id="usage-bar"></div>
+                        </div>
+                        <div class="progress" role="progressbar" aria-label="Free" aria-valuemin="0"
+                             aria-valuemax="100" style="width:50%" id="available-percentage">
+                            <div class="progress-bar bg-success" id="available-bar"></div>
+                        </div>
+                    </div>
+                    <div style="width:100%;font-size:xx-small;padding:5px" class="text-center">
+                        Quota: <span id="span-quota">-</span>
+                        Used: <span id="span-used">-</span>
+                        Free: <span id="span-free">-</span>
+                        <br><span style="font-size:9px">* Browsers only report estimates.</span>
+                    </div>
+
+                    <strong class="mt-4">Retro Game Playground storage usage:</strong>
+                    <div class="d-flex flex-wrap justify-content-center w-100">
+                        <div class="settings-card">
+                            <span style="font-size:small">Local game cache</span>
+                            <div class="d-flex align-items-center">
+                                <div class="spinner-border spinner-border-sm" role="status" id="cache-spinner"></div>
+                                <span class="ms-2" id="cache-size">Calculating...</span>
+                            </div>
+                            <button type="button" class="btn btn-outline-secondary shadow btn-sm mt-2"
+                                    id="clear-cache" data-bs-toggle="modal" data-bs-target="#clearCacheModal">Clear</button>
+                            <span style="font-size:9px">* Game files and audio resources will be downloaded again when needed.</span>
+                            <span style="font-size:9px">* This also removes extracted game files and changes not saved with Save.</span>
+                        </div>
+                        <div class="settings-card">
+                            <span style="font-size:small">Local game saves</span>
+                            <div class="d-flex align-items-center">
+                                <div class="spinner-border spinner-border-sm" role="status" id="saves-spinner"></div>
+                                <span class="ms-2" id="saves-size">Calculating...</span>
+                            </div>
+                            <button type="button" class="btn btn-danger shadow btn-sm mt-2"
+                                    id="clear-saves" data-bs-toggle="modal" data-bs-target="#clearSavesModal">Clear</button>
+                            <span style="font-size:9px">* WARNING: you will lose all local game saves.</span>
+                            <span style="font-size:9px">* Browser saves are kept separately from downloaded save files.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- -------------------------------------------- player defaults -->
+            <div class="tab-pane fade" id="tab-player" role="tabpanel"
+                 aria-labelledby="tab-player-button" tabindex="0">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <h5>Mouse</h5>
+                        <div class="mb-2">
+                            <label class="form-label" for="mouse-sensitivity">
+                                Mouse sensitivity: <span id="mouse-sensitivity-value">1.0</span>x
+                            </label>
+                            <input type="range" class="form-range" id="mouse-sensitivity"
+                                   min="0.2" max="3" step="0.1" value="1">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="wheel-sensitivity">
+                                Wheel sensitivity: <span id="wheel-sensitivity-value">1.0</span>x
+                            </label>
+                            <input type="range" class="form-range" id="wheel-sensitivity"
+                                   min="0" max="3" step="0.1" value="1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="wheel-direction">Wheel direction</label>
+                            <select class="form-select form-select-sm" id="wheel-direction">
+                                <option value="1">Normal (up = scroll up)</option>
+                                <option value="-1">Inverted</option>
+                            </select>
+                        </div>
+
+                        <h5>Video</h5>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="voodoo-upscaler">
+                            <label class="form-check-label" for="voodoo-upscaler">3Dfx resolution upscaler</label>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="voodoo-aniso">
+                            <label class="form-check-label" for="voodoo-aniso">Anisotropic filtering (restart the game to apply)</label>
+                        </div>
+
+                        <h5>Save file</h5>
+                        <div class="mb-3">
+                            <label class="form-label" for="save-source">Default source used when a game starts</label>
+                            <select class="form-select form-select-sm" id="save-source">
+                                <option value="auto">Ask in the player (recommended)</option>
+                                <option value="1">Browser save</option>
+                                <option value="2">Start fresh</option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-primary" id="player-defaults-save">Save defaults</button>
+                            <button class="btn btn-sm btn-outline-secondary" id="player-defaults-reset">Reset</button>
+                            <span class="align-self-center local-legend" id="player-defaults-status"></span>
+                        </div>
+                        <div class="local-legend mt-3">
+                            These are applied the next time a game is started. The browser save lives in
+                            IndexedDB (<code>js-dos-cache-x</code>) and is not removed by clearing the game cache.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ------------------------------------------------------------ modals -->
+    <div class="modal fade" id="clearCacheModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Clear local game cache</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Clear all cached game images? Extracted game files and unsaved changes are removed too.
+                    Game files and audio resources will be downloaded again when needed. Separately saved
+                    local saves are kept.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirm-clear-cache">Clear cache</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="clearSavesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Clear local game saves</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger mb-2">You will lose all local game saves.</p>
+                    <label class="form-label" for="delete-word">Type <code>DEL</code> to confirm:</label>
+                    <input type="text" class="form-control form-control-sm" id="delete-word" autocomplete="off">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirm-clear-saves" disabled>Clear saves</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newMappingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New mapping</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label" for="new-mapping-name">Name (1-32 characters)</label>
+                    <input type="text" class="form-control form-control-sm" id="new-mapping-name" maxlength="32">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirm-new-mapping" disabled>Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/catalog.js"></script>
+    <script src="/js/local-site.js"></script>
+    <script src="/config.js"></script>
+    <script src="/js/settings.js"></script>
+</body>
+</html>
