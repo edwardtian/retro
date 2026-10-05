@@ -1,0 +1,308 @@
+.user-settings-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 0 36px;
+}
+
+.user-settings-heading {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.user-settings-heading h1 {
+    font-weight: 400;
+}
+
+.user-settings-panel {
+    width: min(92%, 960px);
+    text-align: left;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 7px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.user-settings-row {
+    display: grid;
+    grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+    gap: 36px;
+    padding: 28px 30px;
+}
+
+.user-settings-row + .user-settings-row {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.user-settings-description h2 {
+    font-weight: 500;
+}
+
+.user-settings-description p {
+    color: #6c757d;
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+.user-settings-control {
+    min-width: 0;
+}
+
+.user-settings-button-row {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.user-settings-button-row .btn,
+#avatar-save {
+    width: fit-content;
+    max-width: 100%;
+    white-space: normal;
+}
+
+.user-avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-avatar-file-picker {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    flex: 1 1 auto;
+    gap: 12px;
+}
+
+.user-avatar-file-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 38px;
+    padding: 6px 14px;
+    color: #5f6872;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    white-space: normal;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #6c757d;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition: color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.user-avatar-file-button:hover {
+    color: #fff;
+    background: #6c757d;
+}
+
+#avatar-input:focus-visible + .user-avatar-file-button {
+    outline: 2px solid rgba(108, 117, 125, 0.35);
+    outline-offset: 2px;
+}
+
+.user-avatar-file-name {
+    min-width: 0;
+    color: #6c757d;
+    font-size: 0.84rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1 1 auto;
+}
+
+#user-settings-status {
+    margin-right: 30px;
+    margin-bottom: 28px;
+    margin-left: 30px;
+}
+
+.user-settings-current-avatar,
+.ddyx-user-avatar,
+.comment-author-avatar {
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    object-fit: cover;
+    border: 1px solid rgba(75, 85, 100, 0.28);
+    border-radius: 4px !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    background: var(--bs-tertiary-bg);
+}
+
+.user-settings-current-avatar {
+    width: 72px;
+    height: 72px;
+    border-width: 2px;
+    flex: 0 0 auto;
+}
+
+.user-avatar-editor {
+    max-width: 540px;
+    margin: 20px 0 0;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 7px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar-editor-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #c8cdd5;
+}
+
+#avatar-canvas,
+#avatar-animation-preview {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 0;
+    object-fit: contain;
+}
+
+.user-avatar-editor-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.user-avatar-zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.user-avatar-zoom-controls .form-range {
+    width: auto;
+    min-width: 80px;
+    margin: 0;
+    flex: 1 1 auto;
+}
+
+.user-avatar-icon-button {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    color: #5b6b82;
+    line-height: 22px;
+    text-align: center;
+    background: transparent;
+    border: 1px solid #7d899a;
+    border-radius: 50%;
+    flex: 0 0 auto;
+}
+
+.user-avatar-zoom-value {
+    min-width: 42px;
+    color: #5b6b82;
+    font-size: small;
+    text-align: center;
+}
+
+#avatar-canvas {
+    cursor: grab;
+    touch-action: none;
+}
+
+#avatar-canvas.is-dragging {
+    cursor: grabbing;
+}
+
+.comment-author-avatar {
+    width: 32px;
+    height: 32px;
+    border-width: 1px;
+    flex: 0 0 auto;
+}
+
+.ddyx-user-avatar {
+    width: 28px;
+    height: 28px;
+    border-width: 1px;
+}
+
+.ddyx-user-avatar-link {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin-right: 0.4rem;
+    border-radius: 4px;
+}
+
+.ddyx-navbar-user {
+    align-items: center;
+}
+
+#navbar-link-user {
+    min-height: 28px;
+}
+
+.ddyx-user-avatar-link:focus-visible {
+    outline: 2px solid rgba(255, 165, 0, 0.65);
+    outline-offset: 2px;
+}
+
+@media (max-width: 575.98px) {
+    .user-settings-page {
+        padding-top: 4px;
+    }
+
+    .user-settings-heading {
+        margin-bottom: 18px;
+    }
+
+    .user-settings-panel {
+        width: 100%;
+    }
+
+    .user-settings-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 22px 16px;
+    }
+
+    #user-settings-status {
+        margin-right: 16px;
+        margin-bottom: 22px;
+        margin-left: 16px;
+    }
+
+    .user-avatar-editor-footer {
+        flex-direction: column;
+    }
+
+    .user-avatar-upload {
+        align-items: flex-start;
+    }
+
+    .user-avatar-file-picker {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .user-avatar-file-name {
+        width: 100%;
+    }
+
+    .user-avatar-zoom-controls {
+        width: 100%;
+    }
+
+    #avatar-save {
+        width: 100%;
+    }
+}

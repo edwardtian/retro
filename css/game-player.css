@@ -1,0 +1,181 @@
+.game-page { width: 100%; min-width: 0; }
+.game-player { width: 100%; position: relative; min-width: 0; }
+.game-player [hidden] { display: none !important; }
+.game-player #gameControlMenu { position: relative; z-index: 110; justify-content: center; margin-bottom: 25px; }
+.game-player .game-fullscreen-actions, .game-input-overlay { display: none; }
+.game-player button:focus-visible, .game-player select:focus-visible { outline: 3px solid #58c8f4; outline-offset: 2px; }
+/* Game keys require canvas focus without the browser painting a ring over the image. */
+.game-player #canvas:focus { outline: none; }
+/* These groups keep the desktop flow and become separate rows on touch devices. */
+.game-start-summary, .game-start-options { display: contents; }
+.game-start-warning-mobile { display: none; }
+/* Keep Safari's selection loupe and long-press callout off game input surfaces. */
+.game-player :is(#dosWindow, #gameInputOverlay, #gameControlMenu),
+.game-player :is(#dosWindow, #gameInputOverlay, #gameControlMenu) * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+
+/* Fullscreen controls use the whole screen, including the fitted image's letterboxing. */
+.game-input-overlay { --game-touch-bottom: max(8px, env(safe-area-inset-bottom)); --game-layout-tools-top: max(60px, calc(env(safe-area-inset-top) + 54px)); position: absolute; z-index: 105; inset: 0; pointer-events: none; }
+.game-touch-controls { position: absolute; inset: 0; color: white; pointer-events: none; box-sizing: border-box; padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+.game-touch-controls.is-editing { pointer-events: auto; touch-action: none; }
+.game-touch-controls .game-touch-control { position: absolute; transform: translate(-50%, -50%); touch-action: none; min-width: 0; overflow-wrap: anywhere; overflow: hidden; }
+.game-player [data-game-key], .game-player [data-mouse-button] { touch-action: none; }
+.game-player .game-keyboard button { touch-action: pan-y; }
+.game-player .game-touch-surface { touch-action: none; }
+.game-touch-controls button, .game-layout-button { pointer-events: auto; min-height: 24px; padding: 5px; border: 1px solid #ffffff70; border-radius: 8px; background: #292d3680; color: white; font: inherit; font-size: 14px; line-height: 1.15; text-shadow: 0 1px 2px #000; }
+.game-touch-controls .is-pressed, .game-layout-button:active, .game-layout-button[aria-pressed="true"] { background: #f8f9fab3; color: #111; text-shadow: none; }
+.game-touch-controls button:disabled, .game-keyboard button:disabled, .game-layout-button:disabled { opacity: .45; }
+.game-layout-button img { width: 18px; height: 18px; filter: brightness(0) invert(1); pointer-events: none; }
+.game-layout-button:active img, .game-layout-button[aria-pressed="true"] img { filter: brightness(0); }
+.game-touch-controls.is-editing .game-touch-control { cursor: move; outline: 1px dashed #ffffffb0; outline-offset: 2px; }
+.game-touch-controls.is-editing .is-selected { outline: 3px solid #58c8f4; }
+.game-touch-controls .game-touch-stick { border-radius: 50%; padding: 0; }
+.game-touch-thumb { position: absolute; width: 36%; height: 36%; left: 32%; top: 32%; display: grid; place-items: center; border-radius: 50%; background: #ffffff80; border: 1px solid #fff9; pointer-events: none; }
+.game-touch-thumb img { width: 62%; height: 62%; object-fit: contain; filter: brightness(0); opacity: .8; pointer-events: none; }
+.game-layout-stick-option .game-stick-icon { width: 14px; height: 14px; flex: 0 0 14px; filter: brightness(0) invert(1); pointer-events: none; }
+.game-layout-stick-option:active .game-stick-icon { filter: brightness(0); }
+.game-layout-tools { position: absolute; z-index: 125; top: var(--game-layout-tools-top); right: max(8px, env(safe-area-inset-right)); display: flex; gap: 4px; pointer-events: auto; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.game-layout-tools button { width: 44px; height: 44px; display: grid; place-items: center; touch-action: manipulation; }
+.game-layout-status { position: absolute; z-index: 140; top: calc(var(--game-layout-tools-top) + 52px); right: max(8px, env(safe-area-inset-right)); max-width: min(440px, calc(100% - 16px)); padding: 6px 10px; background: #20242bcc; color: white; border-radius: 6px; overflow-wrap: anywhere; font-size: 13px; pointer-events: none; opacity: 1; transition: opacity .3s ease; }
+.game-layout-status.is-fading { opacity: 0; }
+.game-layout-catalog { position: absolute; z-index: 130; top: calc(var(--game-layout-tools-top) + 52px); bottom: max(8px, env(safe-area-inset-bottom)); left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right)); max-width: 720px; margin-inline: auto; border-radius: 8px; padding: 8px; background: #272b32f2; color: white; pointer-events: auto; display: flex; flex-direction: column; gap: 8px; }
+.game-layout-catalog-heading { display: flex; align-items: center; justify-content: space-between; }
+.game-layout-catalog-heading button { width: 32px; height: 32px; }
+.game-layout-catalog-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.game-layout-catalog input { flex: 1 1 100px; width: 100px; min-width: 80px; max-width: 240px; height: 32px; padding: 3px 6px; font-size: 16px; -webkit-user-select: text !important; user-select: text !important; -webkit-touch-callout: default !important; }
+.game-layout-categories { display: flex; flex: 0 0 auto; gap: 4px; }
+.game-layout-category { width: 32px; height: 32px; display: grid; place-items: center; }
+.game-layout-catalog-list { min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start; align-items: flex-start; }
+.game-layout-catalog-list button { flex: 0 0 auto; min-width: 28px; min-height: 30px; max-width: 100%; padding: 5px 8px; font-size: 13px; overflow-wrap: anywhere; }
+.game-layout-catalog-list .game-layout-stick-option { display: inline-flex; align-items: center; gap: 4px; }
+.game-layout-stick-option span { min-width: 0; }
+.game-stick-settings { position: absolute; z-index: 120; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 8px; padding: 6px 8px; border: 1px solid #ffffff70; border-radius: 8px; background: #292d36cc; color: white; font-size: 12px; pointer-events: auto; }
+.game-stick-settings output { white-space: nowrap; }
+.game-stick-settings input { grid-column: 1 / -1; width: 100%; min-width: 0; height: 24px; margin: 0; accent-color: #58c8f4; touch-action: none; }
+.game-player.is-layout-editing #gameControlMenu { visibility: hidden; }
+
+/* iOS-style QWERTY: staggered letters, Shift/Backspace flanks, mode/space/return row. */
+.game-keyboard { position: absolute; bottom: 0; left: calc((100% + env(safe-area-inset-left) - env(safe-area-inset-right)) / 2); transform: translateX(-50%); width: min(720px, calc(100% - env(safe-area-inset-left) - env(safe-area-inset-right))); max-height: 100%; overflow-y: auto; overscroll-behavior: contain; pointer-events: auto; padding: 8px 4px max(8px, env(safe-area-inset-bottom)); background: #c5c8d080; border-radius: 8px 8px 0 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.game-keyboard-keys { display: grid; gap: 8px; }
+.game-key-row { display: flex; gap: 5px; }
+.game-key-row button { flex: 1 1 0; min-width: 0; min-height: 44px; padding: 5px 0; border: 0; border-radius: 5px; background: #ffffffbf; box-shadow: 0 1px 1px #0006; color: #111; font: inherit; font-size: 21px; line-height: 1.15; }
+.game-keyboard[data-layout="letters"] .game-key-row:nth-child(2) { margin-inline: 5%; }
+.game-keyboard[data-layout="letters"] .game-key-row:nth-child(3) .game-key-utility { flex: 1.4 1 0; }
+.game-key-row .game-key-utility { background: #a2a8b4bf; font-size: 15px; }
+.game-key-row .game-key-wide { flex: 1.4 1 0; }
+.game-key-row:last-child .game-key-space { flex: 4.5 1 0; font-size: 16px; }
+.game-key-row:last-child .game-key-return { flex: 2 1 0; }
+.game-keyboard[data-layout="functions"] button, .game-keyboard[data-layout="navigation"] button { font-size: 14px; }
+.game-keyboard .is-pressed, .game-keyboard [aria-pressed="true"] { background: #fff; box-shadow: 0 1px 3px #0008; }
+/* The touch buttons stay at the screen edges; the keyboard fits above them. */
+.game-input-combined .game-keyboard { bottom: calc(var(--game-touch-bottom) + 204px); max-height: max(44px, calc(100% - var(--game-touch-bottom) - 204px - max(72px, calc(env(safe-area-inset-top) + 64px)))); padding-bottom: 8px; }
+@media (orientation: landscape), (min-width: 640px) {
+    .game-input-combined .game-keyboard { bottom: calc(var(--game-touch-bottom) + 52px); width: min(720px, calc(100% - 288px - env(safe-area-inset-left) - env(safe-area-inset-right))); max-height: max(44px, calc(100% - var(--game-touch-bottom) - 52px - max(44px, calc(env(safe-area-inset-top) + 38px)))); }
+}
+.game-player-status { padding: 10px; background: #fff3cd; color: #664d03; margin: 8px auto; max-width: 720px; }
+.game-player-page .modal-dialog { max-width: min(500px, calc(100% - 20px)); margin-inline: auto; }
+.game-player-page .modal-body { overflow-wrap: anywhere; max-height: 65dvh; overflow-y: auto; }
+.game-player-page #login-layer { position: fixed !important; overflow-y: auto; }
+.game-player-page #login-inner-layer { width: min(450px, calc(100% - 20px)) !important; left: 50% !important; margin-left: 0 !important; transform: translateX(-50%); top: 12px !important; }
+
+@media (max-width: 1024px), (pointer: coarse) and (max-height: 600px) {
+    .game-player-page { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+    .game-page > h1 { font-size: clamp(20px, 5vw, 26px) !important; overflow-wrap: anywhere; }
+    .game-page > [id$="Warning"], .game-page > #gameUserAgreement, .game-page > #memberFailureManagement, .game-page > #introFrame { width: 100% !important; height: auto !important; overflow-wrap: anywhere; }
+    .game-page #gameUserAgreement { text-align: left; }
+    .game-page > div[style="height:25px"], .game-page > #titleSplitter { height: 10px !important; }
+    .game-player #dosWindowFrame { width: 100% !important; margin: 0 auto !important; }
+    .game-player[data-stage="running"] #dosWindowFrame, .game-player[data-stage="loading"] #dosWindowFrame { width: min(100%, var(--game-frame-width)) !important; }
+    .game-player[data-stage="starter"] #dosWindowFrame { aspect-ratio: auto !important; }
+    .game-player[data-stage="starter"] #dosWindow { position: absolute; inset: 0; }
+    .game-player #dosWindowStarter { display: grid; position: relative; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; padding: 40px 14px 14px; background: #17191de6; color: white; }
+    .game-player #dosWindowTextStripe { display: contents; }
+    .game-player .game-start-details { position: static !important; width: auto !important; height: auto !important; min-width: 0; grid-column: 2; grid-row: 1; }
+    .game-player .game-start-summary > div, .game-player .game-start-options > div { width: 100% !important; font-size: 14px !important; white-space: normal !important; overflow-wrap: anywhere; }
+    .game-player .game-start-summary > div:first-child { font-size: 18px !important; }
+    .game-player .game-start-options > div:has(select), .game-player .game-start-options > .save-source-row { margin-top: 12px !important; }
+    .game-player .game-start-options > div > div:has(img) { flex: 0 0 44px; width: 44px !important; height: auto !important; min-height: 44px; align-self: stretch; display: flex; align-items: center; justify-content: center; }
+    .game-player .game-start-options > div > div:has(img) > img { position: static !important; height: auto !important; max-height: 44px; object-fit: contain; }
+    /* Reuse the desktop picker; only size and wrapping change on narrow screens. */
+    .game-player .game-start-details .select { height: auto; min-height: 44px; min-width: 0; }
+    .game-player .game-start-details .select-styled { position: relative; display: flex; align-items: center; min-height: 44px; padding: 8px 32px 8px 15px; white-space: normal; overflow-wrap: anywhere; }
+    .game-player .game-start-details .select-styled:after { top: calc(50% - 3px); }
+    .game-player .game-start-details .select-styled:active:after, .game-player .game-start-details .select-styled.active:after { top: calc(50% - 10px); }
+    .game-player .game-start-details .select-options { max-height: min(320px, 50dvh); overflow-y: auto; }
+    .game-player .game-start-details .select-options li { min-height: 44px; padding: 12px 15px; text-indent: 0; white-space: normal; overflow-wrap: anywhere; }
+    .game-player .game-start-details .select-options li.cloud-save-history { padding-left: 30px; }
+    .game-player .save-source-retry { height: auto; min-height: 44px; padding: 6px; }
+    .game-player #dosWindowGameCover { grid-column: 1; grid-row: 1; position: static !important; width: 100% !important; height: auto; align-self: start; }
+    .game-player #dosWindowGameCover img { object-fit: contain !important; }
+    .game-player #dosWindowGameStartButton { position: static !important; grid-column: 1 / -1; width: 100% !important; height: auto !important; min-height: 48px; padding: 12px; font-size: 18px; }
+    .game-player #dosTips { position: static !important; grid-column: 1 / -1; grid-row: 3; font-size: 12px !important; }
+    .game-player #dosWindowLoading { overflow: auto; }
+    .game-player #dosWindowLoadingMessage { font-size: 14px; overflow-wrap: anywhere; }
+    .game-player #dosWindowMusic { z-index: 1; }
+    .game-page #introFrame .row > div { min-width: 0 !important; padding: 12px !important; }
+    .game-page #introFrame .col-4 { flex: 0 0 100%; width: 100%; }
+    .game-page #introFrame .col-4 img { max-width: 160px; }
+    .game-page #introFrame .col-8 { width: 100%; }
+    .game-page #introFrame .nav-link { min-height: 44px; }
+}
+@media (max-width: 374px) {
+    .game-player #dosWindowStarter { grid-template-columns: 1fr; }
+    .game-player #dosWindowGameCover { width: 82px !important; grid-area: 1 / 1; justify-self: center; }
+    .game-player .game-start-details { grid-area: 2 / 1; }
+    .game-player #dosTips { grid-row: 4; }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+    .game-player #dosWindowStarter { grid-template-columns: 100px minmax(0, 1fr); }
+    .game-player #dosWindowGameCover { max-width: 100px; }
+}
+
+/* Compact starter layout is touch-only; mouse/trackpad layouts retain their sizing. */
+@media (hover: none) and (pointer: coarse) {
+    .game-player[data-stage="starter"] #dosWindowFrame { width: 100% !important; aspect-ratio: auto !important; }
+    .game-player[data-stage="starter"] #dosWindow { position: absolute; inset: 0; }
+    .game-player #dosWindowStarter { display: grid; position: relative; grid-template-columns: clamp(64px, 20vw, 100px) minmax(0, 1fr); gap: 12px; padding: 36px 12px 12px; background: #17191de6; color: white; }
+    .game-player #dosWindowTextStripe, .game-player .game-start-details { display: contents; }
+    .game-player .game-start-summary { display: block; grid-area: 1 / 2; min-width: 0; align-self: center; }
+    .game-player .game-start-summary > div { width: 100% !important; font-size: 12px !important; white-space: normal !important; overflow-wrap: anywhere; }
+    .game-player .game-start-summary > div:first-child { font-size: 16px !important; line-height: 1.4; }
+    .game-player #dosWindowGameCover { grid-area: 1 / 1; position: static !important; width: 100% !important; height: auto; align-self: start; justify-self: start; }
+    .game-player #dosWindowGameCover img { object-fit: contain !important; }
+    .game-player .game-start-options { display: grid; grid-area: 2 / 1 / auto / -1; gap: 8px; min-width: 0; }
+    .game-player .game-start-options > div { width: 100% !important; margin-top: 0 !important; min-width: 0; font-size: 12px !important; white-space: normal !important; overflow-wrap: anywhere; }
+    .game-player .game-start-options > div:has(select), .game-player .game-start-options > .save-source-row { margin-top: 0 !important; align-items: center; gap: 8px; }
+    .game-player .game-start-options > div > div:has(img) { flex: 0 0 28px; width: 28px !important; height: 28px !important; min-height: 0; align-self: center; display: flex; align-items: center; justify-content: center; }
+    .game-player .game-start-options > div > div:has(img) > img { position: static !important; width: 24px !important; height: 24px !important; max-height: 24px; object-fit: contain; }
+    .game-player .game-start-options .select { flex: 1; height: auto; min-height: 40px; min-width: 0; font-size: 13px; }
+    .game-player .game-start-options .select-styled { position: relative; display: block; height: 40px; min-height: 40px; padding: 10px 30px 10px 10px; line-height: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .game-player .game-start-options .select-styled:after { border-width: 5px; top: calc(50% - 2px); }
+    .game-player .game-start-options .select-styled:active:after, .game-player .game-start-options .select-styled.active:after { top: calc(50% - 7px); }
+    .game-player .game-start-options .select-options { max-height: min(280px, 45dvh); overflow-y: auto; overscroll-behavior: contain; }
+    .game-player .game-start-options .select-options li { min-height: 40px; padding: 10px; line-height: 1.4; text-indent: 0; white-space: normal; overflow-wrap: anywhere; }
+    .game-player .game-start-options .select-options li.cloud-save-history { padding-left: 24px; }
+    .game-player .game-start-options .save-source-retry { flex-shrink: 0; height: 40px; min-height: 40px; margin-left: 0; padding: 6px 8px; }
+    .game-player .game-start-options :is(#dosWindowSFDes, .save-source-status) { padding-left: 36px; font-size: 11px !important; line-height: 1.4; }
+    .game-player .game-start-options :is(#dosWindowSFDes, .save-source-status):empty { display: none; }
+    .game-player #dosWindowGameStartButton { position: static !important; grid-area: 3 / 1 / auto / -1; justify-self: center; width: min(100%, 240px) !important; height: 44px !important; min-height: 44px; margin: 0; padding: 8px 16px; font-size: 16px; line-height: 1.25; }
+    .game-player .game-start-label { margin: 0 !important; font-size: inherit !important; line-height: inherit; }
+    .game-player .game-start-warning-desktop { display: none !important; }
+    .game-player .game-start-warning-mobile { display: flex; grid-area: 4 / 1 / auto / -1; align-items: flex-start; justify-content: center; gap: 6px; color: lightyellow; font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
+    .game-player .game-start-warning-mobile img { flex: 0 0 16px; margin-top: 1px; }
+    .game-player #dosTips { position: static !important; grid-area: auto / 1 / auto / -1; order: 1; font-size: 11px !important; }
+}
+
+/* Only the existing FullScreen action enters this layout. The canvas fills it unchanged. */
+.game-player:is(:fullscreen, .is-page-fullscreen) { position: fixed; inset: 0; width: 100%; height: 100%; padding: 0; background: black; overflow: hidden; }
+/* Empty toolbar space passes touches through; buttons and menus keep their own input. */
+.game-player:is(:fullscreen, .is-page-fullscreen) #gameControlMenu { position: absolute; top: max(6px, env(safe-area-inset-top)); left: max(6px, env(safe-area-inset-left)); right: max(6px, env(safe-area-inset-right)); margin: 0; row-gap: 4px; pointer-events: none; }
+.game-player:is(:fullscreen, .is-page-fullscreen) #gameControlMenu > .btn-group { opacity: .7; pointer-events: auto; animation: game-menu-fade 1s ease 5s forwards; }
+.game-player:is(:fullscreen, .is-page-fullscreen) #gameControlMenu > .btn-group:hover, .game-player:is(:fullscreen, .is-page-fullscreen) #gameControlMenu > .btn-group:focus-within { opacity: 1; }
+/* The filled animation keeps hover/focus from revealing an idle menu; only a click restarts it. */
+.game-player:is(:fullscreen, .is-page-fullscreen) #gameControlMenu.is-menu-active > .btn-group { animation: none; }
+@keyframes game-menu-fade { to { opacity: .05; } }
+.game-player:is(:fullscreen, .is-page-fullscreen) .game-fullscreen-actions { display: inline-flex; }
+.game-player:is(:fullscreen, .is-page-fullscreen) .game-input-overlay { display: block; }
+.game-player:is(:fullscreen, .is-page-fullscreen) #dosWindowFrame { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; aspect-ratio: auto !important; margin: 0 !important; box-shadow: none !important; }
+.game-player:is(:fullscreen, .is-page-fullscreen) #dosWindow { aspect-ratio: auto !important; }
+.game-player:is(:fullscreen, .is-page-fullscreen) .game-player-status { position: absolute; top: 56px; left: 8px; right: 8px; z-index: 120; }
+
+/* The existing fullscreen button uses this when the browser API is unavailable. */
+.game-player.is-page-fullscreen { z-index: 10000; inset: auto; top: var(--game-viewport-top, 0px); left: var(--game-viewport-left, 0px); width: var(--game-viewport-width, 100vw); height: var(--game-viewport-height, 100dvh); overscroll-behavior: none; }
