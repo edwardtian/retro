@@ -23,7 +23,7 @@ import sys
 import urllib.request
 
 FILES = [
-    # (local path, original CDN URL)
+    # (local path, original CDN URL or None when the file is built locally)
     ("games/starcraft.jsdos", "https://cf.ommv.net/bin/windows/starcraft.jsdos"),
     ("games/bin/windows/tools/tools.zip", "https://cf.ommv.net/bin/windows/tools/tools.zip"),
     ("games/bin/windows/tools/win95patch.zip", "https://cf.ommv.net/bin/windows/tools/win95patch.zip"),
@@ -31,6 +31,11 @@ FILES = [
     ("games/bin/windows/images/game/BROODWAR.DCD", "https://cf.ommv.net/bin/windows/images/game/BROODWAR.DCD"),
     ("games/bin/windows/images/disc/SCBW.DCD", "https://cf.ommv.net/bin/windows/images/disc/SCBW.DCD"),
     ("games/bin/windows/images/disc/SC.DCD", "https://cf.ommv.net/bin/windows/images/disc/SC.DCD"),
+    # Built locally by import-windows-game.py / import-doswasmx-image.py, so
+    # there is no CDN size to compare against.
+    ("games/pandoras-box.jsdos", None),
+    ("games/bin/windows/images/os/PANDORAS_BOX_OS.DCD", None),
+    ("games/bin/windows/images/disc/PANDORAS_BOX.DCD", None),
 ]
 
 OPTIONAL = {"games/bin/windows/tools/win95patch.zip",
@@ -84,7 +89,7 @@ def main():
         path = os.path.join(args.root, relative)
         status, detail = check(path)
         note = ""
-        if args.network and status != "missing":
+        if args.network and status != "missing" and url:
             try:
                 expected = remote_size(url)
                 actual = os.path.getsize(path)
@@ -93,6 +98,8 @@ def main():
                     status = "corrupt"
             except Exception as error:  # network is best effort
                 note = f"  [CDN check failed: {error}]"
+        elif url is None and status != "missing":
+            note = "  [built locally - no CDN copy]"
         optional = " (optional)" if relative in OPTIONAL else ""
         mark = {"ok": "OK      ", "missing": "MISSING ", "corrupt": "CORRUPT "}[status]
         if status == "corrupt":

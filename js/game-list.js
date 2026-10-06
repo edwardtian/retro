@@ -104,12 +104,6 @@
         play.addEventListener("click", function () { site.markPlayed(game.id); });
         actions.appendChild(play);
 
-        const details = document.createElement("a");
-        details.className = "btn btn-sm btn-outline-secondary";
-        details.href = "/games/README.md";
-        details.textContent = "Files";
-        actions.appendChild(details);
-
         actions.appendChild(readinessBadge(game));
         body.appendChild(actions);
         card.appendChild(body);

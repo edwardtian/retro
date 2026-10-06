@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Favicon for Retro Game Playground: an arcade gamepad on a dark badge.
+     Hand-drawn for this site; scales from 16px (tab) to large sizes.
+
+     Colours follow the site palette: dark blue-violet badge (player pages),
+     off-white shell, magenta/amber buttons (game tiles). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"
+     role="img" aria-labelledby="title">
+    <title id="title">Retro Game Playground</title>
+
+    <defs>
+        <linearGradient id="badge" x1="0" y1="0" x2="0.35" y2="1">
+            <stop offset="0" stop-color="#3a4a7d"/>
+            <stop offset="0.55" stop-color="#222c4a"/>
+            <stop offset="1" stop-color="#101828"/>
+        </linearGradient>
+        <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#cdd8ef"/>
+        </linearGradient>
+    </defs>
+
+    <!-- badge -->
+    <rect x="0" y="0" width="64" height="64" rx="14" fill="url(#badge)"/>
+    <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" fill="none"
+          stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.5"/>
+
+    <!-- gamepad body -->
+    <path d="M22 22h20c7.7 0 14 6.3 14 14 0 6.6-4.4 11-9.6 11-3.4 0-5.2-3.4-8.8-3.4H26.4c-3.6 0-5.4 3.4-8.8 3.4C12.4 47 8 42.6 8 36c0-7.7 6.3-14 14-14z"
+          fill="url(#shell)" stroke="#0b1020" stroke-width="2" stroke-linejoin="round"/>
+
+    <!-- d-pad -->
+    <path d="M17 31.6h9.6v3.2H17z" fill="#0b1020"/>
+    <path d="M20.2 28.4h3.2v9.6h-3.2z" fill="#0b1020"/>
+
+    <!-- buttons -->
+    <circle cx="43.2" cy="31.8" r="3.4" fill="#ff5d8f" stroke="#0b1020" stroke-width="1.4"/>
+    <circle cx="50.2" cy="38.2" r="3.4" fill="#ffc857" stroke="#0b1020" stroke-width="1.4"/>
+
+    <!-- gloss -->
+    <path d="M14 26.6c1.9-1.9 4.4-2.8 7.2-2.8h21.6c2.8 0 5.3.9 7.2 2.8"
+          fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.6"
+          stroke-linecap="round"/>
+</svg>

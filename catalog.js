@@ -21,6 +21,7 @@ window.LOCAL_CATALOG = {
             genre: "Real-time strategy",
             players: "1-8 (local skirmish)",
             playUrl: "/play.html",
+            configUrl: "/config.js",
             // Optional cover art; when empty a gradient tile is drawn instead.
             cover: "",
             accent: ["#2b3a67", "#101828"],
@@ -37,6 +38,33 @@ window.LOCAL_CATALOG = {
                 "/games/bin/windows/tools/win95patch.zip",
                 "/games/bin/windows/images/disc/SCBW.DCD",
                 "/games/bin/windows/images/disc/SC.DCD"
+            ]
+        },
+
+        {
+            id: "pandoras_box",
+            title: "Pandora's Box",
+            os: "windows",
+            osLabel: "Windows 98",
+            year: 1999,
+            publisher: "Microsoft",
+            genre: "Puzzle",
+            players: "1",
+            playUrl: "/play.html?game=pandoras_box",
+            configUrl: "/config-pandora.js",
+            cover: "",
+            accent: ["#5a3b7d", "#1b1030"],
+            description: "Microsoft's puzzle game running on a Windows 98 machine disk " +
+                "created with the DosWasmX project (nbarkhina/DosWasmX), driven through " +
+                "the same DDYX Windows-image flow as StarCraft: the machine boots from a " +
+                "VHD and the game CD is available in the disc menu. Start the game from " +
+                "its desktop shortcut.",
+            files: [
+                "/games/pandoras-box.jsdos",
+                "/games/bin/windows/images/os/PANDORAS_BOX_OS.DCD"
+            ],
+            optionalFiles: [
+                "/games/bin/windows/images/disc/PANDORAS_BOX.DCD"
             ]
         }
     ]

@@ -9,6 +9,17 @@
 
 "use strict";
 
+// This script must run exactly once, after the game's config has been loaded
+// (js/play-bootstrap.js does both). Failing loudly here beats the confusing
+// "Identifier 'config' has already been declared" / undefined-config errors.
+if (!window.LOCAL_GAME_CONFIG) {
+    throw new Error("app.js: no game config loaded - load it through /play.html (js/play-bootstrap.js) instead of including app.js directly");
+}
+if (window.__localPlayerStarted) {
+    throw new Error("app.js: already loaded");
+}
+window.__localPlayerStarted = true;
+
 const config = window.LOCAL_GAME_CONFIG;
 
 // NOTE: `ci` must exist as a global before HelperX runs. helper-x.js assigns
@@ -190,6 +201,60 @@ function checkGameBrowserSupport() {
 }
 
 // ---------------------------------------------------------------------------
+// Discs available to the emulator.
+//   * config.cdImages - discs the game declares (e.g. StarCraft's two CDs)
+//   * games/discs/    - images dropped in by the user, listed by serve.py at
+//                       /api/discs (e.g. a Windows 98 SE CD to satisfy a guest
+//                       that asks for its installation CD)
+// The merged array is what the player shows in the disc menu and what the
+// ddyx-settings message sends, so indexes always match.
+// ---------------------------------------------------------------------------
+
+let g_discs = (config.cdImages || []).slice();
+
+async function refreshDiscList() {
+    try {
+        const response = await fetch("/api/discs", { cache: "no-store" });
+        if (response.ok) {
+            const data = await response.json();
+            const extra = (data.discs || []).filter(disc =>
+                !g_discs.some(existing => existing.link === disc.link));
+            g_discs = g_discs.concat(extra);
+        }
+    } catch (error) { /* a plain static server has no /api/discs */ }
+    buildCdSelectors();
+    return g_discs;
+}
+
+function buildCdSelectors() {
+    const discs = g_discs;
+    const select = document.getElementById("dosWindowCDImageSelector");
+    select.options.length = 0;
+    discs.forEach((cd, index) => select.add(new Option(cd.name, String(index))));
+    select.value = "0";
+    const menu = document.getElementById("CDListMenu");
+    menu.innerHTML = "";
+    discs.forEach((cd, index) => {
+        const li = document.createElement("li");
+        li.id = "CDList";
+        const a = document.createElement("a");
+        a.className = "dropdown-item btn-light btn-sm";
+        a.href = "#";
+        a.dataset.cdid = String(index);
+        a.textContent = cd.name + (Number.isFinite(cd.size) ? " (" + Math.round(cd.size / 1024 / 1024 * 0.95) + " MB)" : "");
+        li.appendChild(a);
+        menu.appendChild(li);
+    });
+    // With nothing to mount, hide the disc selector and the toolbar entry.
+    // (Explicit ids - a substring match on style attributes also hits
+    // .game-page, which carries its own inline display:flex.)
+    const row = document.getElementById("dosWindowDiscRow");
+    if (row) row.style.display = discs.length ? "flex" : "none";
+    const button = document.getElementById("dropdownMenuButton");
+    if (button) button.closest(".btn-group").style.display = discs.length ? "" : "none";
+}
+
+// ---------------------------------------------------------------------------
 // Save source selection (browser IndexedDB / fresh / upload)
 // ---------------------------------------------------------------------------
 
@@ -337,25 +402,10 @@ LoadScriptsSequentially(scripts).then(async () => {
     }));
 
     // CD selector (pre-start default disc) + in-game "Switch Disc" menu items.
-    (function buildCdSelectors() {
-        const select = document.getElementById("dosWindowCDImageSelector");
-        select.options.length = 0;
-        config.cdImages.forEach((cd, index) => select.add(new Option(cd.name, String(index))));
-        select.value = "0";
-        const menu = document.getElementById("CDListMenu");
-        menu.innerHTML = "";
-        config.cdImages.forEach((cd, index) => {
-            const li = document.createElement("li");
-            li.id = "CDList";
-            const a = document.createElement("a");
-            a.className = "dropdown-item btn-light btn-sm";
-            a.href = "#";
-            a.dataset.cdid = String(index);
-            a.textContent = cd.name + (Number.isFinite(cd.size) ? " (" + Math.round(cd.size / 1024 / 1024 * 0.95) + " MB)" : "");
-            li.appendChild(a);
-            menu.appendChild(li);
-        });
-    })();
+    // The list itself lives at the top level (see refreshDiscList) so run() can
+    // refresh it before telling the emulator which discs exist.
+    buildCdSelectors();
+    refreshDiscList();
     $("#dosWindowCDImageSelector").change(function () { g_selectedCD = $("#dosWindowCDImageSelector").val(); });
     $("#dosWindowSaveSelector").change(function () {
         const value = $("#dosWindowSaveSelector").val();
@@ -418,8 +468,17 @@ async function launchPreparedGame() {
 
     try {
         const bundleUrl = versioned(config.gameBundle);
+        if (config.streamBundle) {
+            // Large bundles (a whole machine image) are streamed straight into
+            // the worker instead of being buffered in the page: the worker
+            // fetches the URL itself and reports extraction progress.
+            const absolute = new URL(bundleUrl, window.location.href).href;
+            $("#loadingText").html("Preparing game package...");
+            run({ type: "remote-bundle", url: absolute });
+            return;
+        }
         const response = await fetch(bundleUrl, { cache: "no-store" });
-        if (!response.ok) throw new Error("Game package download failed (" + response.status + "). Place your own .jsdos bundle at " + config.gameBundle + " - see games/README.md");
+        if (!response.ok) throw new Error("Game package download failed (" + response.status + "). Expected the bundle at " + config.gameBundle);
         const total = Number(response.headers.get("content-length")) || 0;
         const reader = response.body.getReader();
         const chunks = [];
@@ -462,32 +521,44 @@ function run(fileBundle) {
         onExit: helper => {
             g_gamePage.detach(helper);
         },
-        onReady: function (helper) {
+        onReady: async function (helper) {
+            // The player object must be attached before anything else: this is
+            // what sets its helper and marks it ready, and every control it owns
+            // (fullscreen, keyboard, touch controls) stays inert until then.
+            g_gamePage.attach(helper);
             $(window).bind("beforeunload", function () {
                 return "Please save before leaving the page; otherwise, you may lose your game progress.";
             });
+            // Pick up discs dropped into games/discs/ before telling the
+            // emulator which images it may mount.
+            const discs = await refreshDiscList();
             // The edge build patches three drivers inside the Win95 image when it
             // recognises the OS image filename. Appending "/" makes that lookup
             // miss (serve.py tolerates the trailing slash), so booting works
             // without win95patch.zip.
-            const rawOsImages = useSkipWin95Patch() ? skipPatchVariant(config.osImages) : config.osImages;
+            const isWindowsImageGame = config.settingsType === 1;
+            const rawOsImages = (isWindowsImageGame && useSkipWin95Patch())
+                ? skipPatchVariant(config.osImages)
+                : config.osImages;
             helper.Message("ddyx-settings", {
                 "type": config.settingsType,
                 "baseurl": window.location.origin,
                 "option": "",
                 "voodoo_upscaler": preferences.upscaler,
                 "voodoo_aniso": preferences.aniso,
-                "auto_command": undefined,
+                // Commands appended to the autoexec, used by games that bring
+                // their own bootable image (e.g. "imgmount c ... / boot c:").
+                "auto_command": config.autoCommand,
                 "hardware": {
                     "voodoo": false,
                     "tool": config.tool,
                     "mt32": false,
                     "gm": false,
                     "gmsf": "",
-                    "cdImages": config.cdImages.map(cd => Object.assign({}, cd, { link: versioned(cd.link) })),
+                    "cdImages": discs.map(cd => Object.assign({}, cd, { link: versioned(cd.link) })),
                     "selectedCD": g_selectedCD,
-                    "osImages": versioned(rawOsImages),
-                    "gameImages": versioned(config.gameImages)
+                    "osImages": versioned(rawOsImages || ""),
+                    "gameImages": versioned(config.gameImages || "")
                 }
             }, function () {
                 $("#loadingText").html("Game download completed, starting...");

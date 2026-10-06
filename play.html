@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>StarCraft: Brood War - Retro Game Playground</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/site.css">
@@ -30,8 +31,8 @@
                 <div id="browserOtherWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">Please install and use the latest version of Chrome or Edge for the best experience.</div>
                 <div id="browserDiskspaceWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">Your browser storage quota is low and you may not be able to load the game correctly.<br>Usage: <span id="diskspaceWarningUsage"></span> Available: <span id="diskspaceWarningAvailable"></span></div>
                 <div id="missingFilesWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.95;background-color:rgb(255 0 0 / 30%);margin-top:10px;color:#fff;text-align:left">
-                    <strong>Game files are missing.</strong> This dump contains the player web app only - no game data.
-                    Place your own files as shown in <code>games/README.md</code>:<br>
+                    <strong>Game files are missing.</strong> This local mirror ships the player only -
+                    the game's files are not in place:<br>
                     <span id="missingFilesList"></span>
                 </div>
 
@@ -73,12 +74,12 @@
                             <div id="dosWindowTextStripe" style="backdrop-filter:blur(4px);width:100%;height:50%;background-color:rgba(0,0,0,0.7);position:absolute;top:25%;left:0px">
                                 <div class="game-start-details" style="left:37.5%;width:65%;height:50%;position:absolute;top:10%">
                                     <div class="game-start-summary">
-                                        <div style="width:95%;color:white;text-shadow:white 0px 0px 1px;font-size:medium">StarCraft: Brood War <span class="fst-italic" style="font-size:xx-small">(1998)</span></div>
-                                        <div style="width:95%;color:white;text-shadow:white 0px 0px 1px;font-size:xx-small;white-space:nowrap"></div>
-                                        <div style="width:95%;color:gray;text-shadow:gray 0px 0px 1px;font-size:xx-small;white-space:nowrap;font-style:italic">Blizzard</div>
+                                        <div style="width:95%;color:white;text-shadow:white 0px 0px 1px;font-size:medium"><span id="gameInfoTitle"></span> <span id="gameInfoYear" class="fst-italic" style="font-size:xx-small"></span></div>
+                                        <div id="gameInfoMeta" style="width:95%;color:white;text-shadow:white 0px 0px 1px;font-size:xx-small;white-space:nowrap"></div>
+                                        <div id="gameInfoPublisher" style="width:95%;color:gray;text-shadow:gray 0px 0px 1px;font-size:xx-small;white-space:nowrap;font-style:italic"></div>
                                     </div>
                                     <div class="game-start-options">
-                                        <div style="display:flex;width:70%;color:white;text-shadow:white 0px 0px 1px;font-size:1vmin;margin-top:10px">
+                                        <div id="dosWindowDiscRow" style="display:flex;width:70%;color:white;text-shadow:white 0px 0px 1px;font-size:1vmin;margin-top:10px">
                                             <div style="width:30px;height:30px"><img src="/images/common/compactdisc.svg" alt="" style="top:15%;width:70%;height:70%;position:relative"></div>
                                             <select class="form-select" id="dosWindowCDImageSelector" aria-label="Switch Disc"></select>
                                         </div>
@@ -135,21 +136,9 @@
     <script src="/lib/axios/axios.min.js"></script>
     <script src="/catalog.js"></script>
     <script src="/js/local-site.js"></script>
-    <script src="/config.js"></script>
-    <script>
-        // Site chrome: navigation plus the game title, both driven by the catalog.
-        (function () {
-            if (!window.LocalSite || !window.LOCAL_GAME_CONFIG) return;
-            var game = (window.LocalSite.catalog.games || []).filter(function (item) {
-                return item.id === window.LOCAL_GAME_CONFIG.gameId;
-            })[0];
-            window.LocalSite.mountNav("games", { rightText: game ? game.osLabel : "" });
-            if (game) {
-                document.getElementById("page-title").textContent = game.title;
-                document.title = game.title + " - " + window.LocalSite.catalog.siteName;
-            }
-        })();
-    </script>
-    <script src="/app.js"></script>
+    <!-- Picks the game's config from the catalog (?game=<id>), fills in the page
+         chrome and then loads app.js. Do not add a static app.js tag here: it
+         must run after the config. -->
+    <script src="/js/play-bootstrap.js"></script>
 </body>
 </html>

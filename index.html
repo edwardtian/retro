@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Games - Retro Game Playground</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/site.css">
@@ -37,21 +38,6 @@
 
         <div id="game-grid" class="row g-3"></div>
         <div id="empty-state" class="empty-state" hidden>No game matches the current filter.</div>
-
-        <div class="local-panel mt-4">
-            <strong>Adding another game</strong>
-            <div class="local-subtle mt-1">
-                The list is data-driven: add an entry to <code>catalog.js</code> and put the game's
-                files under <code>games/</code> as described in <code>games/README.md</code>.
-                A title that needs different emulator settings gets its own player page and
-                <code>config.js</code>.
-            </div>
-            <div class="mt-2">
-                <a class="btn btn-sm btn-outline-secondary" href="/settings.html">Open settings</a>
-                <a class="btn btn-sm btn-outline-secondary" href="/DSH.md">Documentation</a>
-                <a class="btn btn-sm btn-outline-secondary" href="/games/README.md">Game files</a>
-            </div>
-        </div>
     </main>
 
     <script src="/lib/jquery/jquery.min.js"></script>

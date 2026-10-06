@@ -14,6 +14,7 @@ Usage:
 """
 
 import argparse
+import json
 import os
 import re
 import socket
@@ -21,6 +22,12 @@ import socketserver
 import sys
 from email.utils import formatdate
 from http.server import SimpleHTTPRequestHandler
+from urllib.parse import quote
+
+# Disc images offered in the player's "Switch Disc" menu. Drop files into
+# games/discs/ and they appear there (the player asks for /api/discs).
+DISC_DIRECTORY = os.path.join("games", "discs")
+DISC_EXTENSIONS = (".iso", ".img", ".cue", ".bin", ".dcd", ".mdf")
 
 MIME = {
     ".html": "text/html; charset=utf-8",
@@ -54,6 +61,63 @@ NO_STORE_SUFFIXES = (".dcd", ".jsdos", ".zip", ".vhd", ".bin", ".iso")
 
 class Handler(SimpleHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
+
+    # --- disc images offered to the player --------------------------------
+    def disc_listing(self):
+        # The player's DDYX flow downloads a disc and *extracts* it, so only
+        # archive-backed discs (a zip containing the ISO, like the site's .DCD
+        # files) can be mounted. A plain .iso is listed as unsupported rather
+        # than offered and then failing at mount time.
+        root = os.path.join(os.getcwd(), DISC_DIRECTORY)
+        discs = []
+        if os.path.isdir(root):
+            names = sorted(os.listdir(root))
+            cues = {os.path.splitext(n)[0].lower() for n in names if n.lower().endswith(".cue")}
+            for name in names:
+                path = os.path.join(root, name)
+                if not os.path.isfile(path):
+                    continue
+                extension = os.path.splitext(name)[1].lower()
+                if extension not in DISC_EXTENSIONS:
+                    continue
+                if extension == ".bin" and os.path.splitext(name)[0].lower() in cues:
+                    continue
+                try:
+                    with open(path, "rb") as handle:
+                        if handle.read(4) != b"PK\x03\x04":
+                            print(f"skipping {name}: not a disc archive (wrap it with "
+                                  f"import-windows-game.py --cd)")
+                            continue
+                except OSError:
+                    continue
+                discs.append({
+                    "name": os.path.splitext(name)[0],
+                    "link": "/" + DISC_DIRECTORY.replace(os.sep, "/") + "/" + quote(name),
+                    "size": os.path.getsize(path),
+                })
+        body = json.dumps({"discs": discs}).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_GET(self):
+        if self.path.split("?", 1)[0] == "/api/discs":
+            self.disc_listing()
+            return
+        super().do_GET()
+
+    def do_HEAD(self):
+        if self.path.split("?", 1)[0] == "/api/discs":
+            body = b"{}"
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            return
+        super().do_HEAD()
 
     def guess_type(self, path):
         ext = os.path.splitext(path)[1].lower()
