@@ -146,10 +146,79 @@
         });
     });
 
+
+    // --- workshop games -----------------------------------------------------
+    // Games built on the workshop page live in the server's library instead of
+    // catalog.js. They are fetched once and merged in, so they sit next to the
+    // built-in entries and are playable from here.
+    function libraryUrl(kind, value) {
+        if (!value) return null;
+        return kind === "zip"
+            ? "/api/library/zip?path=" + encodeURIComponent(value)
+            : "/api/library/file?path=" + encodeURIComponent(value);
+    }
+
+    function customEntry(entry) {
+        const windows = libraryUrl("zip", entry.windows);
+        return {
+            id: "custom_" + entry.id,
+            title: entry.title || entry.id,
+            os: "windows",
+            osLabel: "Windows 98",
+            year: entry.year,
+            publisher: entry.publisher,
+            genre: entry.genre,
+            players: "1",
+            // The workshop generates this machine's config on demand.
+            playUrl: "/play.html?config=" + encodeURIComponent(
+                "/api/workshop/config?mode=play&game=" + entry.id),
+            configUrl: null,
+            cover: "",
+            accent: ["#3b5a7d", "#101828"],
+            description: entry.description || "Installed in the workshop.",
+            custom: true,
+            files: [windows].filter(Boolean),
+            optionalFiles: [libraryUrl("file", entry.diff), libraryUrl("file", entry.iso)].filter(Boolean)
+        };
+    }
+
+    async function loadLibraryGames() {
+        let library = null;
+        try {
+            const response = await fetch("/api/library", { cache: "no-store" });
+            if (!response.ok) return;
+            library = await response.json();
+        } catch (error) {
+            return;                       // no library yet: catalog games only
+        }
+        const known = new Set(games.map(function (game) { return game.id; }));
+        const added = [];
+        ((library && library.games) || []).forEach(function (entry) {
+            const game = customEntry(entry);
+            if (known.has(game.id)) return;
+            known.add(game.id);
+            games.push(game);
+            added.push(game);
+        });
+        if (added.length === 0) return;
+        site.mountNav("games", { rightText: games.length + " game(s) installed" });
+        render();
+        for (const game of added) {
+            try {
+                state.readiness.set(game.id, await site.checkGameFiles(game));
+            } catch (error) {
+                state.readiness.set(game.id, { missing: [], corrupt: [], error: String(error) });
+            }
+            render();
+        }
+    }
+
     // --- start -------------------------------------------------------------
 
     site.mountNav("games", { rightText: games.length + " game(s) installed" });
     render();
+
+    loadLibraryGames();
 
     (async function checkAll() {
         for (const game of games) {

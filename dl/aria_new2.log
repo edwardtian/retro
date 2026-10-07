@@ -1,0 +1,41 @@
+
+10/06 18:22:46 [[1;32mNOTICE[0m] Downloading 6 item(s)
+
+10/06 18:22:46 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/worms2.jsdos
+
+10/06 18:22:46 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/aoe2.jsdos
+[DL:50MiB][#80ca5a 8.3MiB/86MiB(9%)][#c54afc 2.6MiB/349MiB(0%)][#cc1a88 8.5MiB/48MiB(17%)][#ff1dd0 6.8MiB/273MiB(2%)]
+[DL:30MiB][#80ca5a 14MiB/86MiB(16%)][#c54afc 3.4MiB/349MiB(0%)][#cc1a88 13MiB/48MiB(28%)][#ff1dd0 14MiB/273MiB(5%)]
+[DL:25MiB][#80ca5a 17MiB/86MiB(20%)][#c54afc 4.8MiB/349MiB(1%)][#cc1a88 18MiB/48MiB(36%)][#ff1dd0 21MiB/273MiB(7%)]
+[DL:21MiB][#80ca5a 19MiB/86MiB(22%)][#c54afc 6.2MiB/349MiB(1%)][#cc1a88 21MiB/48MiB(44%)][#ff1dd0 24MiB/273MiB(9%)]
+[DL:22MiB][#80ca5a 24MiB/86MiB(28%)][#c54afc 11MiB/349MiB(3%)][#cc1a88 27MiB/48MiB(56%)][#ff1dd0 36MiB/273MiB(13%)]
+[DL:25MiB][#80ca5a 35MiB/86MiB(41%)][#c54afc 18MiB/349MiB(5%)][#cc1a88 34MiB/48MiB(70%)][#ff1dd0 48MiB/273MiB(17%)]
+[DL:29MiB][#80ca5a 54MiB/86MiB(63%)][#c54afc 27MiB/349MiB(7%)][#cc1a88 43MiB/48MiB(88%)][#ff1dd0 65MiB/273MiB(24%)]
+[DL:35MiB][#80ca5a 73MiB/86MiB(85%)][#c54afc 45MiB/349MiB(12%)][#cc1a88 47MiB/48MiB(96%)][#ff1dd0 100MiB/273MiB(36%)]
+[DL:41MiB][#80ca5a 85MiB/86MiB(98%)][#c54afc 72MiB/349MiB(20%)][#cc1a88 47MiB/48MiB(97%)][#ff1dd0 144MiB/273MiB(52%)]
+
+10/06 18:22:56 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/game/AOE2.DCD
+[DL:44MiB][#c54afc 102MiB/349MiB(29%)][#cc1a88 48MiB/48MiB(99%)][#ff1dd0 187MiB/273MiB(68%)]
+
+10/06 18:22:56 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/game/WORMS2.DCD
+[DL:49MiB][#c54afc 147MiB/349MiB(42%)][#ff1dd0 231MiB/273MiB(84%)]
+[DL:57MiB][#c54afc 200MiB/349MiB(57%)][#ff1dd0 266MiB/273MiB(97%)]
+
+10/06 18:22:58 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/disc/WORMS2.DCD
+[#c54afc 271MiB/349MiB(77%) CN:8 DL:28MiB ETA:2s]
+[#c54afc 347MiB/349MiB(99%) CN:2 DL:36MiB]
+
+10/06 18:23:00 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/disc/AOE2.DCD
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+fe2bd6|OK  |    11MiB/s|/media/data/Workspace/retro/games/bin/windows/worms2.jsdos
+08504c|OK  |    13MiB/s|/media/data/Workspace/retro/games/bin/windows/aoe2.jsdos
+80ca5a|OK  |   9.2MiB/s|/media/data/Workspace/retro/games/bin/windows/images/game/AOE2.DCD
+cc1a88|OK  |   4.7MiB/s|/media/data/Workspace/retro/games/bin/windows/images/game/WORMS2.DCD
+ff1dd0|OK  |    23MiB/s|/media/data/Workspace/retro/games/bin/windows/images/disc/WORMS2.DCD
+c54afc|OK  |    25MiB/s|/media/data/Workspace/retro/games/bin/windows/images/disc/AOE2.DCD
+
+Status Legend:
+(OK):download completed.

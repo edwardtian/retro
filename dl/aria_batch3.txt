@@ -1,0 +1,108 @@
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_CHT_OS.DCD
+https://cf.ommv.net/bin/windows/fallout2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/fallout2.jsdos
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+https://cf.ommv.net/bin/windows/images/game/FALLOUT2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/FALLOUT2.DCD
+https://cf.ommv.net/bin/windows/images/disc/FALLOUT2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/FALLOUT2.DCD
+https://cf.ommv.net/bin/windows/caesar3.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/caesar3.jsdos
+https://cf.ommv.net/bin/windows/images/game/CAESAR3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/CAESAR3.DCD
+https://cf.ommv.net/bin/windows/images/disc/CAESAR3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/CAESAR3.DCD
+https://cf.ommv.net/bin/windows/dune2000.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/dune2000.jsdos
+https://cf.ommv.net/bin/windows/images/game/DUNE2000.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/DUNE2000.DCD
+https://cf.ommv.net/bin/windows/images/disc/DUNE2000.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/DUNE2000.DCD
+https://cf.ommv.net/bin/windows/panzerg2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/panzerg2.jsdos
+https://cf.ommv.net/bin/windows/images/game/PANZERG2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/PANZERG2.DCD
+https://cf.ommv.net/bin/windows/images/disc/PANZERG2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/PANZERG2.DCD
+https://cf.ommv.net/bin/windows/myst.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/myst.jsdos
+https://cf.ommv.net/bin/windows/images/game/MYST.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/MYST.DCD
+https://cf.ommv.net/bin/windows/images/disc/MYST.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/MYST.DCD
+https://cf.ommv.net/bin/windows/mystme.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/mystme.jsdos
+https://cf.ommv.net/bin/windows/images/game/MYSTME.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/MYSTME.DCD
+https://cf.ommv.net/bin/windows/images/disc/MYSTME.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/MYSTME.DCD
+https://cf.ommv.net/bin/windows/hod.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/hod.jsdos
+https://cf.ommv.net/bin/windows/images/game/HOD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/HOD.DCD
+https://cf.ommv.net/bin/windows/images/disc/HOD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/HOD.DCD
+https://cf.ommv.net/bin/windows/rtstm.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/rtstm.jsdos
+https://cf.ommv.net/bin/windows/images/game/RTSTM.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/RTSTM.DCD
+https://cf.ommv.net/bin/windows/images/disc/RTSTM01.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RTSTM01.DCD
+https://cf.ommv.net/bin/windows/images/disc/RTSTM02.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RTSTM02.DCD
+https://cf.ommv.net/bin/windows/images/disc/RTSTM03.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RTSTM03.DCD
+https://cf.ommv.net/bin/windows/images/disc/RTSTM04.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RTSTM04.DCD
+https://cf.ommv.net/bin/windows/images/disc/RTSTM05.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RTSTM05.DCD
+https://cf.ommv.net/bin/windows/realmyst.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/realmyst.jsdos
+https://cf.ommv.net/bin/windows/images/game/REALMYST.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/REALMYST.DCD
+https://cf.ommv.net/bin/windows/images/disc/REALMYST.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/REALMYST.DCD
+https://cf.ommv.net/bin/windows/bistro2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/bistro2.jsdos
+https://cf.ommv.net/bin/windows/images/game/BISTRO2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/BISTRO2.DCD
+https://cf.ommv.net/bin/windows/images/disc/BISTRO2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BISTRO2.DCD

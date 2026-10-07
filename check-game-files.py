@@ -13,34 +13,71 @@ Checks per file:
   * with --network: compares size against the original CDN metadata (HEAD only,
     no content is downloaded)
 
+The set of files to check is derived automatically from the player config
+scripts (config.js, config-pandora.js, config-<id>.js): every image URL each
+game declares becomes a file to verify.
+
 Usage:
     python3 check-game-files.py [--network] [--root .]
 """
 
 import argparse
+import glob
 import os
+import re
 import sys
 import urllib.request
 
-FILES = [
-    # (local path, original CDN URL or None when the file is built locally)
-    ("games/starcraft.jsdos", "https://cf.ommv.net/bin/windows/starcraft.jsdos"),
-    ("games/bin/windows/tools/tools.zip", "https://cf.ommv.net/bin/windows/tools/tools.zip"),
-    ("games/bin/windows/tools/win95patch.zip", "https://cf.ommv.net/bin/windows/tools/win95patch.zip"),
-    ("games/bin/windows/images/os/WIN95OSR2_EN_OS.DCD", "https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_EN_OS.DCD"),
-    ("games/bin/windows/images/game/BROODWAR.DCD", "https://cf.ommv.net/bin/windows/images/game/BROODWAR.DCD"),
-    ("games/bin/windows/images/disc/SCBW.DCD", "https://cf.ommv.net/bin/windows/images/disc/SCBW.DCD"),
-    ("games/bin/windows/images/disc/SC.DCD", "https://cf.ommv.net/bin/windows/images/disc/SC.DCD"),
-    # Built locally by import-windows-game.py / import-doswasmx-image.py, so
-    # there is no CDN size to compare against.
-    ("games/pandoras-box.jsdos", None),
-    ("games/bin/windows/images/os/PANDORAS_BOX_OS.DCD", None),
-    ("games/bin/windows/images/disc/PANDORAS_BOX.DCD", None),
-]
+# Files that are built locally (no CDN size to compare against).
+BUILT_LOCALLY = {
+    "games/pandoras-box.jsdos",
+    "games/bin/windows/images/os/PANDORAS_BOX_OS.DCD",
+    "games/bin/windows/images/disc/PANDORAS_BOX.DCD",
+}
 
-OPTIONAL = {"games/bin/windows/tools/win95patch.zip",
-            "games/bin/windows/images/disc/SCBW.DCD",
-            "games/bin/windows/images/disc/SC.DCD"}
+# Files needed only in some configurations: match by pattern instead of
+# listing every file, so newly added games work without editing this script.
+#  * CD / disc images are mounted on demand from the in-game disc menu
+#  * win95patch.zip is only used by the dosx-edge (JSPI) build
+#  * gugs.zip is only fetched by games with General MIDI audio
+def is_optional(relative):
+    return ("/images/disc/" in relative
+            or "/dos/images/" in relative
+            or relative.endswith("tools/win95patch.zip")
+            or relative.endswith("tools/gugs.zip"))
+
+
+def config_files():
+    """Return {local_path: CDN_url_or_None} derived from every config script."""
+    entries = {}  # local path -> CDN url (None when built locally)
+
+    def add(local, cdn=None):
+        local = local.lstrip("/")
+        if local not in entries:
+            entries[local] = cdn
+
+    cdn_root = "https://cf.ommv.net"
+    for path in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "config*.js"))):
+        try:
+            text = open(path, encoding="utf-8").read()
+        except OSError:
+            continue
+        # gameBundle: "/games/<name>.jsdos"
+        m = re.search(r'gameBundle\s*:\s*"([^"]+)"', text)
+        if m:
+            add(m.group(1), cdn_root + m.group(1).lstrip("/games"))
+        # osImages / gameImages / toolImage / win95Patch are resolved against tool (/games)
+        for field in ("osImages", "gameImages", "toolImage", "win95Patch"):
+            m = re.search(r'%s\s*:\s*"([^"]+)"' % field, text)
+            if m and m.group(1).startswith("/bin/"):
+                add("/games" + m.group(1), cdn_root + m.group(1))
+        # cdImages: full site-absolute /games/bin/... links
+        for m in re.finditer(r'link\s*:\s*"(/games/bin/windows/images/disc/[^"]+)"', text):
+            add(m.group(1), cdn_root + m.group(1).lstrip("/games"))
+        # requiredFiles / optionalFiles arrays
+        for m in re.finditer(r'"(/games/bin/windows/[^"]+\.(?:DCD|zip|jsdos))"', text):
+            add(m.group(1), cdn_root + m.group(1).lstrip("/games"))
+    return entries
 
 
 def remote_size(url):
@@ -84,8 +121,14 @@ def main():
     parser.add_argument("--root", default=os.path.dirname(os.path.abspath(__file__)))
     args = parser.parse_args()
 
+    files = config_files()
+    if not files:
+        print("No config scripts found; nothing to check.")
+        return 1
+
     failures = 0
-    for relative, url in FILES:
+    for relative in sorted(files):
+        url = files[relative]
         path = os.path.join(args.root, relative)
         status, detail = check(path)
         note = ""
@@ -98,9 +141,9 @@ def main():
                     status = "corrupt"
             except Exception as error:  # network is best effort
                 note = f"  [CDN check failed: {error}]"
-        elif url is None and status != "missing":
+        elif (url is None or relative in BUILT_LOCALLY) and status != "missing":
             note = "  [built locally - no CDN copy]"
-        optional = " (optional)" if relative in OPTIONAL else ""
+        optional = " (optional)" if is_optional(relative) else ""
         mark = {"ok": "OK      ", "missing": "MISSING ", "corrupt": "CORRUPT "}[status]
         if status == "corrupt":
             failures += 1

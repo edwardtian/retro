@@ -1,0 +1,21 @@
+https://cf.ommv.net/bin/windows/images/game/CMDOBEL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/CMDOBEL.DCD
+https://cf.ommv.net/bin/windows/images/game/AOEX.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/AOEX.DCD
+https://cf.ommv.net/bin/windows/images/game/SETTLERS3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/SETTLERS3.DCD
+https://cf.ommv.net/bin/windows/images/disc/CMDOBEL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/CMDOBEL.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN98SE_EN_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN98SE_EN_OS.DCD
+https://cf.ommv.net/bin/windows/images/disc/SETTLERS301.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SETTLERS301.DCD
+https://cf.ommv.net/bin/windows/images/disc/SETTLERS302.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SETTLERS302.DCD

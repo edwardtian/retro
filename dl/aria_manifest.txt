@@ -1,0 +1,117 @@
+https://cf.ommv.net/bin/windows/tools/tools.zip
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/tools/tools.zip
+https://cf.ommv.net/bin/windows/tools/win95patch.zip
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/tools/win95patch.zip
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN98SE_EN_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN98SE_EN_OS.DCD
+https://cf.ommv.net/bin/windows/commandos.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/commandos.jsdos
+https://cf.ommv.net/bin/windows/images/game/CMDOBEL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/CMDOBEL.DCD
+https://cf.ommv.net/bin/windows/images/disc/CMDOBEL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/CMDOBEL.DCD
+https://cf.ommv.net/bin/windows/settlers3.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/settlers3.jsdos
+https://cf.ommv.net/bin/windows/images/game/SETTLERS3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/SETTLERS3.DCD
+https://cf.ommv.net/bin/windows/images/disc/SETTLERS301.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SETTLERS301.DCD
+https://cf.ommv.net/bin/windows/images/disc/SETTLERS302.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SETTLERS302.DCD
+https://cf.ommv.net/bin/windows/aoe.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/aoe.jsdos
+https://cf.ommv.net/bin/windows/images/game/AOEX.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/AOEX.DCD
+https://cf.ommv.net/bin/windows/images/disc/AOE.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/AOE.DCD
+https://cf.ommv.net/bin/windows/ra2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/ra2.jsdos
+https://cf.ommv.net/bin/windows/images/game/RA2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/RA2.DCD
+https://cf.ommv.net/bin/windows/images/disc/RA201.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RA201.DCD
+https://cf.ommv.net/bin/windows/images/disc/RA202.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RA202.DCD
+https://cf.ommv.net/bin/windows/sc3000.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/sc3000.jsdos
+https://cf.ommv.net/bin/windows/images/game/SC3000.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/SC3000.DCD
+https://cf.ommv.net/bin/windows/images/disc/SC3000.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SC3000.DCD
+https://cf.ommv.net/bin/windows/ra2yr.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/ra2yr.jsdos
+https://cf.ommv.net/bin/windows/images/disc/RA2YR.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RA2YR.DCD
+https://cf.ommv.net/bin/windows/rctd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/rctd.jsdos
+https://cf.ommv.net/bin/windows/images/game/RCTD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/RCTD.DCD
+https://cf.ommv.net/bin/windows/images/disc/RCTD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RCTD.DCD
+https://cf.ommv.net/bin/windows/d2lod.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/d2lod.jsdos
+https://cf.ommv.net/bin/windows/images/game/D2LOD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/D2LOD.DCD
+https://cf.ommv.net/bin/windows/images/disc/D2LOD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/D2LOD.DCD
+https://cf.ommv.net/bin/windows/images/disc/D21.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/D21.DCD
+https://cf.ommv.net/bin/windows/ra95.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/ra95.jsdos
+https://cf.ommv.net/bin/windows/images/game/RA95.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/RA95.DCD
+https://cf.ommv.net/bin/windows/images/disc/RA951.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RA951.DCD
+https://cf.ommv.net/bin/windows/images/disc/RA952.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RA952.DCD
+https://cf.ommv.net/bin/windows/images/disc/RACS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RACS.DCD
+https://cf.ommv.net/bin/windows/images/disc/RATA.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RATA.DCD
+https://cf.ommv.net/bin/windows/populous.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/populous.jsdos
+https://cf.ommv.net/bin/windows/images/game/POPULOUS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/POPULOUS.DCD
+https://cf.ommv.net/bin/windows/images/disc/POPULOUS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/POPULOUS.DCD

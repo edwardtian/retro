@@ -1,0 +1,267 @@
+https://cf.ommv.net/bin/windows/1602ad.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=1602ad.jsdos
+https://cf.ommv.net/bin/windows/ac.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=ac.jsdos
+https://cf.ommv.net/bin/windows/acac.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=acac.jsdos
+https://cf.ommv.net/bin/dos/aitd3_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=aitd3_cd.jsdos
+https://cf.ommv.net/bin/dos/alife_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=alife_cd.jsdos
+https://cf.ommv.net/bin/windows/aow.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=aow.jsdos
+https://cf.ommv.net/bin/dos/aps.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=aps.jsdos
+https://cf.ommv.net/bin/windows/armymen.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=armymen.jsdos
+https://cf.ommv.net/bin/windows/armymen2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=armymen2.jsdos
+https://cf.ommv.net/bin/dos/as2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=as2.jsdos
+https://cf.ommv.net/bin/dos/aworld.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=aworld.jsdos
+https://cf.ommv.net/bin/windows/bgtos.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bgtos.jsdos
+https://cf.ommv.net/bin/dos/images/AITD3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/AITD3.DCD
+https://cf.ommv.net/bin/dos/images/ALIFE.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/ALIFE.DCD
+https://cf.ommv.net/bin/dos/images/CAPPLUS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/CAPPLUS.DCD
+https://cf.ommv.net/bin/dos/images/DKEEPER.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/DKEEPER.DCD
+https://cf.ommv.net/bin/dos/images/FALLOUT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/FALLOUT.DCD
+https://cf.ommv.net/bin/dos/images/SHCE.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/SHCE.DCD
+https://cf.ommv.net/bin/dos/images/SWARS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/SWARS.DCD
+https://cf.ommv.net/bin/windows/images/disc/1602AD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/1602AD.DCD
+https://cf.ommv.net/bin/windows/images/disc/ACPP.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/ACPP.DCD
+https://cf.ommv.net/bin/windows/images/disc/AOW.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/AOW.DCD
+https://cf.ommv.net/bin/windows/images/disc/ARMYMEN.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/ARMYMEN.DCD
+https://cf.ommv.net/bin/windows/images/disc/ARMYMEN2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/ARMYMEN2.DCD
+https://cf.ommv.net/bin/windows/images/disc/BGTOS01.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BGTOS01.DCD
+https://cf.ommv.net/bin/windows/images/disc/BGTOS02.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BGTOS02.DCD
+https://cf.ommv.net/bin/windows/images/disc/BGTOS03.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BGTOS03.DCD
+https://cf.ommv.net/bin/windows/images/disc/BLADE1.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BLADE1.DCD
+https://cf.ommv.net/bin/windows/images/disc/BLADE2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BLADE2.DCD
+https://cf.ommv.net/bin/windows/images/disc/BLADE3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BLADE3.DCD
+https://cf.ommv.net/bin/windows/images/disc/BLADE4.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/BLADE4.DCD
+https://cf.ommv.net/bin/windows/images/disc/CIV2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/CIV2.DCD
+https://cf.ommv.net/bin/windows/images/disc/CIV2TOT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/CIV2TOT.DCD
+https://cf.ommv.net/bin/windows/images/disc/CMDOBEL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/CMDOBEL.DCD
+https://cf.ommv.net/bin/windows/images/disc/DK2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/DK2.DCD
+https://cf.ommv.net/bin/windows/images/disc/LEGOCHESS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/LEGOCHESS.DCD
+https://cf.ommv.net/bin/windows/images/disc/MDK2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/MDK2.DCD
+https://cf.ommv.net/bin/windows/images/disc/MSCASINO.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/MSCASINO.DCD
+https://cf.ommv.net/bin/windows/images/disc/PST02.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/PST02.DCD
+https://cf.ommv.net/bin/windows/images/disc/PST03.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/PST03.DCD
+https://cf.ommv.net/bin/windows/images/disc/PST04.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/PST04.DCD
+https://cf.ommv.net/bin/windows/images/disc/RT2P.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/RT2P.DCD
+https://cf.ommv.net/bin/windows/images/disc/SMG.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SMG.DCD
+https://cf.ommv.net/bin/windows/images/disc/SUBCULTURE.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SUBCULTURE.DCD
+https://cf.ommv.net/bin/windows/images/disc/UW3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/UW3.DCD
+https://cf.ommv.net/bin/windows/images/game/1602AD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/1602AD.DCD
+https://cf.ommv.net/bin/windows/images/game/ACPP.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/ACPP.DCD
+https://cf.ommv.net/bin/windows/images/game/AOW.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/AOW.DCD
+https://cf.ommv.net/bin/windows/images/game/ARMYMEN.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/ARMYMEN.DCD
+https://cf.ommv.net/bin/windows/images/game/ARMYMEN2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/ARMYMEN2.DCD
+https://cf.ommv.net/bin/windows/images/game/BGTOS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/BGTOS.DCD
+https://cf.ommv.net/bin/windows/images/game/BISTRO2TW.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/BISTRO2TW.DCD
+https://cf.ommv.net/bin/windows/images/game/BLADE.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/BLADE.DCD
+https://cf.ommv.net/bin/windows/images/game/CIV2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/CIV2.DCD
+https://cf.ommv.net/bin/windows/images/game/CIV2TOT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/CIV2TOT.DCD
+https://cf.ommv.net/bin/windows/images/game/CMDOBEL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/CMDOBEL.DCD
+https://cf.ommv.net/bin/windows/images/game/DK2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/DK2.DCD
+https://cf.ommv.net/bin/windows/images/game/LEGOCHESS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/LEGOCHESS.DCD
+https://cf.ommv.net/bin/windows/images/game/MDK2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/MDK2.DCD
+https://cf.ommv.net/bin/windows/images/game/MSCASINO.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/MSCASINO.DCD
+https://cf.ommv.net/bin/windows/images/game/PST.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/PST.DCD
+https://cf.ommv.net/bin/windows/images/game/RT2P.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/RT2P.DCD
+https://cf.ommv.net/bin/windows/images/game/SMG.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/SMG.DCD
+https://cf.ommv.net/bin/windows/images/game/SUBCULTURE.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/SUBCULTURE.DCD
+https://cf.ommv.net/bin/windows/images/game/UW3.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/UW3.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_CHT_OS.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+https://cf.ommv.net/bin/windows/bistro2tw.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bistro2tw.jsdos
+https://cf.ommv.net/bin/windows/blade.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=blade.jsdos
+https://cf.ommv.net/bin/dos/capp_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=capp_cd.jsdos
+https://cf.ommv.net/bin/windows/civ2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=civ2.jsdos
+https://cf.ommv.net/bin/windows/civ2tot.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=civ2tot.jsdos
+https://cf.ommv.net/bin/windows/commandos.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=commandos.jsdos
+https://cf.ommv.net/bin/windows/dk2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=dk2.jsdos
+https://cf.ommv.net/bin/dos/dkeeper_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=dkeeper_cd.jsdos
+https://cf.ommv.net/bin/dos/fallout_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=fallout_cd.jsdos
+https://cf.ommv.net/bin/windows/legochess.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=legochess.jsdos
+https://cf.ommv.net/bin/windows/mdk2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=mdk2.jsdos
+https://cf.ommv.net/bin/windows/mscasino.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=mscasino.jsdos
+https://cf.ommv.net/bin/windows/pst.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=pst.jsdos
+https://cf.ommv.net/bin/windows/rt2p.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=rt2p.jsdos
+https://cf.ommv.net/bin/dos/sc2000.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=sc2000.jsdos
+https://cf.ommv.net/bin/dos/shce_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=shce_cd.jsdos
+https://cf.ommv.net/bin/windows/smg.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=smg.jsdos
+https://cf.ommv.net/bin/windows/subculture.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=subculture.jsdos
+https://cf.ommv.net/bin/dos/swars_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=swars_cd.jsdos
+https://cf.ommv.net/bin/dos/tp.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=tp.jsdos
+https://cf.ommv.net/bin/dos/ttdx.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=ttdx.jsdos
+https://cf.ommv.net/bin/windows/uw3cht.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=uw3cht.jsdos

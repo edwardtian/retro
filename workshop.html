@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workshop - Retro Game Playground</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/local.css">
+    <link rel="stylesheet" href="/css/workshop.css">
+</head>
+<body class="local-site local-dark" data-bs-theme="dark">
+    <header id="local-nav"></header>
+
+    <main class="container-fluid pb-3">
+        <div class="local-page">
+            <h1>Workshop</h1>
+            <div class="local-subtle mb-3">
+                Build your own machines for this mirror: install Windows on a fresh disk, turn it into a
+                reusable Windows image, then install a game on top of it and publish the result to the
+                game list. Everything runs in the browser player - nothing is downloaded from the internet.
+            </div>
+
+            <ul class="nav nav-tabs workshop-tabs" id="workshop-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tab-wininstall-button" data-bs-toggle="tab"
+                            data-bs-target="#tab-wininstall" type="button" role="tab"
+                            aria-controls="tab-wininstall" aria-selected="true">New Windows installation</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-addvhd-button" data-bs-toggle="tab"
+                            data-bs-target="#tab-addvhd" type="button" role="tab"
+                            aria-controls="tab-addvhd" aria-selected="false">Add a Windows VHD</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-gameinstall-button" data-bs-toggle="tab"
+                            data-bs-target="#tab-gameinstall" type="button" role="tab"
+                            aria-controls="tab-gameinstall" aria-selected="false">New game installation</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-addgame-button" data-bs-toggle="tab"
+                            data-bs-target="#tab-addgame" type="button" role="tab"
+                            aria-controls="tab-addgame" aria-selected="false">Add a new game</button>
+                </li>
+            </ul>
+
+            <div class="tab-content local-panel" id="workshop-content">
+                <!-- ------------------------------------------ 1. windows install -->
+                <div class="tab-pane fade show active" id="tab-wininstall" role="tabpanel"
+                     aria-labelledby="tab-wininstall-button" tabindex="0">
+                    <h2 class="h5">New Windows installation</h2>
+                    <div class="local-subtle mb-2">
+                        Boots the player from a Windows installation ISO with a freshly created blank
+                        hard disk, so the installer can prepare the machine.
+                    </div>
+
+                    <div class="workshop-instructions">
+                        <strong>How it works</strong>
+                        <ol>
+                            <li>The ISO is uploaded to this server's library and a blank hard disk of the
+                                chosen size is created - already partitioned and FAT32-formatted, and
+                                mounted as <code>C:</code> with an explicit geometry, so the installer
+                                always has a usable system drive.</li>
+                            <li>The player boots a machine with that disk as <code>C:</code> and the ISO as
+                                the CD drive.</li>
+                            <li>Boot from the CD and install Windows. If setup stops with
+                                <em>"SU0409: Windows 98 Setup was unable to update your system
+                                files"</em>, install from the hard disk instead of the CD - the classic
+                                fix for that error, because the real-mode CD/SMARTDrive path is what
+                                fails:
+                                <pre class="ws-commands">md c:\win98
+copy d:\win98\*.* c:\win98
+c:
+cd \win98
+setup /is</pre>
+                                (<code>/is</code> skips ScanDisk. Copy whichever folder on the CD holds
+                                <code>SETUP.EXE</code> if it is not called <code>WIN98</code>.)</li>
+                            <li>Shut the guest down, then press <strong>Download Save File</strong> in the
+                                player toolbar. That download is your Windows image - bring it back here
+                                to <em>Add a Windows VHD</em>.</li>
+                        </ol>
+                    </div>
+
+                    <form id="form-wininstall" novalidate>
+                        <div class="row g-3 workshop-pane">
+                            <div class="col-12">
+                                <label class="form-label" for="wininstall-iso">Windows installation ISO
+                                    (.iso, .img)</label>
+                                <input class="form-control form-control-sm" type="file" id="wininstall-iso"
+                                       accept=".iso,.img">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label" for="wininstall-ram">RAM</label>
+                                <select class="form-select form-select-sm" id="wininstall-ram">
+                                    <option value="64">64 MB</option>
+                                    <option value="128">128 MB</option>
+                                    <option value="192">192 MB</option>
+                                    <option value="256" selected>256 MB</option>
+                                    <option value="384">384 MB</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label" for="wininstall-hdd">HDD size</label>
+                                <select class="form-select form-select-sm" id="wininstall-hdd">
+                                    <option value="1G">1 GB</option>
+                                    <option value="2G" selected>2 GB</option>
+                                    <option value="4G">4 GB</option>
+                                    <option value="8G">8 GB</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label" for="wininstall-name">Name</label>
+                                <input class="form-control form-control-sm" type="text" id="wininstall-name"
+                                       placeholder="win98se" maxlength="48" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="progress workshop-progress" id="wininstall-progress" hidden>
+                            <div class="progress-bar" role="progressbar" style="width:0%"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="workshop-status mt-2" id="wininstall-status" role="alert" hidden></div>
+                        <button class="btn btn-sm btn-primary mt-3" type="submit" id="wininstall-submit">
+                            Create machine and start installer</button>
+                    </form>
+                </div>
+
+                <!-- ---------------------------------------------- 2. windows vhd -->
+                <div class="tab-pane fade" id="tab-addvhd" role="tabpanel"
+                     aria-labelledby="tab-addvhd-button" tabindex="0">
+                    <h2 class="h5">Add a Windows VHD</h2>
+                    <div class="local-subtle mb-2">
+                        Turns an installed Windows disk into a reusable machine image that the other
+                        wizards (and games) can boot from.
+                    </div>
+
+                    <div class="workshop-instructions">
+                        <strong>Where the file comes from</strong>
+                        <ul>
+                            <li>The player's <strong>Download Save File</strong> output can be uploaded here
+                                directly: the server pulls the VHD out of the pack (.ddyx or .zip).</li>
+                            <li>A plain <code>.vhd</code> / <code>.img</code> disk also works.</li>
+                        </ul>
+                    </div>
+
+                    <form id="form-addvhd" novalidate>
+                        <div class="row g-3 workshop-pane">
+                            <div class="col-12">
+                                <label class="form-label" for="addvhd-file">Windows image
+                                    (.vhd, .img, .ddyx, .zip)</label>
+                                <input class="form-control form-control-sm" type="file" id="addvhd-file"
+                                       accept=".vhd,.img,.ddyx,.zip">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="addvhd-name">Name</label>
+                                <input class="form-control form-control-sm" type="text" id="addvhd-name"
+                                       placeholder="win98se" maxlength="48" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="progress workshop-progress" id="addvhd-progress" hidden>
+                            <div class="progress-bar" role="progressbar" style="width:0%"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="workshop-status mt-2" id="addvhd-status" role="alert" hidden></div>
+                        <button class="btn btn-sm btn-primary mt-3" type="submit" id="addvhd-submit">
+                            Upload Windows image</button>
+                    </form>
+                </div>
+
+                <!-- ------------------------------------------- 3. game install -->
+                <div class="tab-pane fade" id="tab-gameinstall" role="tabpanel"
+                     aria-labelledby="tab-gameinstall-button" tabindex="0">
+                    <h2 class="h5">New game installation</h2>
+                    <div class="local-subtle mb-2">
+                        Boots one of your Windows images and mounts the game's CD, so the game's own
+                        installer can run inside the guest.
+                    </div>
+
+                    <div class="workshop-instructions">
+                        <strong>How it works</strong>
+                        <ol>
+                            <li>The game ISO is uploaded to the library and mounted as the guest's CD drive.</li>
+                            <li>Install the game inside the guest from that CD.</li>
+                            <li>Shut the guest down, then press <strong>Download Save File</strong> in the
+                                player toolbar. That file is the <em>Game DDYX</em> for
+                                <em>Add a new game</em>.</li>
+                        </ol>
+                    </div>
+
+                    <form id="form-gameinstall" novalidate>
+                        <div class="row g-3 workshop-pane">
+                            <div class="col-12">
+                                <label class="form-label" for="gameinstall-win">Windows image</label>
+                                <select class="form-select form-select-sm" id="gameinstall-win"></select>
+                                <div class="local-legend" id="gameinstall-win-hint"></div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="gameinstall-iso">Game ISO (.iso, .img)</label>
+                                <input class="form-control form-control-sm" type="file" id="gameinstall-iso"
+                                       accept=".iso,.img">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label" for="gameinstall-ram">RAM</label>
+                                <select class="form-select form-select-sm" id="gameinstall-ram">
+                                    <option value="64">64 MB</option>
+                                    <option value="128">128 MB</option>
+                                    <option value="192">192 MB</option>
+                                    <option value="256" selected>256 MB</option>
+                                    <option value="384">384 MB</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="form-label" for="gameinstall-name">Name (optional)</label>
+                                <input class="form-control form-control-sm" type="text" id="gameinstall-name"
+                                       placeholder="my-game" maxlength="48" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="progress workshop-progress" id="gameinstall-progress" hidden>
+                            <div class="progress-bar" role="progressbar" style="width:0%"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="workshop-status mt-2" id="gameinstall-status" role="alert" hidden></div>
+                        <button class="btn btn-sm btn-primary mt-3" type="submit" id="gameinstall-submit">
+                            Boot and mount the game CD</button>
+                    </form>
+                </div>
+
+                <!-- ---------------------------------------------- 4. new game -->
+                <div class="tab-pane fade" id="tab-addgame" role="tabpanel"
+                     aria-labelledby="tab-addgame-button" tabindex="0">
+                    <h2 class="h5">Add a new game</h2>
+                    <div class="local-subtle mb-2">
+                        Publishes a finished game disk to this mirror's library and game list.
+                    </div>
+
+                    <div class="workshop-instructions">
+                        <strong>Where the file comes from</strong>
+                        Upload the <em>Game DDYX</em> the player produced in <em>New game installation</em>
+                        (the <strong>Download Save File</strong> output). A plain <code>.vhd</code> /
+                        <code>.img</code> also works. The game is registered against the Windows image it
+                        was installed on; it then appears in the game list on the home page.
+                    </div>
+
+                    <form id="form-addgame" novalidate>
+                        <div class="row g-3 workshop-pane">
+                            <div class="col-12">
+                                <label class="form-label" for="addgame-win">Windows image</label>
+                                <select class="form-select form-select-sm" id="addgame-win"></select>
+                                <div class="local-legend" id="addgame-win-hint"></div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="addgame-file">Game DDYX
+                                    (.ddyx, .zip, .vhd, .img)</label>
+                                <input class="form-control form-control-sm" type="file" id="addgame-file"
+                                       accept=".ddyx,.zip,.vhd,.img">
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="form-label" for="addgame-title">Title</label>
+                                <input class="form-control form-control-sm" type="text" id="addgame-title"
+                                       maxlength="120" autocomplete="off">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label" for="addgame-year">Year</label>
+                                <input class="form-control form-control-sm" type="number" id="addgame-year"
+                                       min="1970" max="2100" step="1" placeholder="1998">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="addgame-publisher">Publisher</label>
+                                <input class="form-control form-control-sm" type="text" id="addgame-publisher"
+                                       maxlength="120" autocomplete="off">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="addgame-genre">Genre</label>
+                                <input class="form-control form-control-sm" type="text" id="addgame-genre"
+                                       maxlength="120" autocomplete="off">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="addgame-description">Description</label>
+                                <textarea class="form-control form-control-sm" id="addgame-description"
+                                          rows="3" maxlength="2000"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="progress workshop-progress" id="addgame-progress" hidden>
+                            <div class="progress-bar" role="progressbar" style="width:0%"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="workshop-status mt-2" id="addgame-status" role="alert" hidden></div>
+                        <button class="btn btn-sm btn-primary mt-3" type="submit" id="addgame-submit">
+                            Add game to the list</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ------------------------------------------------------- library -->
+            <section class="local-panel mt-4" id="library-section">
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                    <h2 class="h5 mb-0">Library</h2>
+                    <button class="btn btn-sm btn-outline-secondary ms-auto" type="button"
+                            id="library-refresh">Refresh</button>
+                </div>
+                <div class="local-subtle mb-2">
+                    Windows images and games stored by this server. A game can be removed from the list
+                    here; deleting a Windows image breaks the games installed on it.
+                </div>
+                <div class="workshop-status" id="library-status" role="status" hidden></div>
+
+                <h3 class="h6 mt-3">Windows images</h3>
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle workshop-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Created</th>
+                                <th scope="col" class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="library-windows"></tbody>
+                    </table>
+                </div>
+                <div class="local-legend" id="library-windows-empty">No Windows images yet.</div>
+
+                <h3 class="h6 mt-4">Games</h3>
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle workshop-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Details</th>
+                                <th scope="col">Windows image</th>
+                                <th scope="col" class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="library-games"></tbody>
+                    </table>
+                </div>
+                <div class="local-legend" id="library-games-empty">No games added yet.</div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/catalog.js"></script>
+    <script src="/js/local-site.js"></script>
+    <script src="/js/workshop.js"></script>
+</body>
+</html>

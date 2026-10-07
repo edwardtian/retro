@@ -1,0 +1,127 @@
+/* Workshop page (machine / game builder) styles.
+   Loaded after bootstrap.min.css, site.css and local.css, so only the rules the
+   shared classes do not already cover live here. The page reuses the player's
+   dark shell (`body.local-site.local-dark` + data-bs-theme), therefore the
+   shared light .local-panel needs a dark counterpart. */
+
+/* Bootstrap's .progress/.d-flex set `display`, which beats the user agent's
+   [hidden] rule; the wizards hide progress bars and status lines that way. */
+[hidden] {
+    display: none !important;
+}
+
+body.local-dark .local-panel {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.local-dark .local-legend,
+body.local-dark .local-subtle {
+    opacity: 0.72;
+}
+
+/* --- wizards ------------------------------------------------------------- */
+
+.workshop-tabs {
+    border-bottom: none;
+}
+
+.workshop-tabs .nav-link {
+    font-size: 0.9rem;
+}
+
+/* Forms stay readable: 780px is about the width of the settings page columns. */
+.workshop-pane {
+    max-width: 780px;
+}
+
+.workshop-instructions {
+    max-width: 780px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0 16px;
+    font-size: 0.8rem;
+}
+
+.workshop-instructions ul,
+.workshop-instructions ol {
+    margin: 6px 0 0;
+    padding-left: 20px;
+}
+
+.workshop-instructions li {
+    margin-bottom: 4px;
+}
+
+.workshop-status {
+    font-size: 0.82rem;
+    min-height: 1.1rem;
+    opacity: 0.95;
+    word-break: break-word;
+}
+
+.workshop-status a {
+    color: #9cc4ff;
+}
+
+.workshop-progress {
+    height: 8px;
+    max-width: 780px;
+    margin-top: 10px;
+}
+
+/* --- library ------------------------------------------------------------- */
+
+.workshop-table {
+    --bs-table-bg: transparent;
+    --bs-table-color: inherit;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+.workshop-table thead th {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    opacity: 0.7;
+    border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+.workshop-table td,
+.workshop-table th {
+    vertical-align: middle;
+}
+
+.workshop-row-actions {
+    white-space: nowrap;
+}
+
+.workshop-size,
+.workshop-created {
+    white-space: nowrap;
+    opacity: 0.85;
+}
+
+.workshop-created {
+    font-size: 0.78rem;
+}
+
+@media (max-width: 575.98px) {
+    .workshop-tabs .nav-link {
+        font-size: 0.82rem;
+        padding: 4px 8px;
+    }
+}
+
+/* Command snippets in the wizard instructions (e.g. the hard-disk install). */
+.ws-commands {
+    margin: 0.5rem 0 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 4px;
+    color: #d7e3ff;
+    font-size: 0.85rem;
+    white-space: pre;
+}

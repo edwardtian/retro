@@ -1,0 +1,183 @@
+https://cf.ommv.net/bin/dos/images/COLC.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/COLC.DCD
+https://cf.ommv.net/bin/dos/images/HOSPITCN.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/HOSPITCN.DCD
+https://cf.ommv.net/bin/dos/images/T2K.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/T2K.DCD
+https://cf.ommv.net/bin/dos/images/TIMECO.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/TIMECO.DCD
+https://cf.ommv.net/bin/dos/images/TT01.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/TT01.DCD
+https://cf.ommv.net/bin/dos/images/TT02.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/TT02.DCD
+https://cf.ommv.net/bin/windows/images/disc/LOB.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/LOB.DCD
+https://cf.ommv.net/bin/windows/images/disc/SNTRM01.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SNTRM01.DCD
+https://cf.ommv.net/bin/windows/images/disc/SNTRM02.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SNTRM02.DCD
+https://cf.ommv.net/bin/windows/images/disc/SNTRM03.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SNTRM03.DCD
+https://cf.ommv.net/bin/windows/images/disc/SORFCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/SORFCHT.DCD
+https://cf.ommv.net/bin/windows/images/disc/TAIKOU2CHS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/TAIKOU2CHS.DCD
+https://cf.ommv.net/bin/windows/images/disc/TAIKOU3CHS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/TAIKOU3CHS.DCD
+https://cf.ommv.net/bin/windows/images/disc/TAIKOU4CHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/TAIKOU4CHT.DCD
+https://cf.ommv.net/bin/windows/images/disc/TMFWYCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/TMFWYCHT.DCD
+https://cf.ommv.net/bin/windows/images/disc/TOTD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/TOTD.DCD
+https://cf.ommv.net/bin/windows/images/disc/UW4PUKCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/UW4PUKCHT.DCD
+https://cf.ommv.net/bin/windows/images/disc/VANDAL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/VANDAL.DCD
+https://cf.ommv.net/bin/windows/images/disc/VANDALCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/VANDALCHT.DCD
+https://cf.ommv.net/bin/windows/images/disc/WHDO.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/WHDO.DCD
+https://cf.ommv.net/bin/windows/images/game/LOB.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/LOB.DCD
+https://cf.ommv.net/bin/windows/images/game/SNTRM.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/SNTRM.DCD
+https://cf.ommv.net/bin/windows/images/game/SORFCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/SORFCHT.DCD
+https://cf.ommv.net/bin/windows/images/game/TAIKOU2CHS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/TAIKOU2CHS.DCD
+https://cf.ommv.net/bin/windows/images/game/TAIKOU3CHS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/TAIKOU3CHS.DCD
+https://cf.ommv.net/bin/windows/images/game/TAIKOU4CHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/TAIKOU4CHT.DCD
+https://cf.ommv.net/bin/windows/images/game/TMFWYCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/TMFWYCHT.DCD
+https://cf.ommv.net/bin/windows/images/game/TOTD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/TOTD.DCD
+https://cf.ommv.net/bin/windows/images/game/UW4PUKCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/UW4PUKCHT.DCD
+https://cf.ommv.net/bin/windows/images/game/VANDAL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/VANDAL.DCD
+https://cf.ommv.net/bin/windows/images/game/VANDALCHT.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/VANDALCHT.DCD
+https://cf.ommv.net/bin/windows/images/game/WHDO.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/WHDO.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_CHS_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_CHS_OS.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_CHT_OS.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_EN_OS.DCD
+https://cf.ommv.net/bin/windows/images/os/WIN95OSR2_JP_OS.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/os/WIN95OSR2_JP_OS.DCD
+https://cf.ommv.net/bin/dos/bxsg.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bxsg.jsdos
+https://cf.ommv.net/bin/dos/colc_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=colc_cd.jsdos
+https://cf.ommv.net/bin/windows/lob.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=lob.jsdos
+https://cf.ommv.net/bin/dos/lostvik.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=lostvik.jsdos
+https://cf.ommv.net/bin/dos/mk2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=mk2.jsdos
+https://cf.ommv.net/bin/dos/rich2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=rich2.jsdos
+https://cf.ommv.net/bin/dos/rich3.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=rich3.jsdos
+https://cf.ommv.net/bin/windows/sntrm.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=sntrm.jsdos
+https://cf.ommv.net/bin/windows/sorfcht.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=sorfcht.jsdos
+https://cf.ommv.net/bin/dos/t2k_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=t2k_cd.jsdos
+https://cf.ommv.net/bin/dos/taiko.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=taiko.jsdos
+https://cf.ommv.net/bin/windows/taikou2chs.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=taikou2chs.jsdos
+https://cf.ommv.net/bin/windows/taikou3chs.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=taikou3chs.jsdos
+https://cf.ommv.net/bin/windows/taikou4cht.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=taikou4cht.jsdos
+https://cf.ommv.net/bin/dos/thcn_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=thcn_cd.jsdos
+https://cf.ommv.net/bin/dos/tim2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=tim2.jsdos
+https://cf.ommv.net/bin/dos/timecomm_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=timecomm_cd.jsdos
+https://cf.ommv.net/bin/windows/tmfwycht.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=tmfwycht.jsdos
+https://cf.ommv.net/bin/windows/totd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=totd.jsdos
+https://cf.ommv.net/bin/dos/tt_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=tt_cd.jsdos
+https://cf.ommv.net/bin/dos/uw2en.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=uw2en.jsdos
+https://cf.ommv.net/bin/windows/uw4pukcht.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=uw4pukcht.jsdos
+https://cf.ommv.net/bin/windows/vandal.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=vandal.jsdos
+https://cf.ommv.net/bin/windows/vandalcht.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=vandalcht.jsdos
+https://cf.ommv.net/bin/windows/whdo.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=whdo.jsdos

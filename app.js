@@ -22,6 +22,13 @@ window.__localPlayerStarted = true;
 
 const config = window.LOCAL_GAME_CONFIG;
 
+// Configs written by hand (and by the workshop's generator) may leave out the
+// optional lists; the startup path maps over all of them, so normalise here
+// rather than failing with "Cannot read properties of undefined".
+config.requiredFiles = config.requiredFiles || [];
+config.optionalFiles = config.optionalFiles || [];
+config.cdImages = config.cdImages || [];
+
 // NOTE: `ci` must exist as a global before HelperX runs. helper-x.js assigns
 // `ci = emulators.dosboxXWorker(...)` from inside a class method, which is
 // strict mode, so assigning to an undeclared name throws
@@ -550,11 +557,11 @@ function run(fileBundle) {
                 // their own bootable image (e.g. "imgmount c ... / boot c:").
                 "auto_command": config.autoCommand,
                 "hardware": {
-                    "voodoo": false,
+                    "voodoo": config.voodoo === true,
                     "tool": config.tool,
-                    "mt32": false,
-                    "gm": false,
-                    "gmsf": "",
+                    "mt32": config.mt32 === true,
+                    "gm": config.gm === true,
+                    "gmsf": config.gmSoundfont || "",
                     "cdImages": discs.map(cd => Object.assign({}, cd, { link: versioned(cd.link) })),
                     "selectedCD": g_selectedCD,
                     "osImages": versioned(rawOsImages || ""),

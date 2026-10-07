@@ -34,6 +34,7 @@
         const links = document.createElement("div");
         links.className = "local-links";
         [["/", "Games", "games"],
+         ["/workshop.html", "Workshop", "workshop"],
          ["/settings.html", "Settings", "settings"]].forEach(function (entry) {
             const a = document.createElement("a");
             a.href = entry[0];

@@ -1,0 +1,57 @@
+
+10/06 15:42:35 [[1;32mNOTICE[0m] Downloading 7 item(s)
+[DL:68MiB][#1de3c3 7.8MiB/31MiB(25%)][#74e484 5.0MiB/41MiB(12%)][#d52694 752KiB/96MiB(0%)][#9ab8c0 10MiB/430MiB(2%)][#1bd7c4 1.3MiB/71MiB(1%)](+2)
+[DL:76MiB][#1de3c3 14MiB/31MiB(44%)][#74e484 13MiB/41MiB(32%)][#d52694 6.4MiB/96MiB(6%)][#9ab8c0 26MiB/430MiB(6%)][#1bd7c4 8.7MiB/71MiB(12%)](+2)
+[DL:81MiB][#1de3c3 20MiB/31MiB(66%)][#74e484 20MiB/41MiB(50%)][#d52694 14MiB/96MiB(14%)][#9ab8c0 42MiB/430MiB(9%)][#1bd7c4 18MiB/71MiB(26%)](+2)
+[DL:84MiB][#1de3c3 28MiB/31MiB(91%)][#74e484 29MiB/41MiB(70%)][#d52694 23MiB/96MiB(24%)][#9ab8c0 56MiB/430MiB(13%)][#1bd7c4 29MiB/71MiB(40%)](+2)
+[DL:84MiB][#1de3c3 30MiB/31MiB(98%)][#74e484 37MiB/41MiB(89%)][#d52694 34MiB/96MiB(35%)][#9ab8c0 70MiB/430MiB(16%)][#1bd7c4 38MiB/71MiB(54%)](+2)
+
+10/06 15:42:40 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/game/CMDOBEL.DCD
+[DL:84MiB][#74e484 40MiB/41MiB(97%)][#d52694 45MiB/96MiB(47%)][#9ab8c0 87MiB/430MiB(20%)][#1bd7c4 51MiB/71MiB(71%)][#d83b9e 94MiB/597MiB(15%)](+1)
+[DL:83MiB][#74e484 41MiB/41MiB(99%)][#d52694 55MiB/96MiB(57%)][#9ab8c0 102MiB/430MiB(23%)][#1bd7c4 61MiB/71MiB(86%)][#d83b9e 113MiB/597MiB(18%)](+1)
+
+10/06 15:42:42 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/game/AOEX.DCD
+[DL:83MiB][#d52694 67MiB/96MiB(69%)][#9ab8c0 122MiB/430MiB(28%)][#1bd7c4 66MiB/71MiB(93%)][#d83b9e 137MiB/597MiB(23%)][#26b7c3 163MiB/496MiB(32%)]
+[DL:83MiB][#d52694 78MiB/96MiB(81%)][#9ab8c0 142MiB/430MiB(33%)][#1bd7c4 69MiB/71MiB(97%)][#d83b9e 163MiB/597MiB(27%)][#26b7c3 188MiB/496MiB(38%)]
+[DL:83MiB][#d52694 88MiB/96MiB(91%)][#9ab8c0 162MiB/430MiB(37%)][#1bd7c4 71MiB/71MiB(99%)][#d83b9e 188MiB/597MiB(31%)][#26b7c3 216MiB/496MiB(43%)]
+
+10/06 15:42:45 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/os/WIN98SE_EN_OS.DCD
+[DL:84MiB][#d52694 96MiB/96MiB(99%)][#9ab8c0 181MiB/430MiB(42%)][#d83b9e 206MiB/597MiB(34%)][#26b7c3 254MiB/496MiB(51%)]
+
+10/06 15:42:46 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/game/SETTLERS3.DCD
+[DL:84MiB][#9ab8c0 207MiB/430MiB(48%)][#d83b9e 223MiB/597MiB(37%)][#26b7c3 299MiB/496MiB(60%)]
+[DL:85MiB][#9ab8c0 234MiB/430MiB(54%)][#d83b9e 242MiB/597MiB(40%)][#26b7c3 340MiB/496MiB(68%)]
+[DL:83MiB][#9ab8c0 257MiB/430MiB(59%)][#d83b9e 264MiB/597MiB(44%)][#26b7c3 378MiB/496MiB(76%)]
+[DL:83MiB][#9ab8c0 282MiB/430MiB(65%)][#d83b9e 290MiB/597MiB(48%)][#26b7c3 414MiB/496MiB(83%)]
+[DL:84MiB][#9ab8c0 313MiB/430MiB(72%)][#d83b9e 320MiB/597MiB(53%)][#26b7c3 434MiB/496MiB(87%)]
+[DL:86MiB][#9ab8c0 346MiB/430MiB(80%)][#d83b9e 356MiB/597MiB(59%)][#26b7c3 457MiB/496MiB(92%)]
+[DL:86MiB][#9ab8c0 383MiB/430MiB(89%)][#d83b9e 391MiB/597MiB(65%)][#26b7c3 480MiB/496MiB(96%)]
+[DL:86MiB][#9ab8c0 416MiB/430MiB(96%)][#d83b9e 420MiB/597MiB(70%)][#26b7c3 493MiB/496MiB(99%)]
+
+10/06 15:42:54 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/disc/SETTLERS302.DCD
+[DL:83MiB][#9ab8c0 428MiB/430MiB(99%)][#d83b9e 465MiB/597MiB(77%)]
+
+10/06 15:42:55 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/disc/CMDOBEL.DCD
+ *** Download Progress Summary as of Tue Oct  6 15:42:55 2026 *** 
+===============================================================================
+[#d83b9e 546MiB/597MiB(91%) CN:8 DL:35MiB ETA:1s]
+FILE: /media/data/Workspace/retro/games/bin/windows/images/disc/SETTLERS301.DCD
+-------------------------------------------------------------------------------
+
+[#d83b9e 546MiB/597MiB(91%) CN:8 DL:35MiB ETA:1s]
+
+10/06 15:42:56 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/windows/images/disc/SETTLERS301.DCD
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+1de3c3|OK  |   6.3MiB/s|/media/data/Workspace/retro/games/bin/windows/images/game/CMDOBEL.DCD
+74e484|OK  |   6.1MiB/s|/media/data/Workspace/retro/games/bin/windows/images/game/AOEX.DCD
+1bd7c4|OK  |   7.6MiB/s|/media/data/Workspace/retro/games/bin/windows/images/os/WIN98SE_EN_OS.DCD
+d52694|OK  |   9.3MiB/s|/media/data/Workspace/retro/games/bin/windows/images/game/SETTLERS3.DCD
+26b7c3|OK  |    25MiB/s|/media/data/Workspace/retro/games/bin/windows/images/disc/SETTLERS302.DCD
+9ab8c0|OK  |    21MiB/s|/media/data/Workspace/retro/games/bin/windows/images/disc/CMDOBEL.DCD
+d83b9e|OK  |    28MiB/s|/media/data/Workspace/retro/games/bin/windows/images/disc/SETTLERS301.DCD
+
+Status Legend:
+(OK):download completed.

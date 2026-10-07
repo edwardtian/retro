@@ -1,0 +1,36 @@
+https://cf.ommv.net/bin/windows/pharaoh.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/pharaoh.jsdos
+https://cf.ommv.net/bin/windows/images/game/PHARAOH.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/PHARAOH.DCD
+https://cf.ommv.net/bin/windows/images/disc/PHARAOH.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/PHARAOH.DCD
+https://cf.ommv.net/bin/dos/wc2_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/wc2_cd.jsdos
+https://cf.ommv.net/bin/dos/images/WC2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/WC2.DCD
+https://cf.ommv.net/bin/dos/wc2_bdp_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/wc2_bdp_cd.jsdos
+https://cf.ommv.net/bin/dos/images/WC2BDP.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/WC2BDP.DCD
+https://cf.ommv.net/bin/dos/cnc_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/cnc_cd.jsdos
+https://cf.ommv.net/bin/dos/images/CNC_GDI.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/CNC_GDI.DCD
+https://cf.ommv.net/bin/dos/images/CNC_NOD.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/CNC_NOD.DCD
+https://cf.ommv.net/bin/dos/th_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/th_cd.jsdos
+https://cf.ommv.net/bin/dos/images/HOSPITAL.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/HOSPITAL.DCD

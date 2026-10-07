@@ -1,0 +1,2319 @@
+[
+  {
+    "id": "settlers3_gold",
+    "title": "The Settlers III: Gold Edition",
+    "bundle": "https://cf.ommv.net/bin/windows/settlers3.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/SETTLERS3.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SETTLERS301.DCD",
+        "name": "The Settlers III: Gold Edition Disc 1",
+        "size": 626621448,
+        "mount": "SETTLERS301.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SETTLERS302.DCD",
+        "name": "The Settlers III: Gold Edition Disc 2",
+        "size": 520912028,
+        "mount": "SETTLERS302.cue"
+      }
+    ],
+    "gameSize": 1250269054,
+    "background": "https://dosaws.ddyx.me/images/windows/settlers3.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/settlers3_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "1250269054"
+  },
+  {
+    "id": "age_of_empires",
+    "title": "Age of Empires",
+    "bundle": "https://cf.ommv.net/bin/windows/aoe.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/AOEX.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/AOE.DCD",
+        "name": "Age of Empires Disc",
+        "size": 219239447,
+        "mount": "AOE.cue"
+      }
+    ],
+    "gameSize": 262746974,
+    "background": "https://dosaws.ddyx.me/images/windows/aoe.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/aoe_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "262746974"
+  },
+  {
+    "id": "red_alert_2",
+    "title": "Command &amp; Conquer: Red Alert 2",
+    "bundle": "https://cf.ommv.net/bin/windows/ra2.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/RA2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RA201.DCD",
+        "name": "Command &amp; Conquer: Red Alert 2 Allies Disc",
+        "size": 611950590,
+        "mount": "RA201.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RA202.DCD",
+        "name": "Command &amp; Conquer: Red Alert 2 Soviets Disc",
+        "size": 564707384,
+        "mount": "RA202.ISO"
+      }
+    ],
+    "gameSize": 1525924158,
+    "background": "https://dosaws.ddyx.me/images/windows/ra2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/ra2_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "1525924158"
+  },
+  {
+    "id": "simcity_3000",
+    "title": "SimCity 3000",
+    "bundle": "https://cf.ommv.net/bin/windows/sc3000.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/SC3000.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SC3000.DCD",
+        "name": "SimCity 3000 Disc",
+        "size": 549932529,
+        "mount": "SC3000.cue"
+      }
+    ],
+    "gameSize": 822437379,
+    "background": "https://dosaws.ddyx.me/images/windows/sc3000.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/sc3000_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "822437379"
+  },
+  {
+    "id": "yuris_revenge",
+    "title": "Command &amp; Conquer: Yuri&#x27;s Revenge",
+    "bundle": "https://cf.ommv.net/bin/windows/ra2yr.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/RA2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RA2YR.DCD",
+        "name": "Command &amp; Conquer: Yuri&#x27;s Revenge Disc",
+        "size": 644405848,
+        "mount": "RA2YR.ISO"
+      }
+    ],
+    "gameSize": 993672034,
+    "background": "https://dosaws.ddyx.me/images/windows/ra2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/ra2yr_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2001",
+    "size": "993672034"
+  },
+  {
+    "id": "rct_deluxe",
+    "title": "RollerCoaster Tycoon Deluxe",
+    "bundle": "https://cf.ommv.net/bin/windows/rctd.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/RCTD.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RCTD.DCD",
+        "name": "RollerCoaster Tycoon Deluxe Disc",
+        "size": 467887492,
+        "mount": "RCTD.cue"
+      }
+    ],
+    "gameSize": 503594762,
+    "background": "https://dosaws.ddyx.me/images/windows/rctd.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/rctd_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2003",
+    "size": "503594762"
+  },
+  {
+    "id": "diablo2_lod",
+    "title": "Diablo II: Lord of Destruction",
+    "bundle": "https://cf.ommv.net/bin/windows/d2lod.jsdos",
+    "osImages": "/bin/windows/images/os/WIN98SE_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/D2LOD.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/D2LOD.DCD",
+        "name": "Diablo II: Lord of Destruction Disc",
+        "size": 593721949,
+        "mount": "D2LOD.mdf"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/D21.DCD",
+        "name": "Diablo II Disc",
+        "size": 666973213,
+        "mount": "D21.mdf"
+      }
+    ],
+    "gameSize": 2569652903,
+    "background": "https://dosaws.ddyx.me/images/windows/d2lod.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/d2lod_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2001",
+    "size": "2569652903"
+  },
+  {
+    "id": "red_alert",
+    "title": "Command &amp; Conquer Red Alert",
+    "bundle": "https://cf.ommv.net/bin/windows/ra95.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/RA95.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RA951.DCD",
+        "name": "Allied Disc",
+        "size": 575241944,
+        "mount": "RA951.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RA952.DCD",
+        "name": "Soviet Disc",
+        "size": 582648460,
+        "mount": "RA952.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RACS.DCD",
+        "name": "Counterstrike Disc",
+        "size": 336741888,
+        "mount": "RACS.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RATA.DCD",
+        "name": "The Aftermath Disc",
+        "size": 390508223,
+        "mount": "RATA.cue"
+      }
+    ],
+    "gameSize": 1904810944,
+    "background": "https://dosaws.ddyx.me/images/windows/ra95.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/ra95_cover.webp",
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1996",
+    "size": "1904810944"
+  },
+  {
+    "id": "populous_beginning",
+    "title": "Populous: The Beginning",
+    "bundle": "https://cf.ommv.net/bin/windows/populous.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/POPULOUS.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/POPULOUS.DCD",
+        "name": "Populous: The Beginning Disc",
+        "size": 343260246,
+        "mount": "POPULOUS.cue"
+      }
+    ],
+    "gameSize": 422137708,
+    "background": "https://dosaws.ddyx.me/images/windows/populous.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/populous_cover.webp",
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "422137708"
+  },
+  {
+    "id": "aoe2_kings",
+    "title": "Age of Empires II: The Age of Kings",
+    "bundle": "https://cf.ommv.net/bin/windows/aoe2.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/AOE2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/AOE2.DCD",
+        "name": "Age of Empires II: The Age of Kings Disc",
+        "size": 366709463,
+        "mount": "AOE2.cue"
+      }
+    ],
+    "gameSize": 461040748,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "461040748",
+    "background": "https://dosaws.ddyx.me/images/windows/aoe2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/aoe2_cover.webp"
+  },
+  {
+    "id": "worms2",
+    "title": "Worms 2",
+    "bundle": "https://cf.ommv.net/bin/windows/worms2.jsdos",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/WORMS2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/WORMS2.DCD",
+        "name": "Worms 2 Disc",
+        "size": 286819347,
+        "mount": "WORMS2.cue"
+      }
+    ],
+    "gameSize": 339509902,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "339509902",
+    "background": "https://dosaws.ddyx.me/images/windows/worms2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/worms2_cover.webp"
+  },
+  {
+    "id": "fallout2",
+    "title": "Fallout 2",
+    "bundle": "https://cf.ommv.net/bin/windows/fallout2.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/FALLOUT2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/FALLOUT2.DCD",
+        "name": "Fallout 2 Disc",
+        "size": 679518466,
+        "mount": "FALLOUT2.cue"
+      }
+    ],
+    "gameSize": 680438739,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "680438739",
+    "background": "https://dosaws.ddyx.me/images/windows/fallout2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/fallout2_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "caesar3",
+    "title": "Caesar III",
+    "bundle": "https://cf.ommv.net/bin/windows/caesar3.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/CAESAR3.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/CAESAR3.DCD",
+        "name": "Caesar III Disc",
+        "size": 551419993,
+        "mount": "CAESAR3.cue"
+      }
+    ],
+    "gameSize": 614614653,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "614614653",
+    "background": "https://dosaws.ddyx.me/images/windows/caesar3.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/caesar3_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "dune2000",
+    "title": "Dune 2000",
+    "bundle": "https://cf.ommv.net/bin/windows/dune2000.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/DUNE2000.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/DUNE2000.DCD",
+        "name": "Dune 2000 Disc",
+        "size": 732330118,
+        "mount": "DUNE2000.cue"
+      }
+    ],
+    "gameSize": 751465281,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "751465281",
+    "background": "https://dosaws.ddyx.me/images/windows/dune2000.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/dune2000_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "panzer_general2",
+    "title": "Panzer General II",
+    "bundle": "https://cf.ommv.net/bin/windows/panzerg2.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/PANZERG2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/PANZERG2.DCD",
+        "name": "Panzer General II Disc",
+        "size": 512461048,
+        "mount": "PANZERG2.cue"
+      }
+    ],
+    "gameSize": 524911443,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "524911443",
+    "background": "https://dosaws.ddyx.me/images/windows/panzerg2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/panzerg2_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "myst",
+    "title": "Myst",
+    "bundle": "https://cf.ommv.net/bin/windows/myst.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/MYST.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/MYST.DCD",
+        "name": "Myst Disc",
+        "size": 413313397,
+        "mount": "MYST.cue"
+      }
+    ],
+    "gameSize": 414085112,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1993",
+    "size": "414085112",
+    "background": "https://dosaws.ddyx.me/images/windows/myst.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/myst_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "myst_masterpiece",
+    "title": "Myst: Masterpiece Edition",
+    "bundle": "https://cf.ommv.net/bin/windows/mystme.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/MYSTME.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/MYSTME.DCD",
+        "name": "Myst: Masterpiece Edition Disc",
+        "size": 500384499,
+        "mount": "MYSTME.cue"
+      }
+    ],
+    "gameSize": 515103693,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "515103693",
+    "background": "https://dosaws.ddyx.me/images/windows/mystme.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/mystme_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "heart_of_darkness",
+    "title": "Heart of Darkness",
+    "bundle": "https://cf.ommv.net/bin/windows/hod.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/HOD.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/HOD.DCD",
+        "name": "Heart of Darkness Disc",
+        "size": 629534954,
+        "mount": "HOD.cue"
+      }
+    ],
+    "gameSize": 657339064,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "657339064",
+    "background": "https://dosaws.ddyx.me/images/windows/hod.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/hod_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "riven",
+    "title": "Riven",
+    "bundle": "https://cf.ommv.net/bin/windows/rtstm.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/RTSTM.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RTSTM01.DCD",
+        "name": "Riven Disc 1",
+        "size": 344420565,
+        "mount": "RTSTM01.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RTSTM02.DCD",
+        "name": "Riven Disc 2",
+        "size": 387897014,
+        "mount": "RTSTM02.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RTSTM03.DCD",
+        "name": "Riven Disc 3",
+        "size": 396593352,
+        "mount": "RTSTM03.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RTSTM04.DCD",
+        "name": "Riven Disc 4",
+        "size": 356961719,
+        "mount": "RTSTM04.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RTSTM05.DCD",
+        "name": "Riven Disc 5",
+        "size": 428928380,
+        "mount": "RTSTM05.ISO"
+      }
+    ],
+    "gameSize": 2009552031,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "2009552031",
+    "background": "https://dosaws.ddyx.me/images/windows/rtstm.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/rtstm_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "realmyst",
+    "title": "RealMyst: Interactive 3D Edition",
+    "bundle": "https://cf.ommv.net/bin/windows/realmyst.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/REALMYST.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/REALMYST.DCD",
+        "name": "RealMyst: Interactive 3D Edition Disc",
+        "size": 545954571,
+        "mount": "REALMYST.ISO"
+      }
+    ],
+    "gameSize": 580848763,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "580848763",
+    "background": "https://dosaws.ddyx.me/images/windows/myst.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/realmyst_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "colonization",
+    "title": "Sid Meier&#x27;s Colonization",
+    "bundle": "https://cf.ommv.net/bin/dos/colonize.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 4538288,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "4538288",
+    "background": "https://dosaws.ddyx.me/images/dos/colonize.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/colonize_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "bistro2",
+    "title": "Bistro 2: Challenge the World (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/bistro2.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/BISTRO2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BISTRO2.DCD",
+        "name": "Bistro 2 (Chinese) Disc 1",
+        "size": 30138333,
+        "mount": "BISTRO2.ISO"
+      }
+    ],
+    "gameSize": 31210777,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "31210777",
+    "background": "https://dosaws.ddyx.me/images/windows/bistro2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/bistro2_cover.webp",
+    "autoCommand": "undefined"
+  },
+  {
+    "id": "uncharted_waters2_cn",
+    "title": "Uncharted Waters II: New Horizons (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/uw2.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 3887710,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "3887710",
+    "launch": "run({type:\"remote-bundle\",url:new URL(\"https://cf.ommv.net/bin/dos/uw2.jsdos\",document.baseURI)",
+    "type": "0",
+    "background": "https://dosaws.ddyx.me/images/dos/uw2.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/uw2_cover.webp"
+  },
+  {
+    "id": "warcraft2_tides",
+    "title": "Warcraft II: Tides of Darkness",
+    "bundle": "https://cf.ommv.net/bin/dos/wc2_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/WC2.DCD",
+        "name": "Warcraft II: Tides of Darkness Disc",
+        "size": 138593446,
+        "mount": "WC2.CUE"
+      }
+    ],
+    "gameSize": 156055660,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1995",
+    "size": "156055660",
+    "type": "0",
+    "background": "https://dosaws.ddyx.me/images/dos/wc2.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/wc2_cover.webp"
+  },
+  {
+    "id": "warcraft2_beyond",
+    "title": "Warcraft II: Beyond the Dark Portal",
+    "bundle": "https://cf.ommv.net/bin/dos/wc2_bdp_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/WC2BDP.DCD",
+        "name": "Warcraft II: Beyond the Dark Portal Disc",
+        "size": 164497999,
+        "mount": "WC2BDP.CUE"
+      }
+    ],
+    "gameSize": 181960213,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "181960213",
+    "type": "0",
+    "background": "https://dosaws.ddyx.me/images/dos/wc2.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/wc2bdp_cover.webp"
+  },
+  {
+    "id": "pharaoh_cleopatra",
+    "title": "Pharaoh &amp; Cleopatra",
+    "bundle": "https://cf.ommv.net/bin/windows/pharaoh.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/PHARAOH.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/PHARAOH.DCD",
+        "name": "Pharaoh &amp; Cleopatra Disc",
+        "size": 694629207,
+        "mount": "PHARAOH.cue"
+      }
+    ],
+    "gameSize": 779094592,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2002",
+    "size": "779094592",
+    "type": "1",
+    "background": "https://dosaws.ddyx.me/images/windows/pharaoh.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/pharaoh_cover.webp"
+  },
+  {
+    "id": "cnc_tiberian_dawn",
+    "title": "Command &amp; Conquer",
+    "bundle": "https://cf.ommv.net/bin/dos/cnc_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/CNC_GDI.DCD",
+        "name": "GDI Mission Disc",
+        "size": 298196354,
+        "mount": "CNC_GDI.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/CNC_NOD.DCD",
+        "name": "NOD Mission Disc",
+        "size": 283428959,
+        "mount": "CNC_NOD.ISO"
+      }
+    ],
+    "gameSize": 588432211,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1995",
+    "size": "588432211",
+    "type": "0",
+    "background": "https://dosaws.ddyx.me/images/dos/cnc.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/cnc_cover.webp"
+  },
+  {
+    "id": "theme_hospital",
+    "title": "Theme Hospital",
+    "bundle": "https://cf.ommv.net/bin/dos/th_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/HOSPITAL.DCD",
+        "name": "Theme Hospital Disc",
+        "size": 153774245,
+        "mount": "HOSPITAL.cue"
+      }
+    ],
+    "gameSize": 205073308,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1997",
+    "size": "205073308",
+    "type": "0",
+    "background": "https://dosaws.ddyx.me/images/dos/th.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/th_cover.webp"
+  },
+  {
+    "id": "bistro_taiwan",
+    "title": "Bistro Taiwan",
+    "bundle": "https://cf.ommv.net/bin/windows/bistro2tw.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/BISTRO2TW.DCD",
+    "cdImages": [],
+    "gameSize": 32454057,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "32454057",
+    "background": "https://dosaws.ddyx.me/images/windows/bistro2tw.jpg",
+    "cover": "https://dosaws.ddyx.me/images/windows/bistro2tw_cover.jpg"
+  },
+  {
+    "id": "transport_tycoon_deluxe",
+    "title": "Transport Tycoon Deluxe",
+    "bundle": "https://cf.ommv.net/bin/dos/ttdx.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 6069950,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1995",
+    "size": "6069950",
+    "background": "https://dosaws.ddyx.me/images/dos/ttdx.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/ttdx_cover.webp"
+  },
+  {
+    "id": "railroad_tycoon2_platinum",
+    "title": "Railroad Tycoon II Platinum",
+    "bundle": "https://cf.ommv.net/bin/windows/rt2p.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/RT2P.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/RT2P.DCD",
+        "name": "Railroad Tycoon II Disc",
+        "size": 555199728,
+        "mount": "RT2P.cue"
+      }
+    ],
+    "gameSize": 800335736,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "800335736",
+    "background": "https://dosaws.ddyx.me/images/windows/rt2p.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/rt2p_cover.webp"
+  },
+  {
+    "id": "capitalism_plus",
+    "title": "Capitalism Plus",
+    "bundle": "https://cf.ommv.net/bin/dos/capp_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/CAPPLUS.DCD",
+        "name": "Capitalism Plus Disc",
+        "size": 135274944,
+        "mount": "CAPPLUS.cue"
+      }
+    ],
+    "gameSize": 143516106,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "143516106",
+    "background": "https://dosaws.ddyx.me/images/dos/capplus.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/capplus_cover.webp"
+  },
+  {
+    "id": "sm_gettysburg",
+    "title": "Sid Meier&#x27;s Gettysburg!",
+    "bundle": "https://cf.ommv.net/bin/windows/smg.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/SMG.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SMG.DCD",
+        "name": "Sid Meier&#x27;s Gettysburg! Disc",
+        "size": 384641728,
+        "mount": "SMG.ISO"
+      }
+    ],
+    "gameSize": 396840637,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "396840637",
+    "background": "https://dosaws.ddyx.me/images/windows/smg.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/smg_cover.webp"
+  },
+  {
+    "id": "silent_hunter_ce",
+    "title": "Silent Hunter: Commander&#x27;s Edition",
+    "bundle": "https://cf.ommv.net/bin/dos/shce_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/SHCE.DCD",
+        "name": "Silent Hunter: Commander&#x27;s Edition Disc",
+        "size": 259535938,
+        "mount": "SHCE.ISO"
+      }
+    ],
+    "gameSize": 274256668,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "274256668",
+    "background": "https://dosaws.ddyx.me/images/dos/shce.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/shce_cover.webp"
+  },
+  {
+    "id": "smac",
+    "title": "Sid Meier&#x27;s Alpha Centauri",
+    "bundle": "https://cf.ommv.net/bin/windows/ac.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/ACPP.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/ACPP.DCD",
+        "name": "Sid Meier&#x27;s Alpha Centauri Disc 1",
+        "size": 564325116,
+        "mount": "ACPP.cue"
+      }
+    ],
+    "gameSize": 597400104,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "597400104",
+    "background": "https://dosaws.ddyx.me/images/windows/ac.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/ac_cover.webp"
+  },
+  {
+    "id": "smac_xf",
+    "title": "Sid Meier&#x27;s Alien Crossfire",
+    "bundle": "https://cf.ommv.net/bin/windows/acac.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/ACPP.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/ACPP.DCD",
+        "name": "Sid Meier&#x27;s Alien Crossfire Disc",
+        "size": 564325116,
+        "mount": "ACPP.cue"
+      }
+    ],
+    "gameSize": 597400104,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "597400104",
+    "background": "https://dosaws.ddyx.me/images/windows/ac.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/acac_cover.webp"
+  },
+  {
+    "id": "simcity2000",
+    "title": "SimCity 2000",
+    "bundle": "https://cf.ommv.net/bin/dos/sc2000.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 3621721,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "3621721",
+    "background": "https://dosaws.ddyx.me/images/dos/simcity2000.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/simcity2000_cover.webp"
+  },
+  {
+    "id": "sub_culture",
+    "title": "Sub Culture",
+    "bundle": "https://cf.ommv.net/bin/windows/subculture.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/SUBCULTURE.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SUBCULTURE.DCD",
+        "name": "Sub Culture Disc",
+        "size": 215260466,
+        "mount": "SUBCULTURE.cue"
+      }
+    ],
+    "gameSize": 238963425,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "238963425",
+    "background": "https://dosaws.ddyx.me/images/windows/subculture.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/subculture_cover.webp"
+  },
+  {
+    "id": "commandos_bel",
+    "title": "Commandos: Behind Enemy Lines",
+    "bundle": "https://cf.ommv.net/bin/windows/commandos.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/CMDOBEL.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/CMDOBEL.DCD",
+        "name": "Commandos: Behind Enemy Lines Disc",
+        "size": 483839369,
+        "mount": "CMDOBEL.cue"
+      }
+    ],
+    "gameSize": 529943818,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "529943818",
+    "background": "https://dosaws.ddyx.me/images/windows/commandos.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/commandos_cover.webp"
+  },
+  {
+    "id": "civ2_tot",
+    "title": "Civilization II: Test of Time",
+    "bundle": "https://cf.ommv.net/bin/windows/civ2tot.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/CIV2TOT.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/CIV2TOT.DCD",
+        "name": "Civilization II: Test of Time Disc",
+        "size": 352498967,
+        "mount": "CIV2TOT.cue"
+      }
+    ],
+    "gameSize": 393375177,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "393375177",
+    "background": "https://dosaws.ddyx.me/images/windows/civ2tot.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/civ2tot_cover.webp"
+  },
+  {
+    "id": "civ2_mpgold",
+    "title": "Civilization II: Multiplayer Gold Edition",
+    "bundle": "https://cf.ommv.net/bin/windows/civ2.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/CIV2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/CIV2.DCD",
+        "name": "Civilization II: Multiplayer Gold Edition Disc",
+        "size": 385366682,
+        "mount": "CIV2.cue"
+      }
+    ],
+    "gameSize": 405056014,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "405056014",
+    "background": "https://dosaws.ddyx.me/images/windows/civ2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/civ2_cover.webp"
+  },
+  {
+    "id": "colonial_plan_cn",
+    "title": "Colonial Plan (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/aps.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 6247394,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "6247394",
+    "background": "https://dosaws.ddyx.me/images/dos/aps.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/aps_cover.webp"
+  },
+  {
+    "id": "blade_runner",
+    "title": "Blade Runner",
+    "bundle": "https://cf.ommv.net/bin/windows/blade.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/BLADE.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BLADE1.DCD",
+        "name": "Blade Runner Disc 1",
+        "size": 394712507,
+        "mount": "BLADE1.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BLADE2.DCD",
+        "name": "Blade Runner Disc 2",
+        "size": 402070103,
+        "mount": "BLADE2.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BLADE3.DCD",
+        "name": "Blade Runner Disc 3",
+        "size": 382842398,
+        "mount": "BLADE3.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BLADE4.DCD",
+        "name": "Blade Runner Disc 4",
+        "size": 340860430,
+        "mount": "BLADE4.ISO"
+      }
+    ],
+    "gameSize": 1639639878,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "1639639878",
+    "background": "https://dosaws.ddyx.me/images/windows/bladerunner.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/bladerunner_cover.webp"
+  },
+  {
+    "id": "army_men",
+    "title": "Army Men",
+    "bundle": "https://cf.ommv.net/bin/windows/armymen.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/ARMYMEN.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/ARMYMEN.DCD",
+        "name": "Army Men Disc",
+        "size": 344774772,
+        "mount": "ARMYMEN.cue"
+      }
+    ],
+    "gameSize": 367875249,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "367875249",
+    "background": "https://dosaws.ddyx.me/images/windows/armymen.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/armymen_cover.webp"
+  },
+  {
+    "id": "army_men2",
+    "title": "Army Men II",
+    "bundle": "https://cf.ommv.net/bin/windows/armymen2.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/ARMYMEN2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/ARMYMEN2.DCD",
+        "name": "Army Men II Disc",
+        "size": 563785267,
+        "mount": "ARMYMEN2.cue"
+      }
+    ],
+    "gameSize": 592989434,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "592989434",
+    "background": "https://dosaws.ddyx.me/images/windows/armymen2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/armymen2_cover.webp"
+  },
+  {
+    "id": "another_world",
+    "title": "Another World",
+    "bundle": "https://cf.ommv.net/bin/dos/aworld.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 2239365,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1991",
+    "size": "2239365",
+    "background": "https://dosaws.ddyx.me/images/dos/aworld.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/aworld_cover.webp"
+  },
+  {
+    "id": "alone_dark3",
+    "title": "Alone in the Dark 3",
+    "bundle": "https://cf.ommv.net/bin/dos/aitd3_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/AITD3.DCD",
+        "name": "Alone in the Dark 3 Disc",
+        "size": 329295931,
+        "mount": "AITD3.ISO"
+      }
+    ],
+    "gameSize": 362584336,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "362584336",
+    "background": "https://dosaws.ddyx.me/images/dos/aitd3.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/aitd3_cover.webp"
+  },
+  {
+    "id": "age_of_wonders",
+    "title": "Age of Wonders",
+    "bundle": "https://cf.ommv.net/bin/windows/aow.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/AOW.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/AOW.DCD",
+        "name": "Age of Wonders Disc",
+        "size": 268975355,
+        "mount": "AOW.cue"
+      }
+    ],
+    "gameSize": 420313414,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "420313414",
+    "background": "https://dosaws.ddyx.me/images/windows/aow.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/aow_cover.webp"
+  },
+  {
+    "id": "anno1602",
+    "title": "1602 A.D.",
+    "bundle": "https://cf.ommv.net/bin/windows/1602ad.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/1602AD.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/1602AD.DCD",
+        "name": "1602 A.D. Disc",
+        "size": 660685315,
+        "mount": "1602AD.cue"
+      }
+    ],
+    "gameSize": 700197993,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "700197993",
+    "background": "https://dosaws.ddyx.me/images/windows/1602ad.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/1602ad_cover.webp"
+  },
+  {
+    "id": "aerobiz_supersonic_cn",
+    "title": "Aerobiz Supersonic (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/as2.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 2811325,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1993",
+    "size": "2811325",
+    "background": "https://dosaws.ddyx.me/images/dos/as2.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/as2_cover.webp"
+  },
+  {
+    "id": "afterlife",
+    "title": "Afterlife",
+    "bundle": "https://cf.ommv.net/bin/dos/alife_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/ALIFE.DCD",
+        "name": "Afterlife Disc",
+        "size": 133639142,
+        "mount": "ALIFE.cue"
+      }
+    ],
+    "gameSize": 135103088,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "135103088",
+    "background": "https://dosaws.ddyx.me/images/dos/alife.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/alife_cover.webp"
+  },
+  {
+    "id": "mdk2",
+    "title": "MDK2",
+    "bundle": "https://cf.ommv.net/bin/windows/mdk2.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/MDK2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/MDK2.DCD",
+        "name": "MDK2 Disc",
+        "size": 493579726,
+        "mount": "MDK2.cue"
+      }
+    ],
+    "gameSize": 702848865,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "702848865",
+    "background": "https://dosaws.ddyx.me/images/windows/mdk2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/mdk2_cover.webp"
+  },
+  {
+    "id": "ms_casino",
+    "title": "Microsoft Casino",
+    "bundle": "https://cf.ommv.net/bin/windows/mscasino.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/MSCASINO.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/MSCASINO.DCD",
+        "name": "Microsoft Casino Disc",
+        "size": 514112596,
+        "mount": "MSCASINO.cue"
+      }
+    ],
+    "gameSize": 519837258,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "519837258",
+    "background": "https://dosaws.ddyx.me/images/windows/mscasino.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/mscasino_cover.webp"
+  },
+  {
+    "id": "lego_chess",
+    "title": "Lego Chess",
+    "bundle": "https://cf.ommv.net/bin/windows/legochess.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/LEGOCHESS.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/LEGOCHESS.DCD",
+        "name": "Lego Chess Disc",
+        "size": 241280956,
+        "mount": "LEGOCHESS.ISO"
+      }
+    ],
+    "gameSize": 257074693,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "257074693",
+    "background": "https://dosaws.ddyx.me/images/windows/legochess.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/legochess_cover.webp"
+  },
+  {
+    "id": "fallout1",
+    "title": "Fallout",
+    "bundle": "https://cf.ommv.net/bin/dos/fallout_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/FALLOUT.DCD",
+        "name": "Fallout Disc",
+        "size": 609403939,
+        "mount": "FALLOUT.ISO"
+      }
+    ],
+    "gameSize": 516354893,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1997",
+    "size": "516354893",
+    "background": "https://dosaws.ddyx.me/images/dos/fallout.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/fallout_cover.webp"
+  },
+  {
+    "id": "daikoukai3_cn",
+    "title": "Daikoukai Jidai III: Costa del Sol (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/uw3cht.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/UW3.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/UW3.DCD",
+        "name": "\u5927\u822a\u6d77\u6642\u4ee3III Costa del Sol Disc",
+        "size": 181642483,
+        "mount": "UW3.cue"
+      }
+    ],
+    "gameSize": 230631553,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1996",
+    "size": "230631553",
+    "background": "https://dosaws.ddyx.me/images/windows/uw3.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/uw3_cover.webp"
+  },
+  {
+    "id": "theme_park",
+    "title": "Theme Park",
+    "bundle": "https://cf.ommv.net/bin/dos/tp.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 7898688,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "7898688",
+    "background": "https://dosaws.ddyx.me/images/dos/tpw.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/tpw_cover.webp"
+  },
+  {
+    "id": "dungeon_keeper2",
+    "title": "Dungeon Keeper 2",
+    "bundle": "https://cf.ommv.net/bin/windows/dk2.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/DK2.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/DK2.DCD",
+        "name": "Dungeon Keeper 2 Disc",
+        "size": 513799548,
+        "mount": "DK2.cue"
+      }
+    ],
+    "gameSize": 860856039,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "860856039",
+    "background": "https://dosaws.ddyx.me/images/windows/dk2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/dk2_cover.webp"
+  },
+  {
+    "id": "dungeon_keeper",
+    "title": "Dungeon Keeper",
+    "bundle": "https://cf.ommv.net/bin/dos/dkeeper_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/DKEEPER.DCD",
+        "name": "Dungeon Keeper Disc",
+        "size": 318918902,
+        "mount": "DKEEPER.CUE"
+      }
+    ],
+    "gameSize": 365311222,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1997",
+    "size": "365311222",
+    "background": "https://dosaws.ddyx.me/images/dos/dkeeper.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/dkeeper_cover.webp"
+  },
+  {
+    "id": "syndicate_wars",
+    "title": "Syndicate Wars",
+    "bundle": "https://cf.ommv.net/bin/dos/swars_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/SWARS.DCD",
+        "name": "Syndicate Wars Disc",
+        "size": 204922457,
+        "mount": "SWARS.CUE"
+      }
+    ],
+    "gameSize": 238762865,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "238762865",
+    "background": "https://dosaws.ddyx.me/images/dos/swars.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/swars_cover.webp"
+  },
+  {
+    "id": "planescape_torment",
+    "title": "Planescape: Torment",
+    "bundle": "https://cf.ommv.net/bin/windows/pst.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/PST.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/PST02.DCD",
+        "name": "Planescape: Torment Disc 2",
+        "size": 395534280,
+        "mount": "PST02.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/PST03.DCD",
+        "name": "Planescape: Torment Disc 3",
+        "size": 340375806,
+        "mount": "PST03.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/PST04.DCD",
+        "name": "Planescape: Torment Disc 4",
+        "size": 466588422,
+        "mount": "PST04.cue"
+      }
+    ],
+    "gameSize": 1202498508,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1999",
+    "size": "1202498508",
+    "background": "https://dosaws.ddyx.me/images/windows/pst.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/pst_cover.webp"
+  },
+  {
+    "id": "baldurs_gate_saga",
+    "title": "Baldur&#x27;s Gate: The Original Saga",
+    "bundle": "https://cf.ommv.net/bin/windows/bgtos.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/BGTOS.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BGTOS01.DCD",
+        "name": "Baldur&#x27;s Gate: The Original Saga Disc 1",
+        "size": 716999352,
+        "mount": "BGTOS01.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BGTOS02.DCD",
+        "name": "Baldur&#x27;s Gate: The Original Saga Disc 2",
+        "size": 732732933,
+        "mount": "BGTOS02.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/BGTOS03.DCD",
+        "name": "Baldur&#x27;s Gate: The Original Saga Disc 3",
+        "size": 739109758,
+        "mount": "BGTOS03.cue"
+      }
+    ],
+    "gameSize": 2771342991,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "2771342991",
+    "background": "https://dosaws.ddyx.me/images/windows/bgtos.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/bgtos_cover.webp"
+  },
+  {
+    "id": "richman2_cn",
+    "title": "Richman 2 (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/rich2.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 2566282,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1993",
+    "size": "2566282",
+    "background": "https://dosaws.ddyx.me/images/dos/rich2.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/rich2_cover.webp"
+  },
+  {
+    "id": "richman3_cn",
+    "title": "Richman 3 (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/rich3.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 8275142,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "8275142",
+    "background": "https://dosaws.ddyx.me/images/dos/rich3.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/rich3_cover.webp"
+  },
+  {
+    "id": "sanitarium",
+    "title": "Sanitarium",
+    "bundle": "https://cf.ommv.net/bin/windows/sntrm.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/SNTRM.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SNTRM01.DCD",
+        "name": "Sanitarium Disc 1",
+        "size": 379439334,
+        "mount": "SNTRM01.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SNTRM02.DCD",
+        "name": "Sanitarium Disc 2",
+        "size": 463840714,
+        "mount": "SNTRM02.ISO"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SNTRM03.DCD",
+        "name": "Sanitarium Disc 3",
+        "size": 452078595,
+        "mount": "SNTRM03.ISO"
+      }
+    ],
+    "gameSize": 1321273161,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "1321273161",
+    "background": "https://dosaws.ddyx.me/images/windows/sntrm.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/sntrm_cover.webp"
+  },
+  {
+    "id": "sorcerian_forever_cn",
+    "title": "Sorcerian Forever (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/sorfcht.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/SORFCHT.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/SORFCHT.DCD",
+        "name": "Sorcerian Forever (Chinese) Disc",
+        "size": 84142747,
+        "mount": "SORFCHT.cue"
+      }
+    ],
+    "gameSize": 88961348,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1997",
+    "size": "88961348",
+    "background": "https://dosaws.ddyx.me/images/windows/sorf.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/sorfcht_cover.webp"
+  },
+  {
+    "id": "taikou_risshiden2_cn",
+    "title": "Taikou Risshiden II (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/taikou2chs.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHS_OS.DCD",
+    "gameImages": "/bin/windows/images/game/TAIKOU2CHS.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/TAIKOU2CHS.DCD",
+        "name": "Taikou Risshiden II (Chinese) Disc",
+        "size": 82561522,
+        "mount": "TAIKOU2CHS.cue"
+      }
+    ],
+    "gameSize": 87142103,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1996",
+    "size": "87142103",
+    "background": "https://dosaws.ddyx.me/images/windows/taikou2.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/taikou2_cover.webp"
+  },
+  {
+    "id": "taikou_risshiden4_cn",
+    "title": "Taiko Risshiden IV (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/taikou4cht.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/TAIKOU4CHT.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/TAIKOU4CHT.DCD",
+        "name": "Taiko Risshiden IV (Chinese) Disc",
+        "size": 273261912,
+        "mount": "TAIKOU4CHT.cue"
+      }
+    ],
+    "gameSize": 400690101,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2002",
+    "size": "400690101",
+    "background": "https://dosaws.ddyx.me/images/windows/taikou4.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/taikou4_cover.webp"
+  },
+  {
+    "id": "taikou_risshiden1_cn",
+    "title": "Taik\u014d Risshiden (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/taiko.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 3298164,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1992",
+    "size": "3298164",
+    "background": "https://dosaws.ddyx.me/images/dos/taiko.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/taiko_cover.webp"
+  },
+  {
+    "id": "taikou_risshiden3_cn",
+    "title": "Taikou Risshiden III (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/taikou3chs.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHS_OS.DCD",
+    "gameImages": "/bin/windows/images/game/TAIKOU3CHS.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/TAIKOU3CHS.DCD",
+        "name": "Taikou Risshiden III (Chinese) Disc",
+        "size": 202751852,
+        "mount": "TAIKOU3CHS.cue"
+      }
+    ],
+    "gameSize": 226085331,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "226085331",
+    "background": "https://dosaws.ddyx.me/images/windows/taikou3.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/taikou3chs_cover.webp"
+  },
+  {
+    "id": "city_of_lost_children",
+    "title": "The City of Lost Children",
+    "bundle": "https://cf.ommv.net/bin/dos/colc_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/COLC.DCD",
+        "name": "The City of Lost Children Disc",
+        "size": 523601902,
+        "mount": "COLC.cue"
+      }
+    ],
+    "gameSize": 544339112,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1997",
+    "size": "544339112",
+    "background": "https://dosaws.ddyx.me/images/dos/colc.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/colc_cover.webp"
+  },
+  {
+    "id": "hilarious_3kingdoms_cn",
+    "title": "The Hilarious Three Kingdoms (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/bxsg.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 5109096,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "5109096",
+    "background": "https://dosaws.ddyx.me/images/dos/bxsg.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/bxsg_cover.webp"
+  },
+  {
+    "id": "incredible_machine2",
+    "title": "The Incredible Machine 2",
+    "bundle": "https://cf.ommv.net/bin/dos/tim2.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 3065522,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "3065522",
+    "background": "https://dosaws.ddyx.me/images/dos/tim2.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/tim2_cover.webp"
+  },
+  {
+    "id": "lord_of_beast_cn",
+    "title": "The Lord of the Beast: Chronicle of Amadis (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/lob.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/LOB.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/LOB.DCD",
+        "name": "The Lord of the Beast: Chronicle of Amadis Disc",
+        "size": 783701180,
+        "mount": "LOB.cue"
+      }
+    ],
+    "gameSize": 1283502494,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2002",
+    "size": "1283502494",
+    "background": "https://dosaws.ddyx.me/images/windows/lob.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/lob_cover.webp"
+  },
+  {
+    "id": "lost_vikings",
+    "title": "The Lost Vikings",
+    "bundle": "https://cf.ommv.net/bin/dos/lostvik.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 2308054,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "true",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1993",
+    "size": "2308054",
+    "background": "https://dosaws.ddyx.me/images/dos/lostvik.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/lostvik_cover.webp"
+  },
+  {
+    "id": "millionaire_3kingdoms2_cn",
+    "title": "The Millionaire of 3 Kingdoms 2 (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/mk2.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 16087137,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1998",
+    "size": "16087137",
+    "background": "https://dosaws.ddyx.me/images/dos/mk2.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/mk2_cover.webp"
+  },
+  {
+    "id": "typing_of_the_dead",
+    "title": "The Typing of the Dead",
+    "bundle": "https://cf.ommv.net/bin/windows/totd.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/TOTD.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/TOTD.DCD",
+        "name": "The Typing of the Dead Disc",
+        "size": 566498379,
+        "mount": "TOTD.cue"
+      }
+    ],
+    "gameSize": 979093378,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2001",
+    "size": "979093378",
+    "background": "https://dosaws.ddyx.me/images/windows/totd.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/totd_cover.webp"
+  },
+  {
+    "id": "theme_hospital_cn",
+    "title": "Theme Hospital (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/thcn_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/HOSPITCN.DCD",
+        "name": "Theme Hospital Disc",
+        "size": 144765388,
+        "mount": "HOSPITCN.CUE"
+      }
+    ],
+    "gameSize": 158372609,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1997",
+    "size": "158372609",
+    "background": "https://dosaws.ddyx.me/images/dos/th.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/th_cover.webp"
+  },
+  {
+    "id": "time_commando",
+    "title": "Time Commando",
+    "bundle": "https://cf.ommv.net/bin/dos/timecomm_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/TIMECO.DCD",
+        "name": "Time Commando Disc",
+        "size": 481946581,
+        "mount": "TIMECO.cue"
+      }
+    ],
+    "gameSize": 485585659,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1996",
+    "size": "485585659",
+    "background": "https://dosaws.ddyx.me/images/dos/timecomm.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/timecomm_cover.webp"
+  },
+  {
+    "id": "tokimeki_memorial_cn",
+    "title": "Tokimeki Memorial: Forever with You (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/tmfwycht.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/TMFWYCHT.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/TMFWYCHT.DCD",
+        "name": "\u3068\u304d\u3081\u304d\u30e1\u30e2\u30ea\u30a2\u30eb \u301cforever with you\u301c (CHT) Disc",
+        "size": 523428689,
+        "mount": "TMFWYCHT.ISO"
+      }
+    ],
+    "gameSize": 523743546,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "523743546",
+    "background": "https://dosaws.ddyx.me/images/windows/tmfwy.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/tmfwy_cover.webp"
+  },
+  {
+    "id": "tun_town",
+    "title": "Tun Town",
+    "bundle": "https://cf.ommv.net/bin/dos/tt_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/TT01.DCD",
+        "name": "Tun Town Disc 1",
+        "size": 254659285,
+        "mount": "TT01.cue"
+      },
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/TT02.DCD",
+        "name": "Tun Town Disc 2",
+        "size": 141431993,
+        "mount": "TT02.cue"
+      }
+    ],
+    "gameSize": 564733269,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1998",
+    "size": "564733269",
+    "background": "https://dosaws.ddyx.me/images/dos/tt.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/tt_cover.webp"
+  },
+  {
+    "id": "tyrian2000",
+    "title": "Tyrian 2000",
+    "bundle": "https://cf.ommv.net/bin/dos/t2k_cd.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/dos/images/T2K.DCD",
+        "name": "Tyrian 2000 Disc",
+        "size": 44795714,
+        "mount": "T2K.cue"
+      }
+    ],
+    "gameSize": 49522784,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "0",
+    "year": "1999",
+    "size": "49522784",
+    "background": "https://dosaws.ddyx.me/images/dos/t2k.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/t2k_cover.webp"
+  },
+  {
+    "id": "uw4_puk_cn",
+    "title": "Uncharted Waters IV: Porto Estado - Power Up Kit (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/uw4pukcht.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/UW4PUKCHT.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/UW4PUKCHT.DCD",
+        "name": "Uncharted Waters IV: Porto Estado - Power Up Kit (Chinese) Disc",
+        "size": 256594039,
+        "mount": "UW4PUKCHT.cue"
+      }
+    ],
+    "gameSize": 417494371,
+    "cd": "true",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "2000",
+    "size": "417494371",
+    "background": "https://dosaws.ddyx.me/images/windows/uw4pukjp.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/uw4pukcht_cover.webp"
+  },
+  {
+    "id": "uw2_en",
+    "title": "Uncharted Waters: New Horizons",
+    "bundle": "https://cf.ommv.net/bin/dos/uw2en.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 3750577,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "3750577",
+    "background": "https://dosaws.ddyx.me/images/dos/uw2en.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/uw2en_cover.webp"
+  },
+  {
+    "id": "vandal_hearts",
+    "title": "Vandal Hearts",
+    "bundle": "https://cf.ommv.net/bin/windows/vandal.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_JP_OS.DCD",
+    "gameImages": "/bin/windows/images/game/VANDAL.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/VANDAL.DCD",
+        "name": "\u30f4\u30a1\u30f3\u30c0\u30eb\u30cf\u30fc\u30c4 \uff5e\u5931\u308f\u308c\u305f\u53e4\u4ee3\u6587\u660e\uff5e Disc",
+        "size": 182065574,
+        "mount": "VANDAL.ISO"
+      }
+    ],
+    "gameSize": 182288764,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "182288764",
+    "background": "https://dosaws.ddyx.me/images/windows/vandal.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/vandal_cover.webp"
+  },
+  {
+    "id": "vandal_hearts_cn",
+    "title": "Vandal Hearts (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/windows/vandalcht.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_CHT_OS.DCD",
+    "gameImages": "/bin/windows/images/game/VANDALCHT.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/VANDALCHT.DCD",
+        "name": "\u30f4\u30a1\u30f3\u30c0\u30eb\u30cf\u30fc\u30c4 \uff5e\u5931\u308f\u308c\u305f\u53e4\u4ee3\u6587\u660e\uff5e (CHT) Disc",
+        "size": 186363031,
+        "mount": "VANDALCHT.ISO"
+      }
+    ],
+    "gameSize": 186680064,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "true",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "186680064",
+    "background": "https://dosaws.ddyx.me/images/windows/vandal.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/vandalcht_cover.webp"
+  },
+  {
+    "id": "warhammer_dark_omen",
+    "title": "Warhammer: Dark Omen",
+    "bundle": "https://cf.ommv.net/bin/windows/whdo.jsdos",
+    "bundle_cat": "windows",
+    "osImages": "/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
+    "gameImages": "/bin/windows/images/game/WHDO.DCD",
+    "cdImages": [
+      {
+        "link": "https://cf.ommv.net/bin/windows/images/disc/WHDO.DCD",
+        "name": "Warhammer: Dark Omen Disc",
+        "size": 510705345,
+        "mount": "WHDO.cue"
+      }
+    ],
+    "gameSize": 521967049,
+    "cd": "true",
+    "voodoo": "true",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "1",
+    "year": "1998",
+    "size": "521967049",
+    "background": "https://dosaws.ddyx.me/images/windows/whdo.webp",
+    "cover": "https://dosaws.ddyx.me/images/windows/whdo_cover.webp"
+  },
+  {
+    "id": "millionaire_3kingdoms_cn",
+    "title": "The Millionaire of 3 Kingdoms (Chinese)",
+    "bundle": "https://cf.ommv.net/bin/dos/mk.jsdos",
+    "bundle_cat": "dos",
+    "cdImages": [],
+    "gameSize": 2852896,
+    "cd": "false",
+    "voodoo": "false",
+    "mt32": "false",
+    "gm": "false",
+    "pc98": "false",
+    "os": "0",
+    "year": "1994",
+    "size": "2852896",
+    "background": "https://dosaws.ddyx.me/images/dos/mk.webp",
+    "cover": "https://dosaws.ddyx.me/images/dos/mk_cover.webp"
+  }
+]

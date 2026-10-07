@@ -1,0 +1,18 @@
+https://cf.ommv.net/bin/windows/aoe2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/aoe2.jsdos
+https://cf.ommv.net/bin/windows/images/game/AOE2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/AOE2.DCD
+https://cf.ommv.net/bin/windows/images/disc/AOE2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/AOE2.DCD
+https://cf.ommv.net/bin/windows/worms2.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/worms2.jsdos
+https://cf.ommv.net/bin/windows/images/game/WORMS2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/game/WORMS2.DCD
+https://cf.ommv.net/bin/windows/images/disc/WORMS2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/windows/images/disc/WORMS2.DCD
