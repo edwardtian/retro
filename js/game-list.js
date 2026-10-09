@@ -6,7 +6,8 @@
 
     const site = window.LocalSite;
     const games = (site.catalog.games || []).slice();
-    const state = { search: "", os: "all", sort: "title", readiness: new Map() };
+    const PAGE_SIZE = 10;
+    const state = { search: "", os: "all", sort: "title", readiness: new Map(), page: 1 };
 
     const grid = document.getElementById("game-grid");
     const emptyState = document.getElementById("empty-state");
@@ -68,6 +69,45 @@
         return badge;
     }
 
+    function renderPagination(visible) {
+        const host = document.getElementById("game-pagination");
+        if (!host) return;
+        const pages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+        if (state.page > pages) state.page = pages;
+        host.replaceChildren();
+        if (pages <= 1) { host.hidden = true; return; }
+        host.hidden = false;
+        const nav = document.createElement("ul");
+        nav.className = "pagination pagination-sm mb-0";
+        const item = (label, page, disabled, active) => {
+            const li = document.createElement("li");
+            li.className = "page-item" + (disabled ? " disabled" : "") + (active ? " active" : "");
+            const a = document.createElement("a");
+            a.className = "page-link";
+            a.href = "#";
+            a.textContent = label;
+            a.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (disabled || active) return;
+                state.page = page;
+                render();
+                checkVisibleGames();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+            li.appendChild(a);
+            nav.appendChild(li);
+        };
+        item("\u00ab", state.page - 1, state.page === 1, false);
+        for (let p = 1; p <= pages; p++) item(String(p), p, false, p === state.page);
+        item("\u00bb", state.page + 1, state.page === pages, false);
+        nav.appendChild(document.createElement("span"));
+        host.appendChild(nav);
+        const info = document.createElement("span");
+        info.className = "local-subtle ms-2";
+        info.textContent = visible.length + " game(s), page " + state.page + " of " + pages;
+        host.appendChild(info);
+    }
+
     function renderCard(game) {
         const column = document.createElement("div");
         column.className = "col-12 col-lg-6";
@@ -113,16 +153,25 @@
 
     function render() {
         const visible = sorted(games.filter(matches));
+        const pages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+        if (state.page > pages) state.page = pages;
+        const start = (state.page - 1) * PAGE_SIZE;
+        const slice = visible.slice(start, start + PAGE_SIZE);
         grid.replaceChildren();
-        for (const game of visible) grid.appendChild(renderCard(game));
+        for (const game of slice) grid.appendChild(renderCard(game));
         emptyState.hidden = visible.length > 0;
+        renderPagination(visible);
     }
+
+    function firstPage() { state.page = 1; }
 
     // --- controls ----------------------------------------------------------
 
     searchInput.addEventListener("input", function () {
         state.search = searchInput.value;
+        firstPage();
         render();
+        checkVisibleGames();
     });
 
     document.querySelectorAll("[data-os]").forEach(function (button) {
@@ -131,7 +180,9 @@
             document.querySelectorAll("[data-os]").forEach(function (other) {
                 other.classList.toggle("active", other === button);
             });
+            firstPage();
             render();
+            checkVisibleGames();
         });
     });
 
@@ -142,92 +193,38 @@
             document.querySelectorAll("[data-sort]").forEach(function (other) {
                 other.classList.toggle("active", other === link);
             });
+            firstPage();
             render();
+            checkVisibleGames();
         });
     });
 
+    // --- readiness checking ------------------------------------------------
+    // Only the games shown on the current page are HEAD-checked; results are
+    // cached per game, so returning to a page never re-checks it.
 
-    // --- workshop games -----------------------------------------------------
-    // Games built on the workshop page live in the server's library instead of
-    // catalog.js. They are fetched once and merged in, so they sit next to the
-    // built-in entries and are playable from here.
-    function libraryUrl(kind, value) {
-        if (!value) return null;
-        return kind === "zip"
-            ? "/api/library/zip?path=" + encodeURIComponent(value)
-            : "/api/library/file?path=" + encodeURIComponent(value);
-    }
-
-    function customEntry(entry) {
-        const windows = libraryUrl("zip", entry.windows);
-        return {
-            id: "custom_" + entry.id,
-            title: entry.title || entry.id,
-            os: "windows",
-            osLabel: "Windows 98",
-            year: entry.year,
-            publisher: entry.publisher,
-            genre: entry.genre,
-            players: "1",
-            // The workshop generates this machine's config on demand.
-            playUrl: "/play.html?config=" + encodeURIComponent(
-                "/api/workshop/config?mode=play&game=" + entry.id),
-            configUrl: null,
-            cover: "",
-            accent: ["#3b5a7d", "#101828"],
-            description: entry.description || "Installed in the workshop.",
-            custom: true,
-            files: [windows].filter(Boolean),
-            optionalFiles: [libraryUrl("file", entry.diff), libraryUrl("file", entry.iso)].filter(Boolean)
-        };
-    }
-
-    async function loadLibraryGames() {
-        let library = null;
-        try {
-            const response = await fetch("/api/library", { cache: "no-store" });
-            if (!response.ok) return;
-            library = await response.json();
-        } catch (error) {
-            return;                       // no library yet: catalog games only
-        }
-        const known = new Set(games.map(function (game) { return game.id; }));
-        const added = [];
-        ((library && library.games) || []).forEach(function (entry) {
-            const game = customEntry(entry);
-            if (known.has(game.id)) return;
-            known.add(game.id);
-            games.push(game);
-            added.push(game);
-        });
-        if (added.length === 0) return;
-        site.mountNav("games", { rightText: games.length + " game(s) installed" });
-        render();
-        for (const game of added) {
-            try {
-                state.readiness.set(game.id, await site.checkGameFiles(game));
-            } catch (error) {
-                state.readiness.set(game.id, { missing: [], corrupt: [], error: String(error) });
+    let checkRun = 0;
+    function checkVisibleGames() {
+        const run = ++checkRun;
+        const visible = sorted(games.filter(matches));
+        const start = (state.page - 1) * PAGE_SIZE;
+        (async function () {
+            for (const game of visible.slice(start, start + PAGE_SIZE)) {
+                if (run !== checkRun) return;          // the page changed meanwhile
+                if (state.readiness.has(game.id)) continue;
+                try {
+                    state.readiness.set(game.id, await site.checkGameFiles(game));
+                } catch (error) {
+                    state.readiness.set(game.id, { missing: [], corrupt: [], error: String(error) });
+                }
+                render();
             }
-            render();
-        }
+        })();
     }
 
     // --- start -------------------------------------------------------------
 
     site.mountNav("games", { rightText: games.length + " game(s) installed" });
     render();
-
-    loadLibraryGames();
-
-    (async function checkAll() {
-        for (const game of games) {
-            try {
-                state.readiness.set(game.id, await site.checkGameFiles(game));
-            } catch (error) {
-                state.readiness.set(game.id, { missing: [], corrupt: [], error: String(error) });
-            }
-            render();
-        }
-    })();
+    checkVisibleGames();
 })();

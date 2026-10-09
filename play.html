@@ -31,7 +31,7 @@
                 <div id="browserOtherWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">Please install and use the latest version of Chrome or Edge for the best experience.</div>
                 <div id="browserDiskspaceWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.9;background-color:rgb(255 0 0 / 30%);margin-top:10px">Your browser storage quota is low and you may not be able to load the game correctly.<br>Usage: <span id="diskspaceWarningUsage"></span> Available: <span id="diskspaceWarningAvailable"></span></div>
                 <div id="missingFilesWarning" style="display:none;margin:auto;margin-bottom:5px;position:relative;width:60%;max-width:560px;height:fit-content;padding:12px;border:1px solid #ff0000;border-radius:3px;opacity:0.95;background-color:rgb(255 0 0 / 30%);margin-top:10px;color:#fff;text-align:left">
-                    <strong>Game files are missing.</strong> This local mirror ships the player only -
+                    <strong>Game files are missing.</strong> The player is installed, but
                     the game's files are not in place:<br>
                     <span id="missingFilesList"></span>
                 </div>
@@ -90,10 +90,12 @@
                                     </div>
                                 </div>
                                 <div id="dosWindowGameCover" style="width:20%;aspect-ratio:3/4;background-color:rgba(0,0,0,0.7);position:absolute;top:30%;left:12.5%;box-shadow:0 2px 5px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center">
-                                    <span style="color:#cdd6e4;font-size:xx-small;text-align:center;padding:6px">Local mirror.<br>No cover art included.</span>
+                                    <span style="color:#cdd6e4;font-size:xx-small;text-align:center;padding:6px">No cover art included.</span>
                                 </div>
-                                <div style="position:absolute;bottom:10%;left:37.5%">
+                                <div style="position:absolute;bottom:10%;left:37.5%;display:flex;gap:10px;align-items:center">
                                     <button type="button" id="dosWindowGameStartButton" class="btn btn-primary" style="display:none;align-items:center;justify-content:center;height:fit-content"> <span class="game-start-label" style="font-size:larger;margin:10px">Play</span> </button>
+                                    <button type="button" id="ResetGameData" class="btn btn-outline-light btn-sm" style="display:none" title="Delete this game's browser state and browser save">Reset game data</button>
+                                    <button type="button" id="ExportDisks" class="btn btn-outline-light btn-sm" style="display:none" title="Download the live machine disks (sysddiff.vhd + gamediff.vhd) for diagnostics">Export disks</button>
                                 </div>
                             </div>
                         </div>

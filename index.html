@@ -14,12 +14,6 @@
     <header id="local-nav"></header>
 
     <main class="local-page">
-        <h1>Games</h1>
-        <div class="local-subtle mb-3">
-            Games installed in this local mirror. Each entry boots in the browser with the
-            dumped Retro Online player - nothing is downloaded from the internet.
-        </div>
-
         <div class="local-toolbar">
             <input type="search" id="game-search" class="form-control form-control-sm" style="max-width:260px"
                    placeholder="Search..." aria-label="Search games">
@@ -38,6 +32,7 @@
 
         <div id="game-grid" class="row g-3"></div>
         <div id="empty-state" class="empty-state" hidden>No game matches the current filter.</div>
+        <nav id="game-pagination" class="d-flex align-items-center gap-2 mt-3" hidden aria-label="Game list pages"></nav>
     </main>
 
     <script src="/lib/jquery/jquery.min.js"></script>

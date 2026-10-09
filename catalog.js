@@ -8,38 +8,35 @@
 
 window.LOCAL_CATALOG = {
     siteName: "Retro Game Playground",
-    siteSuffix: "local mirror",
 
     games: [
         {
-                "id": "pandora_box_cd",
+                "id": "pandoras_box",
                 "title": "Pandora's Box",
                 "os": "windows",
                 "osLabel": "Windows 95",
-                "year": 1999,
+                "year": "1999",
                 "publisher": "Microsoft",
                 "genre": "Puzzle",
                 "players": "1",
-                "playUrl": "/play.html?game=pandora_box_cd",
-                "configUrl": "/config-pandora_box_cd.js",
-                "cover": "",
+                "playUrl": "/play.html?game=pandoras_box",
+                "configUrl": "/config-pandoras_box.js",
+                "cover": "/images/games/pandoras_box_cover.jpg",
                 "accent": [
                         "#2b3a67",
                         "#101828"
                 ],
-                "description": "Microsoft's puzzle adventure game, installed on the shared Windows 95 image through the DDYX Windows-game flow (retro_game_builder.py); auto-starts via starter.ini.",
+                "description": "Microsoft's puzzle adventure.",
                 "files": [
-                        "/games/pandora_box_cd.jsdos",
+                        "/games/pandoras_box.jsdos",
                         "/games/bin/windows/tools/tools.zip",
-                        "/games/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
-                        "/games/bin/windows/images/game/PANDORA_BOX_CD.DCD"
+                        "/games/bin/windows/images/os/pandoras_box_OS.DCD",
+                        "/games/bin/windows/images/game/pandoras_box.DCD"
                 ],
                 "optionalFiles": [
-                        "/games/bin/windows/images/disc/PANDORA_BOX_CD.DCD"
+                        "/games/bin/windows/images/disc/pandoras_box.DCD"
                 ]
         },
-        
-        
         {
             id: "broodwar_cd",
             title: "StarCraft: Brood War",
@@ -67,62 +64,6 @@ window.LOCAL_CATALOG = {
                 "/games/bin/windows/tools/win95patch.zip",
                 "/games/bin/windows/images/disc/SCBW.DCD",
                 "/games/bin/windows/images/disc/SC.DCD"
-            ]
-        },
-        {
-            id: "pandora_cd",
-            title: "Pandora's Box CD",
-            os: "windows",
-            osLabel: "Windows 95",
-            year: 1998,
-            publisher: "Microsoft",
-            genre: "Puzzle",
-            players: "1",
-            playUrl: "/play.html?game=pandora_cd",
-            configUrl: "/config-pandora_cd.js",
-            // Optional cover art; when empty a gradient tile is drawn instead.
-            cover: "/images/games/pandoras_box_cover.webp",
-            accent: ["#2b3a67", "#101828"],
-            description: "Microsoft's puzzle game running on a Windows 98 machine disk " +
-                "created with the DosWasmX project (nbarkhina/DosWasmX), driven through " +
-                "the same DDYX Windows-image flow as StarCraft: the machine boots from a " +
-                "VHD and the game CD is available in the disc menu. Start the game from " +
-                "its desktop shortcut.",
-            files: [
-                "/games/pandora_cd.jsdos",
-                "/games/bin/windows/tools/tools.zip",
-                "/games/bin/windows/images/os/WIN95OSR2_EN_OS.DCD",
-                "/games/bin/windows/images/game/pandora_cd.DCD"
-            ],
-            optionalFiles: [
-                "/games/bin/windows/tools/win95patch.zip",
-                "/games/bin/windows/images/disc/pandora_cd_disc.DCD"
-            ]
-        },
-        {
-            id: "pandoras_box",
-            title: "Pandora's Box",
-            os: "windows",
-            osLabel: "Windows 98",
-            year: 1999,
-            publisher: "Microsoft",
-            genre: "Puzzle",
-            players: "1",
-            playUrl: "/play.html?game=pandoras_box",
-            configUrl: "/config-pandora.js",
-            cover: "/images/games/pandoras_box_cover.jpg",
-            accent: ["#5a3b7d", "#1b1030"],
-            description: "Microsoft's puzzle game running on a Windows 98 machine disk " +
-                "created with the DosWasmX project (nbarkhina/DosWasmX), driven through " +
-                "the same DDYX Windows-image flow as StarCraft: the machine boots from a " +
-                "VHD and the game CD is available in the disc menu. Start the game from " +
-                "its desktop shortcut.",
-            files: [
-                "/games/pandoras-box.jsdos",
-                "/games/bin/windows/images/os/PANDORAS_BOX_OS.DCD"
-            ],
-            optionalFiles: [
-                "/games/bin/windows/images/disc/PANDORAS_BOX.DCD"
             ]
         },
         {

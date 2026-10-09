@@ -27,14 +27,12 @@
         const brand = document.createElement("a");
         brand.className = "local-brand";
         brand.href = "/";
-        brand.innerHTML = (catalog.siteName || "Retro Online") +
-            ' <span>' + (catalog.siteSuffix || "") + "</span>";
+        brand.textContent = catalog.siteName || "Retro Online";
         nav.appendChild(brand);
 
         const links = document.createElement("div");
         links.className = "local-links";
         [["/", "Games", "games"],
-         ["/workshop.html", "Workshop", "workshop"],
          ["/settings.html", "Settings", "settings"]].forEach(function (entry) {
             const a = document.createElement("a");
             a.href = entry[0];

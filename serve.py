@@ -1027,8 +1027,13 @@ class Handler(SimpleHTTPRequestHandler):
         return MIME.get(ext) or super().guess_type(path)
 
     def end_headers(self):
-        # Cross-origin isolation: required by the classic dosx build
-        # (SharedArrayBuffer path). Harmless for the JSPI (dosx-edge) build.
+        # Cross-origin isolation headers. The JSPI (dosx-edge) build REQUIRES a
+        # secure, cross-origin isolated page (its worker checks
+        # self.crossOriginIsolated): serve via https or http://localhost. A LAN
+        # address (e.g. http://192.168.x.x:8000) is never a secure context, so
+        # app.js automatically falls back to the classic dosx build there; these
+        # headers are harmless for it. Behind a TLS proxy keep these headers
+        # intact (proxies forward response headers by default).
         self.send_header("Cross-Origin-Opener-Policy", "same-origin")
         self.send_header("Cross-Origin-Embedder-Policy", "require-corp")
         self.send_header("Cross-Origin-Resource-Policy", "cross-origin")
@@ -1179,6 +1184,13 @@ def main():
         print("Serving %s on http://%s:%d/  (Ctrl+C to stop)" % (args.root, display, port))
         print("Open http://%s:%d/ in your browser." % (display, port))
         print("Workshop library: %s" % Handler.library_dir)
+        if display in ("127.0.0.1", "localhost"):
+            print("Fast JSPI build: available (http://localhost is a secure context).")
+        else:
+            print("Note: non-localhost http is NOT a secure context, so the fast JSPI")
+            print("build is skipped and games use the classic build automatically.")
+            print("Host the same tree behind https (e.g. https://retro.playmake.io ->")
+            print("this server) to get the JSPI build; keep the COOP/COEP headers.")
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:

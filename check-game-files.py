@@ -14,7 +14,7 @@ Checks per file:
     no content is downloaded)
 
 The set of files to check is derived automatically from the player config
-scripts (config.js, config-pandora.js, config-<id>.js): every image URL each
+scripts (config.js, config-<id>.js): every image URL each
 game declares becomes a file to verify.
 
 Usage:
@@ -29,11 +29,7 @@ import sys
 import urllib.request
 
 # Files that are built locally (no CDN size to compare against).
-BUILT_LOCALLY = {
-    "games/pandoras-box.jsdos",
-    "games/bin/windows/images/os/PANDORAS_BOX_OS.DCD",
-    "games/bin/windows/images/disc/PANDORAS_BOX.DCD",
-}
+BUILT_LOCALLY = set()
 
 # Files needed only in some configurations: match by pattern instead of
 # listing every file, so newly added games work without editing this script.

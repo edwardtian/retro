@@ -73,7 +73,18 @@ function showWarning(message) {
 
 function reportStartFailure(error) {
     console.error(error);
-    showWarning((error && error.message) ? error.message : String(error));
+    const msg = (error && error.message) ? error.message : String(error);
+    // The dosx-edge worker panics on missing cross-origin isolation. Reload into
+    // the classic build once instead of dead-ending in the popup.
+    if (msg.indexOf("OPFS pthread requires") !== -1 &&
+        wasmPrefix === "/js/dosx-edge/" &&
+        !new URLSearchParams(window.location.search).has("build")) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("build", "dosx");
+        window.location.replace(url.href);
+        return;
+    }
+    showWarning(msg);
 }
 
 function updateDiscSwapStatus() {
@@ -127,6 +138,31 @@ switch (bowser.getParser(window.navigator.userAgent).getBrowser().name) {
     else if (requested === "dosx-edge") wasmPrefix = "/js/dosx-edge/";
     else if (requested && requested !== "auto") showWarning("Unknown build '" + requested + "' in config.forceBuild/?build= - using " + wasmPrefix);
 })();
+
+// The dosx-edge worker refuses to start without a secure, cross-origin isolated
+// page ("OPFS pthread requires ..." panic). A LAN address such as
+// http://192.168.50.122:8000 is never a secure context, so the JSPI build can
+// only run on https (or localhost); fall back to the classic build there
+// automatically instead of dead-ending in that popup. The classic build has no
+// isolation requirement and is what the online site serves to non-JSPI browsers.
+if (wasmPrefix === "/js/dosx-edge/" &&
+    (typeof window.crossOriginIsolated !== "undefined" && !window.crossOriginIsolated ||
+     typeof SharedArrayBuffer !== "function")) {
+    console.warn("[local-site] dosx-edge needs a secure, cross-origin isolated page " +
+                 "(https, or http://localhost) - falling back to the classic dosx build");
+    wasmPrefix = "/js/dosx/";
+    // The generic "install Chrome/Edge" warnings would be misleading here - the
+    // browser is fine, the *page context* is not. Replace them with one notice.
+    $("#browserSafariWarning,#browserFirefoxWarning,#browserOtherWarning").css("display", "none");
+    const note = $("#browserOtherWarning");
+    if (note.length) {
+        note.css("display", "block")
+            .append('<div style="margin-top:6px">This address (<b>' + window.location.origin + '</b>) is not a ' +
+                    'secure, cross-origin isolated context, so the faster JSPI build is skipped and the ' +
+                    'classic build is used. The JSPI build runs automatically on the HTTPS host ' +
+                    '(https://retro.playmake.io) and on <b>http://localhost</b>.</div>');
+    }
+}
 
 // Cache busting. The emulator caches every downloaded image in the browser's
 // OPFS under /ddyx-downloads/<category>/<sha256(url)>/ and validates that cache
@@ -430,7 +466,10 @@ LoadScriptsSequentially(scripts).then(async () => {
     $("#dosWindowFrame").css("visibility", "visible").fadeTo(1000, 1);
 
     Promise.all(startupChecks).then(() => {
-        g_startupReady = true;
+        requestPersistentStorage();
+    $("#ResetGameData").css("display", "inline-block");
+    $("#ExportDisks").css("display", "inline-block");
+    g_startupReady = true;
         updatePlayButtonVisibility();
     }).catch(error => showWarning(error.message));
 
@@ -508,6 +547,22 @@ async function launchPreparedGame() {
         $("#dosWindowStarter").show();
         $("#dosWindowGameStartButton").show();
     }
+}
+
+function requestPersistentStorage() {
+    // Keep the emulator's OPFS disks (which hold the player's actual progress)
+    // out of the browser's "best effort" eviction pool.
+    try {
+        if (navigator.storage && navigator.storage.persist &&
+            navigator.storage.persisted) {
+            navigator.storage.persisted().then(function (already) {
+                if (already) return;
+                navigator.storage.persist().then(function (granted) {
+                    console.log("persistent storage: " + (granted ? "granted" : "not granted"));
+                });
+            });
+        }
+    } catch (error) { /* not fatal */ }
 }
 
 function run(fileBundle) {
@@ -700,6 +755,77 @@ $("#Pause").click(function () {
 $("#Save").click(function () {
     setSaveProgress(true);
     g_helperX.Save(function () { setSaveProgress(false); refreshSaveSelector(); });
+});
+
+// ---------------------------------------------------------------------------
+// "Reset game data": wipes this game's emulator state (OPFS) and the browser
+// save (IndexedDB). The package itself is re-imported on the next start, so
+// this is the way to pick up an updated game image or start truly clean.
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// "Export disks" (debug): downloads the live machine disks so a real gameplay
+// session can be inspected off-line (which files did the game actually touch).
+// ---------------------------------------------------------------------------
+async function downloadVhd(name) {
+    const u8 = new Uint8Array(await g_helperX.command.fsReadFile("/home/web_user_x/" + name));
+    const blob = new Blob([u8], { type: "application/octet-stream" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 30000);
+    return u8.length;
+}
+
+$("#ExportDisks").click(async function () {
+    const button = $(this);
+    button.prop("disabled", true);
+    try {
+        const sizes = {};
+        try { sizes.sysddiff = await downloadVhd("sysddiff.vhd"); } catch (e) { sizes.sysddiff = "unavailable"; }
+        try { sizes.gamediff = await downloadVhd("gamediff.vhd"); } catch (e) { sizes.gamediff = "unavailable"; }
+        window.alert("Downloaded: " + JSON.stringify(sizes));
+    } finally {
+        button.prop("disabled", false);
+    }
+});
+
+function deleteBrowserSave(name) {
+    return new Promise(function (resolve) {
+        try {
+            const request = indexedDB.open("js-dos-cache-x", 1);
+            request.onsuccess = function () {
+                const db = request.result;
+                try {
+                    const tx = db.transaction("files", "readwrite");
+                    tx.objectStore("files").delete(name);
+                    tx.oncomplete = function () { db.close(); resolve(true); };
+                    tx.onerror = function () { db.close(); resolve(false); };
+                    tx.onabort = function () { db.close(); resolve(false); };
+                } catch (error) { db.close(); resolve(false); }
+            };
+            request.onerror = function () { resolve(false); };
+        } catch (error) { resolve(false); }
+    });
+}
+
+$("#ResetGameData").click(async function () {
+    if (!window.confirm("Delete ALL saved data for this game?\n\n" +
+                        "This removes the emulator state and the browser save. " +
+                        "The game package itself is kept and re-imported on the next start.")) return;
+    const button = $(this);
+    button.prop("disabled", true);
+    const cleared = [];
+    try {
+        const root = await navigator.storage.getDirectory();
+        const games = await root.getDirectoryHandle("games");
+        await games.removeEntry(config.gameId, { recursive: true });
+        cleared.push("emulator state");
+    } catch (error) { /* nothing stored yet */ }
+    if (await deleteBrowserSave(config.gameId)) cleared.push("browser save");
+    button.prop("disabled", false);
+    window.alert("Cleared: " + (cleared.join(", ") || "nothing was stored yet") + ".\nThe page will now reload.");
+    location.reload();
 });
 
 $("#SaveDownload").click(function () {

@@ -38,7 +38,7 @@
     const bytes = site.formatBytes;
 
     // ------------------------------------------------------------------ nav
-    site.mountNav("settings", { rightText: gameId });
+    site.mountNav("settings");
 
     // -------------------------------------------------------------- storage
 
