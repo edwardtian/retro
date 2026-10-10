@@ -113,15 +113,33 @@
         });
     }
 
+    // One segment of the stacked bar: the wrapper is a share of the whole and
+    // Bootstrap's `.progress-stacked > .progress > .progress-bar { width: 100% }`
+    // fills it. An inline width on the inner bar would scale it inside the
+    // segment instead, which is what made the old bar read as "half used".
+    function setSegment(segmentId, barId, percentage) {
+        const segment = document.getElementById(segmentId);
+        const bar = document.getElementById(barId);
+        if (segment) {
+            segment.style.width = percentage + "%";
+            segment.setAttribute("aria-valuenow", String(Math.round(percentage)));
+        }
+        if (bar && bar.style.width) bar.style.width = "";
+    }
+
     function refreshBrowserUsage() {
+        const bars = document.getElementById("storage-bars");
         return navigator.storage.estimate().then(function (estimate) {
             const used = estimate.usage;
             const quota = estimate.quota;
             if (!Number.isFinite(used) || !Number.isFinite(quota) || quota <= 0) throw new Error("unavailable");
-            const percentage = Math.min(100, Math.ceil(used / quota * 100));
+            // Ceil so any usage at all is a visible sliver (the original page did
+            // the same); the exact numbers are printed below the bar.
+            const percentage = Math.min(100, Math.max(0, Math.ceil(used / quota * 100)));
             const free = Math.max(0, quota - used);
-            document.getElementById("usage-bar").style.width = percentage + "%";
-            document.getElementById("available-bar").style.width = (100 - percentage) + "%";
+            setSegment("usage-percentage", "usage-bar", percentage);
+            setSegment("available-percentage", "available-bar", 100 - percentage);
+            if (bars) bars.hidden = false;
             document.getElementById("span-used").textContent = bytes(used);
             document.getElementById("span-free").textContent = bytes(free);
             document.getElementById("span-quota").textContent = bytes(quota);
@@ -130,6 +148,9 @@
             ["span-used", "span-free", "span-quota"].forEach(function (id) {
                 document.getElementById(id).textContent = "unavailable";
             });
+            // Without an estimate any bar would be invented: hide it and let the
+            // text say the value is unavailable.
+            if (bars) bars.hidden = true;
         });
     }
 

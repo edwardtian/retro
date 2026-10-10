@@ -99,13 +99,18 @@
                     <div id="storage-error" class="alert alert-warning small w-75" role="alert" hidden></div>
 
                     <strong>Browser storage usage:</strong>
-                    <div class="progress-stacked mt-2" role="group" aria-label="Browser storage usage">
+                    <!-- Stacked progress: each .progress is one segment and its width is
+                         the share of the whole; .progress-stacked fills the inner
+                         .progress-bar to 100% of its segment. Hidden until the
+                         estimate arrives so the bar never shows a made-up ratio. -->
+                    <div class="progress-stacked mt-2" role="group" aria-label="Browser storage usage"
+                         id="storage-bars" hidden>
                         <div class="progress" role="progressbar" aria-label="Used" aria-valuemin="0"
-                             aria-valuemax="100" style="width:50%" id="usage-percentage">
+                             aria-valuemax="100" aria-valuenow="0" style="width:50%" id="usage-percentage">
                             <div class="progress-bar" id="usage-bar"></div>
                         </div>
                         <div class="progress" role="progressbar" aria-label="Free" aria-valuemin="0"
-                             aria-valuemax="100" style="width:50%" id="available-percentage">
+                             aria-valuemax="100" aria-valuenow="0" style="width:50%" id="available-percentage">
                             <div class="progress-bar bg-success" id="available-bar"></div>
                         </div>
                     </div>
