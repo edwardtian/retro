@@ -3,5 +3,8 @@
 /games
 /tests
 /library
+/auth
+/.auth-test
+.cj-*
 DSH.md
 /game_to_import

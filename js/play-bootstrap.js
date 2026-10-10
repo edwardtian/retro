@@ -26,8 +26,13 @@
         script.src = src;
         script.onload = onLoad;
         script.onerror = function () {
-            document.getElementById("loadingText").textContent =
-                "Failed to load " + src;
+            // The server refuses config scripts for games the account was not
+            // granted, and refuses everything once a session has expired.
+            const text = document.getElementById("loadingText");
+            if (text) {
+                text.textContent = "This game could not be loaded. It may not be assigned to " +
+                    "your account, or your sign-in expired - open the game list and try again.";
+            }
         };
         document.head.appendChild(script);
     }

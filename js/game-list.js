@@ -5,7 +5,7 @@
     "use strict";
 
     const site = window.LocalSite;
-    const games = (site.catalog.games || []).slice();
+    let games = (site.catalog.games || []).slice();
     const PAGE_SIZE = 10;
     const state = { search: "", os: "all", sort: "title", readiness: new Map(), page: 1 };
 
@@ -224,7 +224,24 @@
 
     // --- start -------------------------------------------------------------
 
-    site.mountNav("games", { rightText: games.length + " game(s) installed" });
-    render();
-    checkVisibleGames();
+    // An account only sees the games it was granted (the server refuses the
+    // others anyway, so hiding them keeps the list honest). The first paint
+    // waits for that answer so the full catalog never flashes on screen.
+    if (site.auth && site.auth.requireUser) {
+        site.auth.requireUser().then(function () {
+            const visible = site.auth.visibleGames();
+            if (visible !== "*") {
+                const allowed = new Set(visible);
+                games = games.filter(function (game) { return allowed.has(game.id); });
+            }
+            site.mountNav("games", { rightText: games.length + " game(s) available" });
+            firstPage();
+            render();
+            checkVisibleGames();
+        });
+    } else {
+        site.mountNav("games", { rightText: games.length + " game(s) installed" });
+        render();
+        checkVisibleGames();
+    }
 })();

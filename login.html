@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in - Retro Game Playground</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/local.css">
+</head>
+<body class="local-site">
+    <main class="local-page">
+        <div class="local-login">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h1 class="h4 mb-1">Retro Game Playground</h1>
+                    <p class="local-subtle mb-4">Sign in with the account the administrator created for you.</p>
+
+                    <div id="login-error" class="alert alert-danger py-2" role="alert" hidden></div>
+                    <div id="login-notice" class="alert alert-info py-2" role="alert" hidden></div>
+
+                    <form id="login-form" autocomplete="on">
+                        <div class="mb-3">
+                            <label class="form-label" for="login-username">Username</label>
+                            <input type="text" class="form-control" id="login-username" name="username"
+                                   autocomplete="username" autocapitalize="none" spellcheck="false" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="login-password">Password</label>
+                            <input type="password" class="form-control" id="login-password" name="password"
+                                   autocomplete="current-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="login-submit">Sign in</button>
+                    </form>
+
+                    <p class="local-subtle mt-3 mb-0">
+                        There is no self-service sign-up. Ask the administrator to create an account for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>

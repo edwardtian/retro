@@ -99,6 +99,82 @@ body.local-dark .local-nav .local-links a.active {
     opacity: 0.85;
 }
 
+/* --- accounts ------------------------------------------------------------ */
+
+.local-nav .local-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid var(--local-panel-border);
+    font-size: 0.82rem;
+}
+
+.local-nav .local-user {
+    opacity: 0.85;
+}
+
+.local-nav .local-signout {
+    background: none;
+    border: 1px solid var(--local-panel-border);
+    border-radius: 6px;
+    padding: 2px 10px;
+    color: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.local-nav .local-signout:hover {
+    border-color: currentColor;
+    opacity: 1;
+}
+
+.local-login {
+    max-width: 420px;
+    margin: 8vh auto 0;
+}
+
+.local-login .card {
+    background: var(--local-panel);
+    border: 1px solid var(--local-panel-border);
+    color: inherit;
+}
+
+.local-login .form-control {
+    background: rgba(0, 0, 0, 0.18);
+    border-color: var(--local-panel-border);
+    color: inherit;
+}
+
+.local-login .form-control:focus {
+    background: rgba(0, 0, 0, 0.28);
+    color: inherit;
+}
+
+.local-admin-games {
+    max-height: 320px;
+    overflow-y: auto;
+    border: 1px solid var(--local-panel-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+}
+
+.local-admin-games .form-check {
+    margin-bottom: 2px;
+}
+
+.local-admin-games .game-id {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-left: 6px;
+}
+
+.local-admin-games .game-os {
+    font-size: 0.68rem;
+    margin-left: 6px;
+}
+
 /* --- panels / cards ------------------------------------------------------ */
 
 .local-panel {

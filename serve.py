@@ -33,6 +33,7 @@ import zipfile
 
 import vhd                     # VHD helpers shared with the workshop and importers
 import zlib
+import auth                     # accounts, sessions, per-user game grants
 from email.utils import formatdate
 from http.server import SimpleHTTPRequestHandler
 from urllib.parse import parse_qs, quote, urlsplit
@@ -483,6 +484,217 @@ class Handler(SimpleHTTPRequestHandler):
     # point it at a temporary directory).
     library_dir = os.path.join(os.getcwd(), "library")
 
+    # --- accounts ---------------------------------------------------------
+    # Filled in by main(): a UserStore, a SessionManager and the catalog-backed
+    # AccessControl. With auth_enabled False (--no-auth) every request is
+    # treated as an administrator, which keeps the emulator tests usable.
+    user_store = None
+    sessions = None
+    access = None
+    auth_enabled = True
+
+    def current_user(self):
+        """The signed-in account, or None. Administrators when auth is off."""
+        if not self.auth_enabled:
+            return {"username": "local", "role": "admin", "games": "*", "disabled": False}
+        if self.user_store is None or self.sessions is None:
+            return None
+        header = self.headers.get("Cookie") or ""
+        token = None
+        for part in header.split(";"):
+            name, _, value = part.strip().partition("=")
+            if name == auth.SESSION_COOKIE:
+                token = value
+                break
+        if not token:
+            return None
+        session = self.sessions.verify(token)
+        if not session:
+            return None
+        record = self.user_store.get(session["sub"])
+        if not record or record.get("disabled"):
+            return None
+        return record
+
+    def wants_html(self):
+        return "text/html" in (self.headers.get("Accept") or "")
+
+    def deny(self, status, message, html_page=False):
+        """Report a refused request: JSON for APIs, a redirect for pages."""
+        if html_page and self.command in ("GET", "HEAD"):
+            target = "/login.html?next=" + quote(self.path, safe="") if status == 401 else "/"
+            body = ("<p>%s</p><p><a href=\"%s\">Continue</a></p>" % (message, target)).encode("utf-8")
+            self.send_response(302 if status == 401 else 403)
+            self.send_header("Location", target)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_cache_control("no-store")
+            self.end_headers()
+            if self.command != "HEAD":
+                self.wfile.write(body)
+            return
+        self.send_json(status, {"error": message})
+
+    def check_access(self):
+        """Authorise the current request.
+
+        Returns False when the request was refused (the response has already
+        been sent), otherwise the signed-in account or None for a public
+        request without a session.
+        """
+        if not self.auth_enabled:
+            return self.current_user()
+        path, query = self.request_parts()
+        scope = self.access.scope_for(path, query)
+        is_api = path.startswith("/api/")
+        page = self.wants_html() and not is_api
+
+        if isinstance(scope, tuple) and scope[0] == "deny":
+            self.deny(403, "not found")
+            return False
+
+        user = self.current_user()
+        if scope == "public":
+            return user
+        if user is None:
+            self.deny(401, "sign in to continue", html_page=page)
+            return False
+        if scope == "user":
+            return user
+        if scope == "admin":
+            if user.get("role") != "admin":
+                self.deny(403, "administrator access required", html_page=page)
+                return False
+            return user
+        if isinstance(scope, tuple) and scope[0] == "game":
+            if not self.access.can_play(user, scope[1]):
+                self.deny(403, "your account is not allowed to play this game", html_page=page)
+                return False
+            return user
+        if isinstance(scope, tuple) and scope[0] == "any-game":
+            if user.get("role") == "admin" or self.access.grants_all(user):
+                return user
+            allowed = self.access.allowed_ids(user)
+            if not allowed.intersection(scope[1]):
+                self.deny(403, "game not assigned to this account")
+                return False
+            return user
+        return user
+
+    def read_json_body(self, limit=64 * 1024):
+        try:
+            length = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            raise ApiError(400, "invalid Content-Length")
+        if length <= 0:
+            return {}
+        if length > limit:
+            raise ApiError(413, "request body too large")
+        raw = self.rfile.read(length)
+        try:
+            payload = json.loads(raw.decode("utf-8"))
+        except (ValueError, UnicodeDecodeError):
+            raise ApiError(400, "request body must be JSON")
+        if not isinstance(payload, dict):
+            raise ApiError(400, "request body must be a JSON object")
+        return payload
+
+    def session_user_payload(self, record):
+        return {
+            "user": {
+                "name": record.get("username"),
+                "role": record.get("role", "user"),
+                "games": record.get("games", "*"),
+            },
+            "visibleGames": self.access.visible_games(record),
+            "authEnabled": self.auth_enabled,
+        }
+
+    # --- /api/auth/* ------------------------------------------------------
+    def auth_login(self):
+        payload = self.read_json_body()
+        username = str(payload.get("username") or "").strip()
+        password = payload.get("password") or ""
+        address = self.client_address[0] if self.client_address else None
+        if not username or not password:
+            raise ApiError(400, "username and password are required")
+        if self.user_store.too_many_failures(address, username):
+            raise ApiError(429, "too many failed sign-in attempts; try again later")
+        record = self.user_store.authenticate(username, password)
+        if not record:
+            self.user_store.note_failure(address, username)
+            raise ApiError(401, "invalid username or password")
+        self.user_store.note_success(address, username)
+        self.send_response(200)
+        self.send_header("Set-Cookie", self.sessions.cookie_header(record["username"]))
+        self.send_json_body(self.session_user_payload(record))
+
+    def auth_logout(self):
+        self.send_response(200)
+        self.send_header("Set-Cookie", self.sessions.cleared_cookie_header())
+        self.send_json_body({"ok": True})
+
+    def auth_me(self):
+        record = self.current_user()
+        if not record:
+            self.send_json(401, {"error": "not signed in", "authEnabled": self.auth_enabled})
+            return
+        self.send_json(200, self.session_user_payload(record))
+
+    def auth_change_password(self):
+        record = self.current_user()
+        if not record:
+            raise ApiError(401, "not signed in")
+        payload = self.read_json_body()
+        current = payload.get("current") or ""
+        new = payload.get("new") or payload.get("password") or ""
+        fresh = self.user_store.authenticate(record["username"], current)
+        if not fresh:
+            raise ApiError(403, "current password is incorrect")
+        self.user_store.set_password(record["username"], new)
+        # Keep the caller signed in with a cookie bound to the new state.
+        self.send_response(200)
+        self.send_header("Set-Cookie", self.sessions.cookie_header(record["username"]))
+        self.send_json_body({"ok": True})
+
+    def auth_users_list(self):
+        self.send_json(200, {"users": self.user_store.list_users()})
+
+    def auth_users_create(self):
+        payload = self.read_json_body()
+        record = self.user_store.create(
+            str(payload.get("username") or "").strip(),
+            payload.get("password") or "",
+            role=(payload.get("role") or "user"),
+            games=payload.get("games", "*"),
+        )
+        self.send_json(201, {"user": record})
+
+    def auth_users_update(self, username):
+        payload = self.read_json_body()
+        record = self.user_store.update(
+            username,
+            password=payload.get("password"),
+            role=payload.get("role"),
+            games=payload.get("games") if "games" in payload else None,
+            disabled=payload.get("disabled") if "disabled" in payload else None,
+        )
+        self.send_json(200, {"user": record})
+
+    def auth_users_delete(self, username):
+        actor = self.current_user()
+        self.user_store.delete(username, actor=(actor or {}).get("username"))
+        self.send_json(200, {"ok": True})
+
+    def send_json_body(self, payload):
+        body = json.dumps(payload).encode("utf-8")
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_cache_control("no-store")
+        self.end_headers()
+        if self.command != "HEAD":
+            self.wfile.write(body)
+
     # --- disc images offered to the player --------------------------------
     def disc_listing(self):
         # The player's DDYX flow downloads a disc and *extracts* it, so only
@@ -556,7 +768,7 @@ class Handler(SimpleHTTPRequestHandler):
         """Run a JSON endpoint: bad input -> 400, surprises -> 500."""
         try:
             endpoint(*args)
-        except ApiError as exc:
+        except (ApiError, auth.AuthError) as exc:
             self.send_json(exc.status, {"error": exc.message})
         except (OSError, ValueError, KeyError, zipfile.BadZipFile) as exc:
             if getattr(self, "_headers_sent", False):
@@ -964,8 +1176,14 @@ class Handler(SimpleHTTPRequestHandler):
     # --- routing ----------------------------------------------------------
     def do_GET(self):
         path, query = self.request_parts()
+        if self.check_access() is False:
+            return
         match = re.fullmatch(r"/api/library/windows/([^/]+)\.zip", path)
-        if path == "/api/discs":
+        if path == "/api/auth/me":
+            self.api(self.auth_me)
+        elif path == "/api/auth/users":
+            self.api(self.auth_users_list)
+        elif path == "/api/discs":
             self.disc_listing()
         elif path == "/api/library":
             self.api(self.library_index)
@@ -982,8 +1200,12 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_HEAD(self):
         path, query = self.request_parts()
+        if self.check_access() is False:
+            return
         match = re.fullmatch(r"/api/library/windows/([^/]+)\.zip", path)
-        if path == "/api/discs":
+        if path == "/api/auth/me":
+            self.api(self.auth_me)
+        elif path == "/api/discs":
             body = b"{}"
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -1000,7 +1222,20 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         path, query = self.request_parts()
-        if path == "/api/library/reindex":
+        if self.check_access() is False:
+            return
+        user_match = re.fullmatch(r"/api/auth/users/([^/]+)", path)
+        if path == "/api/auth/login":
+            self.api(self.auth_login)
+        elif path == "/api/auth/logout":
+            self.api(self.auth_logout)
+        elif path == "/api/auth/password":
+            self.api(self.auth_change_password)
+        elif path == "/api/auth/users":
+            self.api(self.auth_users_create)
+        elif user_match:
+            self.api(self.auth_users_update, user_match.group(1))
+        elif path == "/api/library/reindex":
             self.library_reindex(query)
         elif path == "/api/library/format":
             self.library_format(query)
@@ -1015,7 +1250,12 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_DELETE(self):
         path, query = self.request_parts()
-        if path == "/api/library/game":
+        if self.check_access() is False:
+            return
+        user_match = re.fullmatch(r"/api/auth/users/([^/]+)", path)
+        if user_match:
+            self.api(self.auth_users_delete, user_match.group(1))
+        elif path == "/api/library/game":
             self.api(self.library_forget, query, "games")
         elif path == "/api/library/windows":
             self.api(self.library_forget, query, "windows")
@@ -1169,12 +1409,88 @@ def main():
     parser.add_argument("--root", default=os.path.dirname(os.path.abspath(__file__)), help="web root (default: script directory)")
     parser.add_argument("--library-dir", default="library",
                         help="Workshop data directory, relative to --root (default: library)")
+    parser.add_argument("--auth-dir", default="auth",
+                        help="account data directory, never served over HTTP "
+                             "(default: auth, relative to --root)")
+    parser.add_argument("--no-auth", action="store_true",
+                        help="disable sign-in checks (single-user local use; every "
+                             "request acts as an administrator)")
+    # Account administration (no self-service registration): these run and exit.
+    parser.add_argument("--list-users", action="store_true", help="list accounts and exit")
+    parser.add_argument("--create-user", metavar="NAME", help="create an account and exit")
+    parser.add_argument("--set-password", metavar="NAME", help="set an account password and exit")
+    parser.add_argument("--delete-user", metavar="NAME", help="delete an account and exit")
+    parser.add_argument("--grant", metavar="NAME", help="replace an account's games and exit")
+    parser.add_argument("--password", help="password for --create-user/--set-password (else prompt)")
+    parser.add_argument("--role", default="user", choices=list(auth.ROLES),
+                        help="role for --create-user (default: user)")
+    parser.add_argument("--games", default="*",
+                        help="games for --create-user/--grant: '*' or comma-separated ids")
     args = parser.parse_args()
 
     os.chdir(args.root)
     Handler.library_dir = os.path.abspath(args.library_dir)
     ensure_library(Handler.library_dir)
     Handler.extensions_map.update({})
+
+    auth_dir = os.path.abspath(args.auth_dir)
+    Handler.user_store = auth.UserStore(auth_dir)
+    Handler.sessions = auth.SessionManager(os.path.join(auth_dir, "secret.key"))
+    Handler.access = auth.AccessControl(os.getcwd())
+    Handler.auth_enabled = not args.no_auth
+    # Create the signing key eagerly so a broken auth directory fails at start
+    # rather than on the first sign-in.
+    Handler.sessions.secret()
+
+    def ask_password(prompt="Password: "):
+        if args.password:
+            return args.password
+        import getpass
+        first = getpass.getpass(prompt)
+        if not first:
+            parser.error("empty password")
+        return first
+
+    def report(record):
+        print("%-20s role=%-5s games=%s" % (
+            record["username"], record["role"],
+            auth.describe_grant(record, Handler.access)))
+
+    if args.list_users:
+        users = Handler.user_store.list_users()
+        if not users:
+            print("no accounts yet (one is created on server start)")
+        for record in users:
+            report(record)
+        return
+
+    if args.create_user:
+        password = ask_password("New password for %s: " % args.create_user)
+        report(Handler.user_store.create(args.create_user, password,
+                                         role=args.role, games=args.games))
+        print("created. Games can be changed later with --grant %s all|<ids>" % args.create_user)
+        return
+
+    if args.set_password:
+        password = ask_password("New password for %s: " % args.set_password)
+        report(Handler.user_store.set_password(args.set_password, password))
+        print("password updated.")
+        return
+
+    if args.delete_user:
+        Handler.user_store.delete(args.delete_user)
+        print("deleted %s" % args.delete_user)
+        return
+
+    if args.grant:
+        record = Handler.user_store.update(args.grant, games=args.games)
+        report(record)
+        return
+
+    # No administration command: start serving. The first start on an empty
+    # store creates the administrator whose password is printed once below.
+    admin_created, admin_password = Handler.user_store.ensure_admin()
+
     with Server((args.host, args.port), Handler) as httpd:
         host, port = httpd.server_address[:2]
         try:
@@ -1184,6 +1500,22 @@ def main():
         print("Serving %s on http://%s:%d/  (Ctrl+C to stop)" % (args.root, display, port))
         print("Open http://%s:%d/ in your browser." % (display, port))
         print("Workshop library: %s" % Handler.library_dir)
+        if Handler.auth_enabled:
+            print("Accounts: %s  (%d account(s))" % (auth_dir, len(Handler.user_store.list_users())))
+            if admin_created:
+                print("")
+                print("  Created the first administrator account:")
+                print("      username: admin")
+                print("      password: %s" % admin_password)
+                print("  This password is shown once; change it with")
+                print("      python3 serve.py --set-password admin")
+                print("  or from http://%s:%d/admin.html after signing in." % (display, port))
+                print("")
+        else:
+            print("Accounts: DISABLED (--no-auth): every request acts as an administrator.")
+        # Keep the banner (and the one-time admin password) visible when stdout
+        # is a pipe or a file, as it is under nohup / a process manager.
+        sys.stdout.flush()
         if display in ("127.0.0.1", "localhost"):
             print("Fast JSPI build: available (http://localhost is a secure context).")
         else:

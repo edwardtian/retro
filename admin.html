@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Users - Retro Game Playground</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/local.css">
+</head>
+<body class="local-site">
+    <header id="local-nav"></header>
+
+    <main class="local-page">
+        <div class="d-flex align-items-start gap-3 flex-wrap mb-2">
+            <div>
+                <h1>Users</h1>
+                <div class="local-subtle">
+                    Accounts that can sign in to this mirror and the games each of them may play.
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary ms-auto" id="sign-out">Sign out</button>
+        </div>
+
+        <div id="admin-alert" class="alert py-2" role="alert" hidden></div>
+
+        <div id="admin-content" hidden>
+            <div class="row g-3">
+                <!-- ------------------------------------------- account form -->
+                <div class="col-lg-7">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header d-flex align-items-center gap-2">
+                            <strong id="account-form-title">Create account</strong>
+                            <span class="badge text-bg-secondary" id="account-form-mode" hidden></span>
+                        </div>
+                        <div class="card-body">
+                            <form id="account-form" autocomplete="off">
+                                <div class="row g-2">
+                                    <div class="col-sm-6">
+                                        <label class="form-label" for="account-username">Username</label>
+                                        <input type="text" class="form-control form-control-sm" id="account-username"
+                                               maxlength="32" autocapitalize="none" spellcheck="false"
+                                               autocomplete="off" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-label" for="account-password">Password</label>
+                                        <input type="password" class="form-control form-control-sm" id="account-password"
+                                               autocomplete="new-password">
+                                        <div class="local-legend" id="account-password-hint">
+                                            At least 6 characters; required for a new account.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-2" style="max-width:16rem">
+                                    <label class="form-label" for="account-role">Role</label>
+                                    <select class="form-select form-select-sm" id="account-role">
+                                        <option value="user">User</option>
+                                        <option value="admin">Administrator</option>
+                                    </select>
+                                </div>
+
+                                <fieldset class="mt-3">
+                                    <legend class="form-label mb-1">Games this account may play</legend>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="grant-mode"
+                                               id="grant-mode-all" value="all" checked>
+                                        <label class="form-check-label" for="grant-mode-all">
+                                            All games (including future ones)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="grant-mode"
+                                               id="grant-mode-selected" value="selected">
+                                        <label class="form-check-label" for="grant-mode-selected">
+                                            Only selected games
+                                        </label>
+                                    </div>
+
+                                    <div id="grant-selected-area" class="mt-2" hidden>
+                                        <div class="d-flex align-items-center gap-2 flex-wrap">
+                                            <input type="search" class="form-control form-control-sm"
+                                                   id="grant-filter" style="max-width:220px"
+                                                   placeholder="Filter games..." aria-label="Filter games">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    id="grant-select-all"
+                                                    title="Applies to the games currently shown">Select all</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    id="grant-select-none"
+                                                    title="Applies to the games currently shown">Select none</button>
+                                            <span class="local-subtle" id="grant-count">0 of 0 selected</span>
+                                        </div>
+                                        <div id="grant-list" class="border rounded mt-2 p-2"
+                                             style="max-height:280px;overflow-y:auto"
+                                             role="group" aria-label="Games"></div>
+                                        <div class="local-legend mt-1">
+                                            Select all / Select none apply to the filtered list. Games that are no
+                                            longer in the catalog are kept as "unknown" so saving does not drop them.
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <div class="d-flex align-items-center gap-2 mt-3">
+                                    <button type="submit" class="btn btn-sm btn-primary" id="account-submit">
+                                        Create account
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" id="account-cancel"
+                                            hidden>Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ------------------------------------------ own password -->
+                <div class="col-lg-5">
+                    <div class="card shadow-sm">
+                        <div class="card-header"><strong>Change my password</strong></div>
+                        <div class="card-body">
+                            <form id="password-form" autocomplete="off">
+                                <div class="mb-2">
+                                    <label class="form-label" for="password-current">Current password</label>
+                                    <input type="password" class="form-control form-control-sm" id="password-current"
+                                           autocomplete="current-password" required>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="password-new">New password</label>
+                                    <input type="password" class="form-control form-control-sm" id="password-new"
+                                           autocomplete="new-password" required>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="password-confirm">Confirm new password</label>
+                                    <input type="password" class="form-control form-control-sm" id="password-confirm"
+                                           autocomplete="new-password" required>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-primary" id="password-submit">
+                                    Change password
+                                </button>
+                                <div class="local-legend mt-2">
+                                    This changes the password of the account you are signed in with.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ------------------------------------------------ accounts -->
+            <h2 class="h5 mt-4">Accounts</h2>
+            <div class="card shadow-sm">
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Games</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created</th>
+                                <th scope="col" class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-body"></tbody>
+                    </table>
+                </div>
+                <div class="local-subtle p-3" id="users-empty" hidden>No accounts yet.</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/catalog.js"></script>
+    <script src="/js/local-site.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

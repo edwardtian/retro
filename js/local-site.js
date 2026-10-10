@@ -18,12 +18,111 @@
         return (value >= 100 ? value.toFixed(0) : value.toFixed(value >= 10 ? 1 : 2)) + " " + units[unit];
     }
 
+    // --- accounts ----------------------------------------------------------
+    // Every page is behind the server's sign-in gate, so this only fills in the
+    // navigation chrome. `requireUser` also covers the case where a session
+    // expired while a page was open.
+
+    let authResult = null;
+    let authPromise = null;
+
+    function loadAuth() {
+        if (!authPromise) {
+            authPromise = fetch("/api/auth/me", { cache: "no-store" })
+                .then(function (response) {
+                    return response.json().catch(function () { return {}; })
+                        .then(function (payload) { return { ok: response.ok, payload: payload }; });
+                })
+                .catch(function () { return { ok: false, payload: {} }; })
+                .then(function (result) { authResult = result; return result; });
+        }
+        return authPromise;
+    }
+
+    function currentUser() {
+        return (authResult && authResult.ok && authResult.payload.user) || null;
+    }
+
+    function visibleGames() {
+        if (!authResult || !authResult.ok) return [];
+        return authResult.payload.visibleGames || [];
+    }
+
+    function canPlay(gameId) {
+        const visible = visibleGames();
+        if (visible === "*") return true;
+        return visible.indexOf(gameId) >= 0;
+    }
+
+    // Resolves with the account, redirects to the sign-in page when the
+    // session is gone, or resolves null when the server has auth disabled.
+    function requireUser() {
+        return loadAuth().then(function (result) {
+            if (result.ok) return result.payload.user;
+            if (result.payload && result.payload.authEnabled === false) return null;
+            const next = window.location.pathname + window.location.search;
+            window.location.replace("/login.html?next=" + encodeURIComponent(next));
+            return new Promise(function () { /* navigating away */ });
+        });
+    }
+
+    function signOut() {
+        fetch("/api/auth/logout", { method: "POST", cache: "no-store" })
+            .catch(function () { /* the cookie is cleared server-side anyway */ })
+            .then(function () { window.location.replace("/login.html"); });
+    }
+
+    function authSlot(nav) {
+        const slot = document.createElement("div");
+        slot.className = "local-auth";
+        nav.appendChild(slot);
+        loadAuth().then(function (result) {
+            slot.replaceChildren();
+            if (!result.ok) {
+                if (result.payload && result.payload.authEnabled === false) {
+                    const note = document.createElement("span");
+                    note.className = "local-subtle";
+                    note.textContent = "sign-in disabled";
+                    slot.appendChild(note);
+                    return;
+                }
+                const link = document.createElement("a");
+                link.href = "/login.html";
+                link.textContent = "Sign in";
+                slot.appendChild(link);
+                return;
+            }
+            const user = result.payload.user || {};
+            const name = document.createElement("span");
+            name.className = "local-user";
+            name.textContent = user.name + (user.role === "admin" ? " (admin)" : "");
+            name.title = user.role === "admin" ? "Administrator" : "Signed in";
+            slot.appendChild(name);
+            if (user.role === "admin") {
+                const admin = document.createElement("a");
+                admin.href = "/admin.html";
+                admin.textContent = "Users";
+                slot.appendChild(admin);
+            }
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "local-signout";
+            button.textContent = "Sign out";
+            button.addEventListener("click", signOut);
+            slot.appendChild(button);
+        });
+        return slot;
+    }
+
     // --- navigation --------------------------------------------------------
 
     function renderNav(activePage, options) {
         const settings = options || {};
         const nav = document.createElement("nav");
         nav.className = "local-nav";
+        // Keep the host id: pages re-mount the nav after they learn which games
+        // the account may see, and mountNav() looks the element up by id.
+        nav.id = "local-nav";
         const brand = document.createElement("a");
         brand.className = "local-brand";
         brand.href = "/";
@@ -46,6 +145,7 @@
         right.className = "local-nav-right";
         right.textContent = settings.rightText || "";
         nav.appendChild(right);
+        authSlot(nav);
         return nav;
     }
 
@@ -113,6 +213,14 @@
         mountNav: mountNav,
         readHistory: readHistory,
         markPlayed: markPlayed,
-        checkGameFiles: checkGameFiles
+        checkGameFiles: checkGameFiles,
+        auth: {
+            load: loadAuth,
+            user: currentUser,
+            visibleGames: visibleGames,
+            canPlay: canPlay,
+            requireUser: requireUser,
+            signOut: signOut
+        }
     };
 })();
