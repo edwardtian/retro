@@ -44,6 +44,7 @@ def write_config(g):
                         "name": clean_title(cd['name']), "size": cd['size'], "mount": cd['mount']})
         expected = int(g.get('size') or 0) + sum(c['size'] for c in cds)
         req = [f"/games/{bundle}", "/games/bin/windows/tools/tools.zip",
+               "/games/bin/windows/tools/mousedrv.zip",
                f"/games/bin/windows/images/os/{os_img}", f"/games/bin/windows/images/game/{game_img}"]
         opt = [cd['link'] for cd in cds]
         L.append(f"    osImages: {js_str('/bin/windows/images/os/' + os_img)},")

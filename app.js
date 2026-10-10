@@ -188,6 +188,10 @@ function skipPatchVariant(url) {
 function requiredFilesForBuild() {
     const files = config.requiredFiles.map(versioned);
     if (wasmPrefix !== "/js/dosx/" && config.win95Patch) files.push(config.tool + config.win95Patch);
+    // Windows machines install the DDYX mouse driver from mousedrv.zip on every
+    // boot; the player aborts with "Mouse driver preparation failed" if the
+    // archive is not on the server, so check it up front like the other tools.
+    if (config.settingsType === 1) files.push(config.tool + "/bin/windows/tools/mousedrv.zip");
     return files;
 }
 
@@ -358,7 +362,13 @@ function pickSaveFile() {
 // Startup
 // ---------------------------------------------------------------------------
 
-scripts.push(wasmPrefix + "emulators.js?v=20261007");
+// Player build tag. Bump this whenever anything under /js/dosx/ or
+// /js/dosx-edge/ is replaced: it is the cache key for the emulator worker
+// script and its wasm module, so both are re-fetched together and a browser
+// can never mix an old script with a new binary.
+var PLAYER_BUILD = "20261009b";
+
+scripts.push(wasmPrefix + "emulators.js?v=" + PLAYER_BUILD);
 scripts.push("/js/dosx/tools/audio-node.js?v=dXMuEJ0v9bnKy-1jG4coLgGAaq-oGk-rbVXFpCMKQjU");
 scripts.push("/js/dosx/tools/webgl.js?v=20261007");
 scripts.push("/js/dosx/tools/key.js?v=20261007");
@@ -575,7 +585,12 @@ function run(fileBundle) {
         mouseSensitivity: preferences.mouseSensitivity,
         mouseWheelDirection: preferences.mouseWheelDirection,
         mouseWheelSensitivity: preferences.mouseWheelSensitivity,
-        version: config.version
+        // Cache key for the emulator worker script AND its .wasm. They are a
+        // matched pair: if a browser pairs a cached worker script with the
+        // freshly downloaded wasm, wasm instantiation fails with a LinkError
+        // ("function import requires a callable"). Keeping both URLs on the
+        // same tag means a reload can never mix builds.
+        version: PLAYER_BUILD
     };
     g_helperX = new HelperX(fileBundle, document.getElementById("canvas"), settings, {
         onError: reportStartFailure,
