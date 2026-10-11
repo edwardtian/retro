@@ -24,4 +24,5 @@ window.LOCAL_GAME_CONFIG = {
     mt32: false,
     gm: false,
     gmSoundfont: "",
+    autoCommand: "CD UW2EN&#xD;&#xA;IAFIX.BAT",
 };

@@ -29,6 +29,17 @@ config.requiredFiles = config.requiredFiles || [];
 config.optionalFiles = config.optionalFiles || [];
 config.cdImages = config.cdImages || [];
 
+// The player elements must carry the game id before DDYXGamePlayer is built:
+// its constructor derives the per-game preference keys from them (mouse capture
+// vs passthrough is settings_mouse_mode_gameid_<id> in localStorage, and the
+// touch layout is stored per game as well).
+(function tagPlayerElements() {
+    ["gamePlayer", "gameTouchControls"].forEach(function (id) {
+        const element = document.getElementById(id);
+        if (element) element.dataset.gameId = config.gameId;
+    });
+})();
+
 // NOTE: `ci` must exist as a global before HelperX runs. helper-x.js assigns
 // `ci = emulators.dosboxXWorker(...)` from inside a class method, which is
 // strict mode, so assigning to an undeclared name throws
@@ -366,22 +377,28 @@ function pickSaveFile() {
 // /js/dosx-edge/ is replaced: it is the cache key for the emulator worker
 // script and its wasm module, so both are re-fetched together and a browser
 // can never mix an old script with a new binary.
-var PLAYER_BUILD = "20261009b";
-
+var PLAYER_BUILD = "20261011a";
+// The player/tool scripts below are the mirror's port of the original page.
+// game-player.js now carries its own input, touch-layout, touch-controls and
+// gyro modules (the separate game-input/touch-*.js files are no longer part of
+// the upstream stack), and it binds only the keyboard button: the mouse-mode,
+// fullscreen, keyboard and touch-control buttons are wired here.
 scripts.push(wasmPrefix + "emulators.js?v=" + PLAYER_BUILD);
 scripts.push("/js/dosx/tools/audio-node.js?v=dXMuEJ0v9bnKy-1jG4coLgGAaq-oGk-rbVXFpCMKQjU");
 scripts.push("/js/dosx/tools/webgl.js?v=20261007");
 scripts.push("/js/dosx/tools/key.js?v=20261007");
 scripts.push("/js/dosx/tools/indexdb.js?v=20261007");
-scripts.push("/js/dosx/tools/game-input.js?v=AQtqf7kEcspwrRRjqv812NSvaFn5AgVpLZXDBactTfc");
-scripts.push("/js/dosx/tools/helper-x.js?v=hWjPudNvKxm0wTZcKDHk6wppIZ7qPx655Ke7ypIfovs");
-scripts.push("/js/dosx/tools/touch-layout.js?v=lcpOE2bqddRKeFaj2wSnQNMplZ6CvVzQDE85oLeeczU");
-scripts.push("/js/dosx/tools/touch-controls.js?v=hICCX_MSvc2p7LqOMdfusJty8Cr5B-wx-b-ikOklYwk");
-scripts.push("/js/dosx/tools/game-player.js?v=jJ5ff2tbLpynzOT7yjSXvl-W646R1558M9d5PWSVhhY");
+scripts.push("/js/dosx/tools/helper-x.js?v=" + PLAYER_BUILD);
+scripts.push("/js/dosx/tools/game-player.js?v=" + PLAYER_BUILD);
 scripts.push("/js/dosx/tools/save-sources.js?v=20261007");
 
 LoadScriptsSequentially(scripts).then(async () => {
     g_gamePage = new DDYXGamePlayer(document.querySelector(".game-page"));
+    // The player reports control state (pause, mute, fullscreen, mouse mode,
+    // keyboard/touch panels) for whatever binds its toolbar buttons.
+    if (typeof g_gamePage.subscribeControls === "function") {
+        g_gamePage.subscribeControls(paintControlButtons);
+    }
     emulators.pathPrefix = wasmPrefix;
 
     // Storage quota warning (as on the original page).
@@ -595,6 +612,21 @@ function run(fileBundle) {
     g_helperX = new HelperX(fileBundle, document.getElementById("canvas"), settings, {
         onError: reportStartFailure,
         onInputReset: helper => g_gamePage.resetControls(helper),
+        // Mouse plumbing: the helper reports mode/pointer-lock changes and asks
+        // the player to release mouse input when a capture attempt fails.
+        onMouseInputReset: helper => g_gamePage.resetMouseControls(helper),
+        onMouseInteractionChange: helper => g_gamePage.syncMouseMode(helper),
+        onMouseCaptureError: function () {
+            // Pointer lock was refused (usually a browser permission or a lost
+            // user gesture). Fall back to passthrough so the game stays usable,
+            // and say so on the button like the original page does.
+            const button = document.getElementById("MouseMode");
+            if (button && button.dataset.captureError) setButtonLabel(button, button.dataset.captureError);
+            if (g_gamePage && g_gamePage.mouseInteractionMode === "capture" &&
+                typeof g_gamePage.setMouseMode === "function") {
+                g_gamePage.setMouseMode("passthrough");
+            }
+        },
         onExit: helper => {
             g_gamePage.detach(helper);
         },
@@ -624,8 +656,11 @@ function run(fileBundle) {
                 "voodoo_upscaler": preferences.upscaler,
                 "voodoo_aniso": preferences.aniso,
                 // Commands appended to the autoexec, used by games that bring
-                // their own bootable image (e.g. "imgmount c ... / boot c:").
-                "auto_command": config.autoCommand,
+                // their own bootable image (e.g. "imgmount c ... / boot c:") and
+                // by the DOS flow to launch the game. It is appended verbatim,
+                // so it must always be a string: an unset option was previously
+                // written into ddyxauto.bat as the command "undefined".
+                "auto_command": config.autoCommand || "",
                 "hardware": {
                     "voodoo": config.voodoo === true,
                     "tool": config.tool,
@@ -748,6 +783,88 @@ $(document).on("click", "#CDList a", function (event) {
 $("#dosWindowGameStartButton").click(function () {
     if (!g_startupReady || !checkGameBrowserSupport() || g_startRequested) return;
     startGame();
+});
+
+// ---------------------------------------------------------------------------
+// Toolbar buttons the player does not bind itself.
+//
+// game-player.js owns the canvas, the keyboard panel and the touch controls; it
+// reports their state through subscribeControls(). The buttons for them (plus
+// fullscreen and the mouse capture/passthrough switch) are wired here, which is
+// also where the mouse-mode labels and pressed state are kept in sync.
+// ---------------------------------------------------------------------------
+
+function setButtonLabel(button, label) {
+    if (!button || !label) return;
+    button.title = label;
+    button.setAttribute("aria-label", label);
+    button.setAttribute("data-bs-original-title", label);
+    // The tooltip was created from the markup's title; refresh it in place.
+    if (window.bootstrap && bootstrap.Tooltip) {
+        const tip = bootstrap.Tooltip.getInstance(button);
+        if (tip) {
+            tip.setContent({ ".tooltip-inner": label });
+        }
+    }
+}
+
+function paintControlButtons(state) {
+    if (!state) return;
+
+    // Mouse capture mode: shown on devices with a physical pointer. "Capture"
+    // locks the pointer to the canvas and sends relative movement; "passthrough"
+    // follows the cursor and never locks it. Both are handled by helper-x's
+    // SetMouseInteractionMode(); the choice is remembered per game.
+    const mouseButton = document.getElementById("MouseMode");
+    if (mouseButton) {
+        const direct = state.mouseInteractionMode === "passthrough";
+        mouseButton.hidden = state.mobileMouseDevice === true;
+        mouseButton.classList.toggle("active", direct);
+        mouseButton.setAttribute("aria-pressed", String(direct));
+        setButtonLabel(mouseButton, direct
+            ? mouseButton.dataset.passthroughLabel
+            : mouseButton.dataset.captureLabel);
+    }
+
+    const fullScreenButton = document.getElementById("FullScreen");
+    if (fullScreenButton) {
+        fullScreenButton.setAttribute("aria-pressed", String(!!state.fullscreen));
+        setButtonLabel(fullScreenButton, state.fullscreen ? "Exit fullscreen" : "Fullscreen");
+    }
+
+    const keyboardButton = document.getElementById("Keyboard");
+    if (keyboardButton) {
+        keyboardButton.setAttribute("aria-expanded", String(!!state.keyboardVisible));
+    }
+    const touchButton = document.getElementById("TouchScreen");
+    if (touchButton) {
+        touchButton.setAttribute("aria-pressed", String(!!state.touchControlsEnabled));
+    }
+}
+
+$("#MouseMode").click(function () {
+    if (!g_gamePage || typeof g_gamePage.setMouseMode !== "function") return;
+    // preventDefault on pointerdown keeps the canvas from stealing focus first
+    // (the button is inside the player element).
+    const next = g_gamePage.mouseInteractionMode === "capture" ? "passthrough" : "capture";
+    g_gamePage.setMouseMode(next);
+});
+
+$("#MouseMode").on("pointerdown", function (event) { event.preventDefault(); });
+
+$("#FullScreen").click(function () {
+    if (!g_gamePage || typeof g_gamePage.toggleFullscreen !== "function") return;
+    g_gamePage.toggleFullscreen();
+});
+
+$("#Keyboard").click(function () {
+    if (!g_gamePage || typeof g_gamePage.showKeyboard !== "function") return;
+    g_gamePage.showKeyboard(g_gamePage.keyboard.hidden);
+});
+
+$("#TouchScreen").click(function () {
+    if (!g_gamePage || typeof g_gamePage.showTouchControls !== "function") return;
+    g_gamePage.showTouchControls(!g_gamePage.touchControlsEnabled);
 });
 
 $("#Mute").click(function () {

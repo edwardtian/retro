@@ -24,4 +24,5 @@ window.LOCAL_GAME_CONFIG = {
     mt32: true,
     gm: false,
     gmSoundfont: "",
+    autoCommand: "CD LOSTVIK&#xD;&#xA;VIKINGS.EXE",
 };

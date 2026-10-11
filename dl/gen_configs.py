@@ -10,6 +10,25 @@ def clean_title(t):
 def js_str(s):
     return json.dumps(s, ensure_ascii=False)
 
+def page_auto_command(gid):
+    """The launch command the original game page runs after mounting its CD.
+
+    DOS games are self-contained bundles whose dosbox.conf boots DOS and ends
+    with @ddyxauto.bat; the player fills that batch with the CD mount plus this
+    command. The dumps keep it in dl/pages/<id>.html as a JS string literal
+    (with the &#xD;/&#xA;/&amp; entities the player itself decodes), so the
+    literal is copied verbatim. Without it the batch runs a literal
+    "undefined" and the game never starts.
+    """
+    path = 'dl/pages/%s.html' % gid
+    if not os.path.isfile(path):
+        return None
+    with open(path, encoding='utf-8', errors='replace') as handle:
+        match = re.search(r'g_autoCommand=("(?:[^"\\]|\\.)*")', handle.read())
+    if not match or match.group(1) == '"undefined"':
+        return None
+    return match.group(1)
+
 VERSION = "20261009"
 
 def write_config(g):
@@ -88,6 +107,9 @@ def write_config(g):
     L.append("    mt32: " + ("true" if mt32 else "false") + ",")
     L.append("    gm: " + ("true" if gm else "false") + ",")
     L.append('    gmSoundfont: ' + (js_str("gugs.zip") if gm else '""') + ",")
+    auto_command = page_auto_command(gid)
+    if auto_command:
+        L.append("    autoCommand: " + auto_command + ",")
     L.append("};")
     open(f"config-{gid}.js", "w").write("\n".join(L) + "\n")
     print(f"wrote config-{gid}.js  dos={is_dos} voodoo={voodoo} mt32={mt32} gm={gm}")

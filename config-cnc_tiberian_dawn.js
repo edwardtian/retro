@@ -40,4 +40,5 @@ window.LOCAL_GAME_CONFIG = {
     mt32: false,
     gm: false,
     gmSoundfont: "",
+    autoCommand: "CD C&amp;C&#xD;&#xA;C&amp;C",
 };

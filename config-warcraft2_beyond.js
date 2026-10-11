@@ -33,4 +33,5 @@ window.LOCAL_GAME_CONFIG = {
     mt32: false,
     gm: true,
     gmSoundfont: "gugs.zip",
+    autoCommand: "CD WAR2&#xD;&#xA;WAR2",
 };

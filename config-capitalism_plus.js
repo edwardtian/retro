@@ -33,4 +33,5 @@ window.LOCAL_GAME_CONFIG = {
     mt32: false,
     gm: false,
     gmSoundfont: "",
+    autoCommand: "CD CAPPLUS&#xD;&#xA;CAP.BAT",
 };
