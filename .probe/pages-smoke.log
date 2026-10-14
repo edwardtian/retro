@@ -1,0 +1,66 @@
+23:34:09 == game list page ==
+23:34:09 no SMOKE_USER/SMOKE_PASSWORD: assuming a --no-auth server
+FAIL  nav links  -> ["/","/settings.html"]
+PASS  no doc links in the nav  -> ["/","/settings.html"]
+FAIL  workshop is reachable  -> ["/","/settings.html"]
+PASS  no documentation links on the game list  -> []
+PASS  no 'Adding another game' panel
+PASS  card actions are Play links only  -> "10 links"
+PASS  favicon links (svg + ico fallback)  -> ["/favicon.svg","/favicon.ico"]
+PASS  both favicons load  -> "64x64 48x48"
+PASS  game cards render  -> 10
+FAIL  card titles  -> ["1602 A.D.","Aerobiz Supersonic (Chinese)","Afterlife","Age of Empires","Age of Empires II: The Age of Kings","Age of Wonders","Alone in the Dark 3","Another World","Army Men","Army Men II"]
+FAIL  star craft links to player
+FAIL  pandora links to its player config
+FAIL  installed games are ready  -> {"star":null,"pandora":null,"age":"Ready to play","all":10}
+FAIL  catalog-only titles report their missing files  -> {"star":null,"pandora":null,"age":"Ready to play","all":10}
+PASS  search filters out everything  -> {"cards":0,"empty":true}
+PASS  search matches by title
+FAIL  platform filter (DOS)
+PASS  platform filter (All)
+23:34:46 == pandora player config ==
+PASS  pandora page title  -> "Pandora's Box"
+FAIL  pandora uses the windows flow  -> {"title":"Pandora's Box","gameId":"pandoras_box","settingsType":1,"bundle":"/games/pandoras_box.jsdos","osImages":"/bin/windows/images/os/pandoras_box_OS.DCD","cds":[{"link":"/games/bin/windows/images/disc/pandoras_box.DCD","name":"Pandora's Box Disc","size":711,"mount":"LAUNCH.cue"}],"helperLoaded":true,"cdControlsHidden":false,"missingFilesWarning":"none"}
+PASS  pandora has no auto command
+FAIL  pandora declares its game CD  -> [{"link":"/games/bin/windows/images/disc/pandoras_box.DCD","name":"Pandora's Box Disc","size":711,"mount":"LAUNCH.cue"}]
+PASS  player scripts loaded for pandora
+FAIL  starter info block shows this game  -> {"title":"Pandora's Box","year":"(1999)","meta":"Windows 95 · Puzzle","publisher":"Microsoft","docTitle":"Pandora's Box - Retro Game Playground"}
+PASS  document title follows the game  -> "Pandora's Box - Retro Game Playground"
+PASS  fullscreen button is wired to the player  -> true
+PASS  disc controls shown when a CD is declared  -> false
+PASS  pandora files present  -> "none"
+PASS  player page is laid out, not hidden  -> {"agreement":[560,50],"page":[759,569],"player":[1265,569]}
+23:34:50 == disc menu (games/discs) ==
+PASS  disc menu lists the dropped disc archive  -> {"items":["Pandora's Box Disc (0 MB)","__test-disc (0 MB)"],"selector":["Pandora's Box Disc","__test-disc"],"visible":true}
+PASS  start screen disc selector lists it  -> ["Pandora's Box Disc","__test-disc"]
+FAIL  the game's own CD is listed  -> ["Pandora's Box Disc (0 MB)","__test-disc (0 MB)"]
+PASS  a plain .iso is not offered  -> ["Pandora's Box Disc (0 MB)","__test-disc (0 MB)"]
+23:34:53 == player preference fallbacks (fresh profile) ==
+FAIL  player page nav + title  -> {"nav":true,"title":"Pandora's Box","prefs":{"mouseSensitivity":1,"mouseWheelDirection":1,"mouseWheelSensitivity":1,"upscaler":false,"aniso":false}}
+FAIL  star craft info block shows its own game  -> {"title":"Pandora's Box","year":"(1999)","publisher":"Microsoft"}
+FAIL  star craft page laid out with disc row  -> {"agreement":[560,50],"frame":[759,569],"discRow":[345,38],"discItems":1}
+PASS  preference fallbacks are 1 (not 0)  -> {"mouseSensitivity":1,"mouseWheelDirection":1,"mouseWheelSensitivity":1,"upscaler":false,"aniso":false}
+23:34:56 == settings page ==
+PASS  three tabs  -> ["Game controller","Storage","Player defaults"]
+PASS  browser quota reported  -> {"tabs":["Game controller","Storage","Player defaults"],"quota":"10.0 GB","used":"2.92 KB"}
+PASS  settings defaults are 1.0x  -> {"mouse":"1","wheel":"1","mouseLabel":"1.0","wheelLabel":"1.0","saveSource":"auto","stored":null}
+PASS  no preference written before saving  -> null
+PASS  cache size measured  -> "0 B"
+PASS  saves size measured  -> "0 B"
+PASS  gamepad listed  -> ["Fake Pad (STANDARD GAMEPAD)"]
+PASS  mapping UI shown  -> {"listed":["Fake Pad (STANDARD GAMEPAD)"],"mappingVisible":true,"axes":2,"buttons":4,"storedId":"Fake Pad (STANDARD GAMEPAD)"}
+PASS  controller id stored  -> "Fake Pad (STANDARD GAMEPAD)"
+PASS  basic mapping persisted  -> [3,1,2,3]
+PASS  mapping UI renders with a stored controller  -> {"axes":2,"buttons":4,"storedId":"Fake Pad (STANDARD GAMEPAD)","mappingVisible":true}
+PASS  advanced mapping saved  -> {"options":["Select a mapping...","Test mapping"],"stored":["Test mapping"]}
+PASS  mouse setting saved  -> "1.7"
+PASS  upscaler setting saved  -> "true"
+PASS  save source saved  -> "1"
+PASS  storage tab shows sizes  -> {"visible":true,"cache":"0 B","saves":"0 B"}
+PASS  player defaults tab fields  -> {"visible":true,"fields":6}
+PASS  seed database created  -> ["/home/web_user_x","js-dos-cache-x"]
+PASS  image databases deleted  -> ["js-dos-cache-x"]
+23:35:12 == console/exception summary ==
+(no page exceptions)
+
+15 CHECK(S) FAILED

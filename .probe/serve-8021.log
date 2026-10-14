@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/media/data/Workspace/retro/serve.py", line 1533, in <module>
+    main()
+    ~~~~^^
+  File "/media/data/Workspace/retro/serve.py", line 1494, in main
+    with Server((args.host, args.port), Handler) as httpd:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tianye/miniconda3/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/home/tianye/miniconda3/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 98] Address already in use

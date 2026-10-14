@@ -1,0 +1,6 @@
+17:28:52 play clicked
+17:29:14 worker candidate failed BAB3EE3C5E timeout Runtime.enable
+17:29:34 worker candidate failed 00EBFB393F timeout Runtime.enable
+17:29:54 worker candidate failed CEF459AD9A timeout Runtime.enable
+17:30:14 worker candidate failed 21101DFC0C timeout Runtime.enable
+17:31:22 no emulator worker found; targets: worker,worker,worker,worker,browser_ui,browser_ui,page,tab

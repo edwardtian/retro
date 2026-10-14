@@ -1,0 +1,90 @@
+17:01:54 play clicked
+17:01:56 toolbar visible, waiting boot 20000 ms
+17:02:16 targets:
+17:02:16    service_worker "Service Worker chrome-extension://fignfifoniblkonapihmkfakm chrome-extension://fignfifoniblkonapihmkfakmlgkbkcf/service_worker.js 
+17:02:16    service_worker "Service Worker chrome-extension://ghbmnnjooekpmoecnnnilnnbd chrome-extension://ghbmnnjooekpmoecnnnilnnbdlolhkhi/service_worker_bin_prod.js 
+17:02:16    worker ""  
+17:02:16    worker ""  
+17:02:16    worker ""  
+17:02:16    worker ""  
+17:02:16    browser_ui "Omnibox Popup" chrome://omnibox-popup.top-chrome/ 
+17:02:16    browser_ui "Omnibox Popup" chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html 
+17:02:16    page "SimCity 2000 - Retro Game Playground" http://127.0.0.1:8021/play.html?game=simcity2000 (attached)
+17:02:16 --- page scope ---
+17:02:16 {
+ "scope": "(page)",
+ "Module": "undefined",
+ "self.Module": "undefined",
+ "globalThis.DDYX_V86_RUNTIME_FACTORY": "undefined",
+ "globalThis.DDYX_V86": "undefined",
+ "globalThis.ddyxStorage": "undefined",
+ "self.wasmMemory": "undefined",
+ "crossOriginIsolated": true,
+ "SharedArrayBuffer": "function",
+ "onmessage-handler": "object",
+ "globalMatches": [
+  "queueMicrotask",
+  "GPUOutOfMemoryError",
+  "GPUQueue",
+  "GPUShaderModule",
+  "launchQueue",
+  "LaunchQueue",
+  "regeneratorRuntime",
+  "wasmPrefix",
+  "module",
+  "DDYXGameInput",
+  "DDYXTouchLayout",
+  "DDYXGyroInput",
+  "DDYXTouchControls",
+  "DDYXGamePlayer",
+  "DDYXSaveSources",
+  "DDYXNativeNetworkBridge"
+ ],
+ "storageProto": null,
+ "runtimeKeys": null
+}
+17:02:16 --- worker scope chrome-extension://fignfifoniblkonapihmkfakmlgkbkcf/service_worker.js ---
+17:02:16 {
+ "scope": "(page)",
+ "Module": "undefined",
+ "self.Module": "undefined",
+ "globalThis.DDYX_V86_RUNTIME_FACTORY": "undefined",
+ "globalThis.DDYX_V86": "undefined",
+ "globalThis.ddyxStorage": "undefined",
+ "self.wasmMemory": "undefined",
+ "crossOriginIsolated": false,
+ "SharedArrayBuffer": "function",
+ "onmessage-handler": "object",
+ "globalMatches": [
+  "GPUOutOfMemoryError",
+  "GPUQueue",
+  "GPUShaderModule"
+ ],
+ "storageProto": null,
+ "runtimeKeys": null
+}
+17:02:16 --- worker scope chrome-extension://ghbmnnjooekpmoecnnnilnnbdlolhkhi/service_worker_bin ---
+17:02:16 {
+ "scope": "(page)",
+ "Module": "undefined",
+ "self.Module": "undefined",
+ "globalThis.DDYX_V86_RUNTIME_FACTORY": "undefined",
+ "globalThis.DDYX_V86": "undefined",
+ "globalThis.ddyxStorage": "undefined",
+ "self.wasmMemory": "undefined",
+ "crossOriginIsolated": false,
+ "SharedArrayBuffer": "function",
+ "onmessage-handler": "object",
+ "globalMatches": [
+  "GPUOutOfMemoryError",
+  "GPUQueue",
+  "GPUShaderModule"
+ ],
+ "storageProto": null,
+ "runtimeKeys": null
+}
+17:03:16 probe failed  timeout Runtime.enable
+17:04:16 probe failed  timeout Runtime.enable
+17:05:16 probe failed  timeout Runtime.enable
+17:06:16 probe failed  timeout Runtime.enable
+done

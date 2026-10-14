@@ -1,0 +1,40 @@
+23:35:28 play clicked
+23:35:30 toolbar visible; worker sessions so far: 0
+23:37:30 emulator worker: NOT FOUND sessions: 0
+23:38:00 settle {"atMs":1,"sent":0}
+23:38:03 settle {"atMs":2503,"sent":0}
+23:38:05 settle {"atMs":5006,"sent":0}
+23:38:08 settle {"atMs":7508,"sent":0}
+23:38:12 latency {"label":"settle","dx":300,"landedMs":263,"travel":{"travel":388,"columns":28,"ambient":false},"atMs":11476,"queue":{}}
+23:38:12 idle 12s with no input
+23:38:12 idle {"atMs":11479,"sent":2}
+23:38:28 latency {"label":"end-of-idle","dx":300,"landedMs":269,"travel":{"travel":388,"columns":28,"ambient":false},"atMs":27923,"queue":{}}
+23:38:28 load 45 Hz for 24s
+23:38:28 load {"atMs":27927,"sent":4}
+23:38:33 load {"atMs":32928,"sent":231}
+23:38:38 load {"atMs":37934,"sent":458}
+23:38:43 load {"atMs":42937,"sent":686}
+23:38:48 load {"atMs":47943,"sent":913}
+23:38:55 latency {"label":"end-of-load","dx":300,"landedMs":270,"travel":{"travel":388,"columns":28,"ambient":false},"atMs":54403,"queue":{}}
+23:38:55 drain
+23:38:55 drain {"atMs":54406,"sent":1209}
+23:38:58 drain {"atMs":57407,"sent":1209}
+23:39:01 drain {"atMs":60411,"sent":1209}
+23:39:04 drain {"atMs":63415,"sent":1209}
+23:39:07 drain {"atMs":66416,"sent":1209}
+23:39:11 latency {"label":"after-drain","dx":300,"landedMs":254,"travel":{"travel":388,"columns":28,"ambient":false},"atMs":70851,"queue":{}}
+23:39:11 burst 500
+23:39:11 burst {"sinceBurstMs":1,"atMs":70855,"sent":2211}
+23:39:12 burst {"sinceBurstMs":1503,"atMs":72357,"sent":2211}
+23:39:14 burst {"sinceBurstMs":3003,"atMs":73857,"sent":2211}
+23:39:15 burst {"sinceBurstMs":4506,"atMs":75360,"sent":2211}
+23:39:17 burst {"sinceBurstMs":6008,"atMs":76862,"sent":2211}
+23:39:19 burst {"sinceBurstMs":7511,"atMs":78365,"sent":2211}
+23:39:20 burst {"sinceBurstMs":9013,"atMs":79867,"sent":2211}
+23:39:22 burst {"sinceBurstMs":10515,"atMs":81369,"sent":2211}
+23:39:24 latency {"label":"after-burst","dx":300,"landedMs":261,"travel":{"travel":388,"columns":28,"ambient":false},"atMs":84312,"queue":{}}
+23:39:24 stamp sweep
+23:39:46 stamp {"aheadMs":0,"stamp":null,"ok":true,"landedMs":-1,"travel":null}
+23:40:07 stamp {"aheadMs":500,"stamp":null,"ok":true,"landedMs":-1,"travel":null}
+23:40:32 stamp {"aheadMs":3000,"stamp":null,"ok":true,"landedMs":-1,"travel":null}
+done, 23 samples, 5 latency probes

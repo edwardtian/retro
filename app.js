@@ -377,7 +377,10 @@ function pickSaveFile() {
 // /js/dosx-edge/ is replaced: it is the cache key for the emulator worker
 // script and its wasm module, so both are re-fetched together and a browser
 // can never mix an old script with a new binary.
-var PLAYER_BUILD = "20261011a";
+// 20261013a: the DDYX input dispatcher constant was patched (see
+// patch-input-queue.py) so live input is no longer scheduled seconds into the
+// future once a session passes five minutes of emulator uptime.
+var PLAYER_BUILD = "20261013a";
 // The player/tool scripts below are the mirror's port of the original page.
 // game-player.js now carries its own input, touch-layout, touch-controls and
 // gyro modules (the separate game-input/touch-*.js files are no longer part of

@@ -1,0 +1,164 @@
+5c064e func[7033] <os>:
+ 5c064f: 04 7f                      | local[0..3] type=i32
+ 5c0651: 02 7c                      | local[4..5] type=f64
+ 5c0653: 23 0f                      | global.get 15
+ 5c0655: 41 02                      | i32.const 2
+ 5c0657: 46                         | i32.eq
+ 5c0658: 04 40                      | if
+ 5c065a: 23 10                      |   global.get 16
+ 5c065c: 23 10                      |   global.get 16
+ 5c065e: 28 02 00                   |   i32.load 2 0
+ 5c0661: 41 10                      |   i32.const 16
+ 5c0663: 6b                         |   i32.sub
+ 5c0664: 36 02 00                   |   i32.store 2 0
+ 5c0667: 23 10                      |   global.get 16
+ 5c0669: 28 02 00                   |   i32.load 2 0
+ 5c066c: 22 03                      |   local.tee 3
+ 5c066e: 28 02 00                   |   i32.load 2 0
+ 5c0671: 21 01                      |   local.set 1
+ 5c0673: 20 03                      |   local.get 3
+ 5c0675: 28 02 04                   |   i32.load 2 4
+ 5c0678: 21 02                      |   local.set 2
+ 5c067a: 20 03                      |   local.get 3
+ 5c067c: 2b 02 08                   |   f64.load 2 8
+ 5c067f: 21 04                      |   local.set 4
+ 5c0681: 0b                         | end
+ 5c0682: 02 7f                      | block i32
+ 5c0684: 23 0f                      |   global.get 15
+ 5c0686: 41 02                      |   i32.const 2
+ 5c0688: 46                         |   i32.eq
+ 5c0689: 04 40                      |   if
+ 5c068b: 23 10                      |     global.get 16
+ 5c068d: 23 10                      |     global.get 16
+ 5c068f: 28 02 00                   |     i32.load 2 0
+ 5c0692: 41 04                      |     i32.const 4
+ 5c0694: 6b                         |     i32.sub
+ 5c0695: 36 02 00                   |     i32.store 2 0
+ 5c0698: 23 10                      |     global.get 16
+ 5c069a: 28 02 00                   |     i32.load 2 0
+ 5c069d: 28 02 00                   |     i32.load 2 0
+ 5c06a0: 21 00                      |     local.set 0
+ 5c06a2: 0b                         |   end
+ 5c06a3: 23 0f                      |   global.get 15
+ 5c06a5: 45                         |   i32.eqz
+ 5c06a6: 04 40                      |   if
+ 5c06a8: 41 c0 b5 a2 18             |     i32.const 50895552
+ 5c06ad: 28 02 00                   |     i32.load 2 0
+ 5c06b0: 22 02                      |     local.tee 2
+ 5c06b2: 45                         |     i32.eqz
+ 5c06b3: 21 01                      |     local.set 1
+ 5c06b5: 0b                         |   end
+ 5c06b6: 02 40                      |   block
+ 5c06b8: 23 0f                      |     global.get 15
+ 5c06ba: 45                         |     i32.eqz
+ 5c06bb: 04 40                      |     if
+ 5c06bd: 20 01                      |       local.get 1
+ 5c06bf: 0d 01                      |       br_if 1
+ 5c06c1: 20 02                      |       local.get 2
+ 5c06c3: 2b 03 28                   |       f64.load 3 40
+ 5c06c6: 22 04                      |       local.tee 4
+ 5c06c8: 44 00 00 00 00 00 00 00 00 |       f64.const 0x0p+0
+ 5c06d1: 63                         |       f64.lt
+ 5c06d2: 45                         |       i32.eqz
+ 5c06d3: 0d 01                      |       br_if 1
+ 5c06d5: 20 02                      |       local.get 2
+ 5c06d7: 28 02 00                   |       i32.load 2 0
+ 5c06da: 21 01                      |       local.set 1
+ 5c06dc: 0b                         |     end
+ 5c06dd: 23 0f                      |     global.get 15
+ 5c06df: 45                         |     i32.eqz
+ 5c06e0: 20 00                      |     local.get 0
+ 5c06e2: 45                         |     i32.eqz
+ 5c06e3: 72                         |     i32.or
+ 5c06e4: 04 40                      |     if
+ 5c06e6: 20 01                      |       local.get 1
+ 5c06e8: 11 23 00                   |       call_indirect 0 (type 35)
+ 5c06eb: 41 00                      |       i32.const 0
+ 5c06ed: 23 0f                      |       global.get 15
+ 5c06ef: 41 01                      |       i32.const 1
+ 5c06f1: 46                         |       i32.eq
+ 5c06f2: 0d 02                      |       br_if 2
+ 5c06f4: 1a                         |       drop
+ 5c06f5: 21 04                      |       local.set 4
+ 5c06f7: 0b                         |     end
+ 5c06f8: 23 0f                      |     global.get 15
+ 5c06fa: 45                         |     i32.eqz
+ 5c06fb: 04 40                      |     if
+ 5c06fd: 20 02                      |       local.get 2
+ 5c06ff: 20 04                      |       local.get 4
+ 5c0701: 39 03 28                   |       f64.store 3 40
+ 5c0704: 0b                         |     end
+ 5c0705: 0b                         |   end
+ 5c0706: 23 0f                      |   global.get 15
+ 5c0708: 45                         |   i32.eqz
+ 5c0709: 20 00                      |   local.get 0
+ 5c070b: 41 01                      |   i32.const 1
+ 5c070d: 46                         |   i32.eq
+ 5c070e: 72                         |   i32.or
+ 5c070f: 04 40                      |   if
+ 5c0711: 10 d6 36                   |     call 6998
+ 5c0714: 41 01                      |     i32.const 1
+ 5c0716: 23 0f                      |     global.get 15
+ 5c0718: 41 01                      |     i32.const 1
+ 5c071a: 46                         |     i32.eq
+ 5c071b: 0d 01                      |     br_if 1
+ 5c071d: 1a                         |     drop
+ 5c071e: 0b                         |   end
+ 5c071f: 23 0f                      |   global.get 15
+ 5c0721: 45                         |   i32.eqz
+ 5c0722: 04 40                      |   if
+ 5c0724: 10 be 03                   |     call 446 <a.qh>
+ 5c0727: 0b                         |   end
+ 5c0728: 23 0f                      |   global.get 15
+ 5c072a: 45                         |   i32.eqz
+ 5c072b: 20 00                      |   local.get 0
+ 5c072d: 41 02                      |   i32.const 2
+ 5c072f: 46                         |   i32.eq
+ 5c0730: 72                         |   i32.or
+ 5c0731: 04 40                      |   if
+ 5c0733: 10 cf 21                   |     call 4303 <ns>
+ 5c0736: 41 02                      |     i32.const 2
+ 5c0738: 23 0f                      |     global.get 15
+ 5c073a: 41 01                      |     i32.const 1
+ 5c073c: 46                         |     i32.eq
+ 5c073d: 0d 01                      |     br_if 1
+ 5c073f: 1a                         |     drop
+ 5c0740: 0b                         |   end
+ 5c0741: 23 0f                      |   global.get 15
+ 5c0743: 45                         |   i32.eqz
+ 5c0744: 04 40                      |   if
+ 5c0746: 41 00                      |     i32.const 0
+ 5c0748: 10 5c                      |     call 92 <a.Na>
+ 5c074a: 00                         |     unreachable
+ 5c074b: 0b                         |   end
+ 5c074c: 0f                         |   return
+ 5c074d: 0b                         | end
+ 5c074e: 21 00                      | local.set 0
+ 5c0750: 23 10                      | global.get 16
+ 5c0752: 28 02 00                   | i32.load 2 0
+ 5c0755: 20 00                      | local.get 0
+ 5c0757: 36 02 00                   | i32.store 2 0
+ 5c075a: 23 10                      | global.get 16
+ 5c075c: 23 10                      | global.get 16
+ 5c075e: 28 02 00                   | i32.load 2 0
+ 5c0761: 41 04                      | i32.const 4
+ 5c0763: 6a                         | i32.add
+ 5c0764: 36 02 00                   | i32.store 2 0
+ 5c0767: 23 10                      | global.get 16
+ 5c0769: 28 02 00                   | i32.load 2 0
+ 5c076c: 22 00                      | local.tee 0
+ 5c076e: 20 01                      | local.get 1
+ 5c0770: 36 02 00                   | i32.store 2 0
+ 5c0773: 20 00                      | local.get 0
+ 5c0775: 20 02                      | local.get 2
+ 5c0777: 36 02 04                   | i32.store 2 4
+ 5c077a: 20 00                      | local.get 0
+ 5c077c: 20 04                      | local.get 4
+ 5c077e: 39 02 08                   | f64.store 2 8
+ 5c0781: 23 10                      | global.get 16
+ 5c0783: 23 10                      | global.get 16
+ 5c0785: 28 02 00                   | i32.load 2 0
+ 5c0788: 41 10                      | i32.const 16
+ 5c078a: 6a                         | i32.add
+ 5c078b: 36 02 00                   | i32.store 2 0
+ 5c078e: 0b                         | end

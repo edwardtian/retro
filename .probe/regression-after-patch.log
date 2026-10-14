@@ -1,0 +1,31 @@
+=== mouse-response-test (ROUNDS=6) ===
+23:26:25 probe 0 {"round":0,"atSec":52,"burst":50,"step":4,"expectedPx":200,"posted":50,"travel":263}
+23:27:28 probe 1 {"round":1,"atSec":115,"burst":50,"step":4,"expectedPx":200,"posted":50,"travel":263}
+23:28:30 probe 2 {"round":2,"atSec":178,"burst":50,"step":4,"expectedPx":200,"posted":50,"travel":263}
+23:29:33 probe 3 {"round":3,"atSec":241,"burst":50,"step":4,"expectedPx":200,"posted":50,"travel":263}
+23:30:36 probe 4 {"round":4,"atSec":304,"burst":50,"step":4,"expectedPx":200,"posted":50,"travel":263}
+23:31:39 probe 5 {"round":5,"atSec":366,"burst":50,"step":4,"expectedPx":200,"posted":50,"travel":263}
+PASS  the burst moves the guest cursor  -> {"travel":263,"expected":200}
+PASS  every event reaches the emulator as it happens (online mechanism)  -> [50,50,50,50,50,50]
+PASS  the response does not decay over the session  -> {"first":263,"last":263,"all":[263,263,263,263,263,263]}
+PASS  no page exceptions  -> []
+
+all mouse response checks passed
+=== mouse-mode-test ===
+PASS  pause still toggles  -> {"pressed":"true","playing":true}
+PASS  mute still toggles
+PASS  fullscreen is wired to the player  -> true
+PASS  the saved mode is restored on reload  -> "passthrough"
+PASS  the button reflects the restored mode  -> {"hidden":false,"pressed":"true","title":"Mouse passthrough mode. Click to switch to capture."}
+PASS  no page exceptions
+
+all mouse-mode checks passed
+=== pages-smoke-test ===
+PASS  storage tab shows sizes  -> {"visible":true,"cache":"0 B","saves":"0 B"}
+PASS  player defaults tab fields  -> {"visible":true,"fields":6}
+PASS  seed database created  -> ["/home/web_user_x","js-dos-cache-x"]
+PASS  image databases deleted  -> ["js-dos-cache-x"]
+23:32:48 == console/exception summary ==
+(no page exceptions)
+
+15 CHECK(S) FAILED
