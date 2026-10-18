@@ -8,3 +8,6 @@
 .cj-*
 DSH.md
 /game_to_import
+
+# Pre-fix Pandora OS image / bundle (manual rollback copies)
+.pandora-backup/

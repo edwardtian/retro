@@ -1,10 +1,13 @@
 // Local mirror configuration for the Retro Online 'dosx' player.
 // Deployed by deploy.py on 2026-10-09 10:03:52
+// 2026-10-17: register Indeo 5 (IV50) so OPEN.AVI renders video:
+// the OS image now ships C:\WINDOWS\SYSTEM\IR50_32.DLL and the
+// bundle's DDYX/DDYX1.BIN adds VIDC.IV50=ir50_32.dll to SYSTEM.INI.
 
 window.LOCAL_GAME_CONFIG = {
     "gameId": "pandoras_box",
     "title": "Pandora's Box",
-    "version": "20261009160616",
+    "version": "20261017220000",
     "gameBundle": "/games/pandoras_box.jsdos",
     "tool": "/games",
     "osImages": "/bin/windows/images/os/pandoras_box_OS.DCD",
@@ -19,11 +22,11 @@ window.LOCAL_GAME_CONFIG = {
     ],
     "toolImage": "/bin/windows/tools/tools.zip",
     "win95Patch": "/bin/windows/tools/win95patch.zip",
-    "imageVersion": "20261009160616",
+    "imageVersion": "20261017220000",
     "skipWin95Patch": false,
     "forceBuild": "auto",
     "settingsType": 1,
-    "expectedSize": 449827771,
+    "expectedSize": 449989706,
     "requiredFiles": [
         "/games/pandoras_box.jsdos",
         "/games/bin/windows/tools/tools.zip",
