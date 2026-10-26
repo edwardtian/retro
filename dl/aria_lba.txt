@@ -1,0 +1,12 @@
+https://cf.ommv.net/bin/dos/lba2_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=lba2_cd.jsdos
+https://cf.ommv.net/bin/dos/images/LBA2.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/LBA2.DCD
+https://cf.ommv.net/bin/dos/lba_cd.jsdos
+  dir=/media/data/Workspace/retro/games
+  out=lba_cd.jsdos
+https://cf.ommv.net/bin/dos/images/LBA.DCD
+  dir=/media/data/Workspace/retro/games
+  out=bin/dos/images/LBA.DCD

@@ -2152,6 +2152,49 @@ window.LOCAL_CATALOG = {
 
             ]
         },
+        {
+            id: "little_big_adventure",
+            title: "Little Big Adventure",
+            os: "dos",
+            osLabel: "DOS",
+            year: 1994,
+            publisher: "Adeline Software",
+            genre: "Action adventure",
+            players: "1",
+            playUrl: "/play.html?game=little_big_adventure",
+            configUrl: "/config-little_big_adventure.js",
+            cover: "/images/games/little_big_adventure_cover.webp",
+            accent: ["#3a4a6b", "#12161f"],
+            description: "Adeline's isometric adventure: Twinsen escapes a tyrant and travels between planets to free his world. DOS game.",
+            files: [
+                "/games/lba_cd.jsdos"
+            ],
+            optionalFiles: [
+                "/games/bin/dos/images/LBA.DCD",
+                "/games/bin/windows/tools/mt32.zip"
+            ]
+        },
+        {
+            id: "little_big_adventure2",
+            title: "Little Big Adventure 2",
+            os: "dos",
+            osLabel: "DOS",
+            year: 1997,
+            publisher: "Adeline Software",
+            genre: "Action adventure",
+            players: "1",
+            playUrl: "/play.html?game=little_big_adventure2",
+            configUrl: "/config-little_big_adventure2.js",
+            cover: "/images/games/little_big_adventure2_cover.webp",
+            accent: ["#5c4a2f", "#1c1610"],
+            description: "The sequel: Twinsen returns to save Planet Twinsun from a new invasion, with full 3D-ish environments. DOS game.",
+            files: [
+                "/games/lba2_cd.jsdos"
+            ],
+            optionalFiles: [
+                "/games/bin/dos/images/LBA2.DCD"
+            ]
+        },
     ]
 };
 

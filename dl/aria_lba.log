@@ -1,0 +1,36 @@
+
+10/25 22:05:38 [[1;32mNOTICE[0m] Downloading 4 item(s)
+[DL:24MiB][#293fcd 0B/0B][#531a46 1.6MiB/417MiB(0%)][#b5d869 6.9MiB/7.2MiB(95%)][#d951bf 2.2MiB/184MiB(1%)]
+
+10/25 22:05:39 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/lba_cd.jsdos
+[DL:48MiB][#293fcd 16MiB/25MiB(65%)][#531a46 9.8MiB/417MiB(2%)][#d951bf 35MiB/184MiB(19%)]
+
+10/25 22:05:41 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/lba2_cd.jsdos
+[DL:57MiB][#531a46 36MiB/417MiB(8%)][#d951bf 70MiB/184MiB(38%)]
+[DL:66MiB][#531a46 90MiB/417MiB(21%)][#d951bf 104MiB/184MiB(56%)]
+[DL:71MiB][#531a46 138MiB/417MiB(33%)][#d951bf 144MiB/184MiB(78%)]
+[DL:73MiB][#531a46 185MiB/417MiB(44%)][#d951bf 179MiB/184MiB(97%)]
+
+10/25 22:05:45 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/dos/images/LBA.DCD
+[#531a46 217MiB/417MiB(51%) CN:8 DL:35MiB ETA:5s]
+[#531a46 269MiB/417MiB(64%) CN:8 DL:37MiB ETA:3s]
+[#531a46 288MiB/417MiB(69%) CN:8 DL:35MiB ETA:3s]
+[#531a46 308MiB/417MiB(73%) CN:8 DL:33MiB ETA:3s]
+[#531a46 324MiB/417MiB(77%) CN:8 DL:34MiB ETA:2s]
+[#531a46 349MiB/417MiB(83%) CN:8 DL:34MiB ETA:1s]
+[#531a46 366MiB/417MiB(87%) CN:8 DL:31MiB ETA:1s]
+[#531a46 393MiB/417MiB(94%) CN:8 DL:28MiB]
+[#531a46 409MiB/417MiB(97%) CN:3 DL:25MiB]
+
+10/25 22:05:54 [[1;32mNOTICE[0m] Download complete: /media/data/Workspace/retro/games/bin/dos/images/LBA2.DCD
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b5d869|OK  |    13MiB/s|/media/data/Workspace/retro/games/lba_cd.jsdos
+293fcd|OK  |    14MiB/s|/media/data/Workspace/retro/games/lba2_cd.jsdos
+d951bf|OK  |    32MiB/s|/media/data/Workspace/retro/games/bin/dos/images/LBA.DCD
+531a46|OK  |    27MiB/s|/media/data/Workspace/retro/games/bin/dos/images/LBA2.DCD
+
+Status Legend:
+(OK):download completed.
